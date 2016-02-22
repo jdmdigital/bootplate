@@ -1,5 +1,5 @@
 # BootPlate
-**A WordPress starter theme built on Bootstrap v3.3.x and v4 Alpha 2.**
+**An (usual) WordPress starter theme built on Bootstrap v3.3.x and v4 Alpha 2 for speed and flexibility.**
 
 Obviously, we're still working on this, but you'll see the starter work here very soon.
 
