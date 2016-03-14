@@ -6,13 +6,14 @@
 get_header(); ?>
 
 <?php if ( have_posts() ) : ?>
+<?php while ( have_posts() ) : the_post(); ?>
 <header class="jumbotron jumbotron-fluid bg-custom">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-				<?php the_title( '<h1>', '</h1>' ); ?>
-				<?php if( isset(get_the_excerpt()) ) : ?><p><?php the_excerpt(); ?></p><?php endif; ?>
-				<p class="post-meta">By <?php the_author_link(); ?> last updated <a href="<?php echo get_month_link(the_date('Y'), the_date('m')); ?>"><?php the_modified_date(); ?></a> in <?php the_category(', '); ?></p>
+				<?php the_title( '<h1 class="h2">', '</h1>' ); ?>
+				<!--<?php if( get_the_excerpt() != '' ) : ?><p><?php the_excerpt(); ?></p><?php endif; ?>-->
+				<p class="post-meta">By <?php the_author_posts_link(); ?> last updated <a href="<?php echo get_month_link(the_date('Y'), the_date('m')); ?>"><?php the_modified_date(); ?></a> in <?php the_category(', '); ?></p>
 			</div><!--/col-->
 		</div><!--/row-->
 	</div><!--/.container-->
@@ -20,7 +21,7 @@ get_header(); ?>
 
 <section>
 	<div class="container">
-		<div class="row margin-bottom single-content">
+		<div class="row single-content">
 			<?php get_template_part( 'content', get_post_format() ); ?>
 		</div>
 		
@@ -33,6 +34,7 @@ get_header(); ?>
 		
 	</div>
 </section>
+<?php endwhile; ?>
 
 <?php else : ?>
 

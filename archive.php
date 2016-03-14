@@ -16,13 +16,24 @@ get_header(); ?>
 <header class="jumbotron jumbotron-fluid bg-custom">
 	<div class="container">
 		<?php the_archive_title( '<h1>', '</h1>' ); ?>
+		<?php 
+			if(is_author()) : 
+    			$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author)); // current author info
+		?>
+		<ul class="list-unstyled author-info post-meta">
+        	<?php if($curauth->ID != '') : ?>				<li><span class="bp-rss margin-right"></span> <b><?php echo count_user_posts($curauth->ID); ?></b> Posts</li>							<?php endif; ?>
+			<?php if($curauth->user_url != '') : ?>			<li><span class="bp-link margin-right"></span> <a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></li>	<?php endif; ?>
+        	<?php if($curauth->user_description != '') : ?>	<li><span class="bp-heart margin-right"></span> <b>Bio:</b> <?php echo $curauth->user_description; ?></li>								<?php endif; ?>
+    	</ul>
+		<?php else : ?>
 		<?php the_archive_description( '<p>', '</p>' ); ?>
+		<?php endif; ?>
 	</div><!--/.container-->
 </header>
 
 <section>
 	<div class="container">
-		<div class="row margin-bottom archive">
+		<div class="row margin-bottom archive <?php echo get_post_format(); ?>">
 			<?php get_template_part( 'content', get_post_format() ); ?>
 		</div>
 	</div>

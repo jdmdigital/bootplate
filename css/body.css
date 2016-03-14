@@ -111,11 +111,14 @@ Elements here should ONLY be used/viewable below the fold.
 .pagination > li > a:hover,.pagination > li > span:hover,.pagination > li > a:focus,.pagination > li > span:focus {color: #23527c;  background-color: #eee;  border-color: #ddd;}
 .pagination > .active > a,.pagination > .active > span,.pagination > .active > a:hover,.pagination > .active > span:hover,.pagination > .active > a:focus,.pagination > .active > span:focus {  color: #fff;  background-color: #337ab7;  border-color: #337ab7;}
 .pagination > .disabled > span,.pagination > .disabled > span:hover,.pagination > .disabled > span:focus,.pagination > .disabled > a,.pagination > .disabled > a:hover,.pagination > .disabled > a:focus {  color: #777;  background-color: #fff;  border-color: #ddd;}
-.pager li > a,.pager li > span {  background-color: #222;  border: 1px solid #000; color:#eee; border-radius:6px; min-width:110px;}
+.pager li > a,.pager li > span {  background-color: #222;  border: 1px solid #000; color:#eee; border-radius:6px; min-width:130px;}
 .pager li > a:hover,.pager li > a:focus {  background-color: #111;  border: 1px solid #000; color:#fff;}
 .pager .disabled > a,.pager .disabled > a:hover,.pager .disabled > a:focus,.pager .disabled > span {color: #777;}
 .pager .pager-prev > a, .pager .pager-prev > span{float: left;}
 .pager .pager-next > a, .pager .pager-next > span{float: right;}
+.comment-navigation .pager li > a{background-color:transparent;  border:none;color:#333; border-radius:0; min-width:15px; font-size:1.2rem;} 
+.comment-navigation .pager li > a:hover{background-color:transparent; border:none; color:#000;} 
+.comment-navigation .pager .disabled > a, .comment-navigation .pager .disabled > a:hover, .comment-navigation .pager .disabled > a:focus, .comment-navigation .pager .disabled > span {border:none; color:#777;}
 .label-default {  background-color: #777;}
 .label-default[href]:hover,.label-default[href]:focus {  background-color: #5e5e5e;}
 .pagination {  display: inline-block;  padding-left: 0;  margin-top: 1rem;  margin-bottom: 1rem;  border-radius: .25rem;}
@@ -126,6 +129,7 @@ Elements here should ONLY be used/viewable below the fold.
 .pagination > li > a:focus,.pagination > li > a:hover,.pagination > li > span:focus,.pagination > li > span:hover {  color: #014c8c;  background-color: #eceeef;  border-color: #ddd;}
 .pagination > .active > a,.pagination > .active > a:focus,.pagination > .active > a:hover,.pagination > .active > span,.pagination > .active > span:focus,.pagination > .active > span:hover {  z-index: 2;  color: #fff;  cursor: default;  background-color: #008bbb;  border-color: #008bbb;}
 .pagination > .disabled > span,.pagination > .disabled > span:focus,.pagination > .disabled > span:hover,.pagination > .disabled > a,.pagination > .disabled > a:focus,.pagination > .disabled > a:hover {  color: #818a91;  cursor: not-allowed;  background-color: #fff;  border-color: #ddd;}
+
 /* Form Styles */
 .checkbox label, .checkbox-inline, .radio label, .radio-inline{padding-left:1.8rem;}
 .no-cssremunit .checkbox label, .no-cssremunit .radio label{padding-left:16px;}
@@ -229,7 +233,7 @@ button[type=submit].processing,input[type=submit].processing, button.processing,
 .alignleft {float: left;margin: 8px 20px 20px 0;}
 .alignright {float: right;margin: 8px 0 20px 20px;}
 .aligncenter {float:none;clear: both;display: block;margin: 20px 0;width:100%; height:auto;}
-.wp-caption {background: transparent;	border: none;	color: #707070;	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;	margin: 0 0 20px 0;	max-width: 100%;	padding: 0;	text-align: inherit;}
+.wp-caption {background:#f2f2f2;	border: none;	color: #555;	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;	margin: 0 0 20px 0;	max-width: 100%;	padding:8px 8px 3px;	text-align: inherit; line-height:2;}
 .wp-caption.alignleft {	margin: 8px 20px 20px 0;}
 .wp-caption.alignright {	margin: 8px 0 20px 20px;}
 .wp-caption.aligncenter {	margin: 8px auto;}
@@ -291,7 +295,7 @@ h4.card-title, .h4.card-title{font-size:22px;}
 .comments-area .pingback{/*display:none;*/ margin-bottom:30px;}
 .comments-title strong{margin-right:0.3em;}
 .comment-form label{font-weight:bold;}
-.comment-list .comment{padding:15px; background-color:#f6f6f6; border:1px solid #ccc; color:#333; margin-bottom:30px;}
+.comment-list .comment{padding:15px; background-color:#f5f5f5; border:1px solid #ccc; color:#333; margin-bottom:30px;}
 .comment-list .comment p{margin-bottom:1rem;}
 .comment-list .comment .depth-2{background-color:#fff;border:1px solid #ccc;margin-bottom:0;margin-top:15px; margin-left:15px;}
 .comment-list .comment .depth-2.even{background-color:#fff;border:1px solid #ccc;}
@@ -299,17 +303,19 @@ h4.card-title, .h4.card-title{font-size:22px;}
 .comment-list .comment .depth-3.even{background-color:#f9f9f9;border:1px solid #ccc;}
 .comment-list .comment .depth-4{background-color:#f1f1f1;border:1px solid #ccc;margin-bottom:0;margin-top:15px; margin-left:15px;}
 .comment-list .comment .depth-4.even{background-color:#f1f1f1;border:1px solid #ccc;}
-.comment-meta a{color:#999; font-size:0.95rem;}
-.comment-author, .comment-reply-link{font-size:0.95rem;}
+.comment-meta a, .comment-date{color:#999; font-size:0.8rem;}
+.comment-author, .comment-reply-link, .comment-edit-link{font-size:0.8rem;}
 .comment-list .vcard img{display:none;}
 li.comment, ul.children li.comment{list-style:none;}
 cite.fn{ font-style:normal; color:#000; font-weight:bold;}
 .comment-list .panel .panel-heading {  padding: 4px 15px;  position: absolute;  border:none;  border-top-right-radius:0px;  top: 1px;}
 .comment-list .panel .panel-heading.right {border-right-width: 0px;border-top-left-radius:0px;right: 16px;}
 .comment-list .panel .panel-heading .panel-body {padding-top: 6px;}
-.comment-list figcaption {word-wrap: break-word;}
+.comment-list figcaption {word-wrap: break-word; font-size:0.8em;}
 .comment-list .comment-post {margin-top: 6px;}
 .in-moderation {font-style:italic;}
+figure.thumbnail{background-color:#eee; color:#111;}
+.comment-edit-link{margin-left:15px;}
 
 /* == PLUGIN STYLES == */
 
@@ -340,7 +346,7 @@ footer .widget{background-color:rgba(51,51,51,0.5); padding:15px; margin-bottom:
 .no-cssremunit #widget-footer{margin-bottom:40px;}
 #socket-footer .list-inline, #socket-footer p{text-align:center;}
 footer p{margin-bottom:0;}
-footer a{color:#ddd;}
+footer a{color:#ccc;}
 footer a:hover, footer a:focus, footer a:active{color:#fff;}
 .links-social a{font-size:18px;}
 .links-social a:hover, .links-social a:focus, .links-social a:active{text-decoration:none;}
@@ -369,9 +375,9 @@ footer a:hover, footer a:focus, footer a:active{color:#fff;}
 	.comment-list .arrow:after, .comment-list .arrow:before {    content: "";    position: absolute;    width: 0;    height: 0;    border-style: solid;    border-color: transparent;}
 	.comment-list .panel.arrow.left:after, .comment-list .panel.arrow.left:before {border-left: 0;}
 	.comment-list .panel.arrow.left:before {left: 0px;top: 30px;border-right-color: inherit;border-width: 16px;}
-	.comment-list .panel.arrow.left:after {left: 1px;top: 31px;border-right-color: #FFFFFF;border-width: 15px;}
+	.comment-list .panel.arrow.left:after {left: 1px;top: 31px;border-right-color: #f5f5f5;border-width: 15px;}
 	.comment-list .panel.arrow.right:before {right: -16px;top: 30px;border-left-color: inherit;border-width: 16px;}
-	.comment-list .panel.arrow.right:after {right: -14px;top: 31px;border-left-color: #FFFFFF;border-width: 15px;}
+	.comment-list .panel.arrow.right:after {right: -14px;top: 31px;border-left-color: #f5f5f5;border-width: 15px;}
 	#socket-footer .list-inline{text-align:right;}
 	#socket-footer p{text-align:left;}
 }

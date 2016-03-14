@@ -1,10 +1,10 @@
 /* Bootplate Editor Styles (and icons) */
 
 html{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);font-size:16px;}
-body{color: #333; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 400; line-height: 1.42857; background-color: #fff; font-size: 1rem; margin: 20px 40px; vertical-align: baseline; max-width: 1140px;}
+body{color: #333; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 400; line-height: 1.42857; background-color: #fff; font-size: 1rem; margin: 15px 15px; vertical-align: baseline; max-width: 752px;}
 a{color: #6f5499;}
 a:hover, a:focus{color: #23527c;}
-h1,h2,h3,h4,h5,h6 {	clear: both;	font-weight: 500;	line-height: 1.1;	text-transform:none;}
+h1,h2,h3,h4,h5,h6 {	clear: both;	font-weight: 600;	line-height: 1.1;	text-transform:none;}
 h1,h2,h3 {margin: 22px 0 11px;}
 h4,h5,h6{margin: 22px 0 11px;}
 h1 {font-size: 4rem; letter-spacing: -1px;}
@@ -14,7 +14,7 @@ h4 {font-size:1.8rem;}
 h5,h6 {font-size:1rem;}
 h1:first-child,h2:first-child,h3:first-child,h4:first-child,h5:first-child,h6:first-child {	margin-top: 0;}
 p {	margin: 0 0 20px;}
-b,strong {font-weight: 500;}
+b,strong {font-weight: 600;}
 dfn,cite,em,i {font-style: italic;}
 blockquote {border-left: 5px solid #eee;	color: #333;	font-size: 20px;	font-style: normal;	line-height: 1.8182;	margin: 0 0 22px;}
 blockquote > blockquote {margin-left: 0;}
@@ -33,7 +33,7 @@ sub {	top: .5ex;}
 small {	font-size: 75%;}
 big {	font-size: 125%;}
 hr {	background-color: #eaeaea;	border: 0;	height: 1px;	margin-bottom: 20px;}
-ul,ol {margin: 0 0 20px 0;padding: 0;}
+ul,ol {margin: 0 0 20px 15px; padding: 0;}
 ul {list-style: disc;}
 ol {list-style: decimal;}
 li > ul,li > ol {margin: 0 0 0 20px;}

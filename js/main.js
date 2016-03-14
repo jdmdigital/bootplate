@@ -36,6 +36,15 @@ $( document ).ready(function() {
 		}
 	}
 	
+	// Processing Buttons
+	$('.btn-process').click(function() {
+		$(this).addClass('processing');
+		setTimeout(function(){
+			$(this).removeClass('processing');
+		}, 1200);
+		
+	});
+	
 	// Vertical Center WITHOUT flexbox...
 	if($('.vcenter').length) {
 		if (Modernizr.mq('(min-width : 600px)')) {

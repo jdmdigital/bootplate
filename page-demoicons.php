@@ -46,7 +46,7 @@ get_header(); ?>
 </section>
 <?php endwhile; ?>
 
-<section id="icon-ref" class="bg-default">
+<section id="icon-ref">
 	<div class="container">
 		<h2>Reference</h2>
 		<p>There is a custom set of <strong class="text-primary">52 font icons</strong> included in <?php bloginfo('name'); ?> v<?php echo bootplate_info('version'); ?>.  Here's what they all look like as well as the class name you would add to a SPAN statement or whatever.  Toggle the codes checkbox below if you're doing something fancy in CSS/JS.  Otherwise, this is a handy page for your reference.</p>

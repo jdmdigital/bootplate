@@ -9,13 +9,13 @@ get_header(); ?>
 <header class="jumbotron jumbotron-fluid bg-custom">
 	<div class="container">
 		<h1><?php single_cat_title(); ?></h1>
-		<?php if(isset(category_description())) : ?><p><?php echo category_description(); ?></p><?php endif; ?>
+		<?php if(category_description() != '') : ?><p><?php echo category_description(); ?></p><?php endif; ?>
 	</div><!--/.container-->
 </header>
 
 <section>
 	<div class="container">
-		<div class="row margin-bottom category">
+		<div class="row margin-bottom category <?php echo get_post_format(); ?>">
 			<?php get_template_part( 'content', get_post_format() ); ?>
 		</div>
 	</div>

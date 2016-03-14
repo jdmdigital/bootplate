@@ -81,7 +81,7 @@ if ( !function_exists('bootplate_setup') ) {
 
 		// Switch default core markup to output valid HTML5.
 		add_theme_support( 'html5', array(
-			'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+			'search-form', 'comment-form', 'comment-list', 'caption'
 		) );
 		
 		// Add Quote and Link Post Format Support
@@ -238,35 +238,17 @@ function jdm_comment_nav() {
 	<div class="navigation comment-navigation" role="navigation">
 		<ul class="pager">
 			<?php
-				if(is_mobile()) {
-					// mobile version
-					if ( $prev_link = get_previous_comments_link( 'Older' ) ) {
-						printf( '<li class="pager-prev">%s</li>', $prev_link );
-					} else {
-						echo '<li class="pager-prev disabled"><a>Older</a></li>';
-					}
-	
-					if ( $next_link = get_next_comments_link( 'Newer' ) ) {
-						printf( '<li class="pager-next">%s</li>', $next_link );
-					} else {
-						echo '<li class="pager-next disabled"><a>Newer</a></li>';
-					}
+				if ( $prev_link = get_previous_comments_link( '<span class="bp-left-open"></span>' ) ) {
+					printf( '<li class="pager-prev" title="Older Comments">%s</li>', $prev_link );
 				} else {
-					// tablet and desktop version
-					if ( $prev_link = get_previous_comments_link( 'Older Comments' ) ) {
-						printf( '<li class="pager-prev">%s</li>', $prev_link );
-					} else {
-						echo '<li class="pager-prev disabled"><a>Older Comments</a></li>';
-					}
-	
-					if ( $next_link = get_next_comments_link( 'Newer Comments' ) ) {
-						printf( '<li class="pager-next">%s</li>', $next_link );
-					} else {
-						echo '<li class="pager-next disabled"><a>Newer Comments</a></li>';
-					}
+					echo '<li class="pager-prev disabled" title="Older Comments"><a><span class="bp-left-open"></span></a></li>';
 				}
-				
-				
+
+				if ( $next_link = get_next_comments_link( '<span class="bp-right-open"></span>' ) ) {
+					printf( '<li class="pager-next" title="Newer Comments">%s</li>', $next_link );
+				} else {
+					echo '<li class="pager-next disabled" title="Newer Comments"><a><span class="bp-right-open"></span></a></li>';
+				}
 			?>
 		</ul><!-- .nav-links -->
 	</div><!-- .comment-navigation -->
@@ -275,76 +257,249 @@ function jdm_comment_nav() {
 }
 endif;
 
+if(!function_exists('is_comment_child')) {
+	function is_comment_child( $comment_ID = 0 ) { // recursive depth check
+		global $wpdb;
+		$comment = get_comment( $comment_ID );
+		$parent = $comment->comment_parent;
+		if ( ( 0 == $parent ) || ( bootplate_comment_parent_trashed( $comment ) ) ) // must NOT use '===' because empty result, where we do not have a comment parent at all because it has been deleted, needs to evaluate as true
+			return false;
+		else return true ;
+	}
+	
+	// Function: Do parents actually exist?
+	function bootplate_comment_parents_exist( $comment_ID = 0 ) { // explicit check for comments with deleted parents
+		global $wpdb;
+		$comment = get_comment( $comment_ID );
+		$parent = $comment->comment_parent;
+		if ( $parent == '' ) return false;
+		elseif ( bootplate_comment_parent_trashed( $comment ) ) return false;
+		elseif ( 0 == $parent ) return true;
+		else return bootplate_comment_parents_exist( $parent );
+	}
+
+	// Function: Is parent in the trash?
+	function bootplate_comment_parent_trashed( $comment ) { // check if comment's immediate parent is in trash
+		global $wpdb;
+		$parent = $comment->comment_parent;
+		if ( '' == $parent ) return false; // no parent, no trash
+		$approval = get_comment( $parent ); // have to do this in two steps for PHP4 compatibility
+		$approval = $approval->comment_approved;
+		if ( $approval == 'trash' ) return true;
+		else return false;
+	}
+	
+	function bootplate_comment_classes ($col = 1) {
+		if(is_comment_child(get_comment_ID())) {
+			if($col == 1) {
+				echo 'col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs';
+			} else {
+				echo 'col-md-9 col-sm-9';
+			}
+		} else {
+			if($col == 1) {
+				echo 'col-md-2 col-sm-2 hidden-xs';
+			} else {
+				echo 'col-md-10 col-sm-10';
+			}
+		}
+	}
+	
+}
+
 if(!function_exists('bootplate_comments')) {
 	function bootplate_comments($comment, $args, $depth) {
-    	$commentUnicorn = false;
 		//$tag       = 'div';
-        $add_below = 'comment';
+        $add_below = 'artcomm';
 		 
     ?>
-	<article id="comment-<?php comment_ID() ?>" class="row">
-		<div class="col-md-2 col-sm-2 hidden-xs">
+
+	<article id="comment-<?php comment_ID(); ?>" class="row artcomm">
+		<div class="<?php bootplate_comment_classes(1); ?>">
 			<figure class="thumbnail">
-				<?php echo get_avatar( $comment, 400 ); ?>
-				<?php printf( __( '<figcaption class="text-center">%s</figcaption>' ), get_comment_author_link() ); ?>
+				<?php echo get_avatar( $comment, 80 ); ?>
+				<?php //printf( __( '<figcaption class="text-center">%s</figcaption>' ), get_comment_author_link() ); ?>
 			</figure>
 		</div>
-		<div class="col-md-10 col-sm-10">
+		<div class="<?php bootplate_comment_classes(2); ?>">
 			<div class="panel panel-default arrow left">
 				<div class="panel-body">
 					<header class="text-left">
-						<div class="comment-user"><i class="bp-github"></i> <?php comment_author(); ?></div>
-						<time class="comment-date" datetime="<?php printf( __('%1$s %2$s'), get_comment_date(),  get_comment_time() ); ?>"><i class="bp-info"></i> <?php printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></time>
+						<div class="comment-user"><b><?php comment_author(); ?></b></div>
+						<time class="comment-date" datetime="<?php printf( __('%1$s %2$s'), get_comment_date(),  get_comment_time() ); ?>"><?php printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></time>
 					</header>
 					<div class="comment-post<?php if ( $comment->comment_approved == '0' ) {echo ' in-moderation'; } ?>">
 						<?php comment_text(); ?>
 					</div>
 					<?php if ( $comment->comment_approved == '0' ) : ?>
-					<p class="text-right">Your comment is awaiting moderation.</p>
+					<p class="text-right text-info no-margin-bottom">Your comment is awaiting moderation.</p>
 					<?php else : ?>
 					<!--<p class="text-right"><a href="#" class="btn btn-info btn-sm">reply</a></p>-->
-					<p class="text-right"><?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => 2 ) ) ); ?>  <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>" class="btn btn-info btn-sm"><?php edit_comment_link( __( 'Edit' ), '  ', '' ); ?></a></p>
+					<p class="text-right no-margin-bottom"><?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => 2 ) ) ); ?>  <?php edit_comment_link( __( 'edit' ), '  ', '' ); ?></p>
 					<?php endif; ?>
-				</div>
-			</div>
-		</div>
-	</article>
-	
-	
-	<?php if($commentUnicorn) : 
-		// Just removing this for now. $unicorn is ALWAYS false
-	?>
-    <div <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
-		<div class="comment-author vcard">
-			<?php echo get_avatar( $comment, 400 ); ?>
-			<?php printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>' ), get_comment_author_link() ); ?>
-		</div>
-    
-		<?php if ( $comment->comment_approved == '0' ) : ?>
-		<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em><br />
-    	<?php endif; ?>
+				</div><!--/panel-body-->
+			</div><!--/.panel-default-->
+		</div><!--/.col-md-10-->
+	</article><!-- /.artcomm -->	
 
-    	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-        	<?php
-        	/* translators: 1: date, 2: time */
-        	printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></a>
-			
-			<?php edit_comment_link( __( '(Edit)' ), '  ', '' );
-        	?>
-    	</div>
-
-    	<?php comment_text(); ?>
-
-    	<div class="reply">
-        	<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => 2 ) ) ); ?>
-    	</div>
-	</div>
-	<?php endif; ?>
-	
-    
 	<?php // End function
     }
 }
+
+if(!function_exists('bootplate_comments_end')) {
+	function bootplate_comments_end() {
+		echo '<!--bootplate_comment_end-->';
+	}
+}// end if !exists
+
+/*
+ * Retrieve paginated link for archive post pages BUT use Bootstrap class name.
+ * Based on paginate_links() in wp-includes/general-template.php#L1988
+ */
+if(!function_exists('bootplate_paginate_links')) {
+	function bootplate_paginate_links( $args = '' ) {
+		global $wp_query, $wp_rewrite;
+	
+		// Setting up default values based on the current URL.
+		$pagenum_link = html_entity_decode( get_pagenum_link() );
+		$url_parts    = explode( '?', $pagenum_link );
+	
+		// Get max pages and current page out of the current query, if available.
+		$total   = isset( $wp_query->max_num_pages ) ? $wp_query->max_num_pages : 1;
+		$current = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+	
+		// Append the format placeholder to the base URL.
+		$pagenum_link = trailingslashit( $url_parts[0] ) . '%_%';
+	
+		// URL base depends on permalink settings.
+		$format  = $wp_rewrite->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+		$format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
+	
+		$defaults = array(
+			'base' => $pagenum_link, // http://example.com/all_posts.php%_% : %_% is replaced by format (below)
+			'format' => $format, // ?page=%#% : %#% is replaced by the page number
+			'total' => $total,
+			'current' => $current,
+			'show_all' => false,
+			'prev_next' => true,
+			'prev_text' => __('&laquo; Previous'),
+			'next_text' => __('Next &raquo;'),
+			'end_size' => 1,
+			'mid_size' => 2,
+			'type' => 'plain',
+			'add_args' => array(), // array of query args to add
+			'add_fragment' => '',
+			'before_page_number' => '',
+			'after_page_number' => ''
+		);
+	
+		$args = wp_parse_args( $args, $defaults );
+	
+		if ( ! is_array( $args['add_args'] ) ) {
+			$args['add_args'] = array();
+		}
+	
+		// Merge additional query vars found in the original URL into 'add_args' array.
+		if ( isset( $url_parts[1] ) ) {
+			// Find the format argument.
+			$format = explode( '?', str_replace( '%_%', $args['format'], $args['base'] ) );
+			$format_query = isset( $format[1] ) ? $format[1] : '';
+			wp_parse_str( $format_query, $format_args );
+	
+			// Find the query args of the requested URL.
+			wp_parse_str( $url_parts[1], $url_query_args );
+	
+			// Remove the format argument from the array of query arguments, to avoid overwriting custom format.
+			foreach ( $format_args as $format_arg => $format_arg_value ) {
+				unset( $url_query_args[ $format_arg ] );
+			}
+	
+			$args['add_args'] = array_merge( $args['add_args'], urlencode_deep( $url_query_args ) );
+		}
+	
+		// Who knows what else people pass in $args
+		$total = (int) $args['total'];
+		if ( $total < 2 ) {
+			return;
+		}
+		$current  = (int) $args['current'];
+		$end_size = (int) $args['end_size']; // Out of bounds?  Make it the default.
+		if ( $end_size < 1 ) {
+			$end_size = 1;
+		}
+		$mid_size = (int) $args['mid_size'];
+		if ( $mid_size < 0 ) {
+			$mid_size = 2;
+		}
+		$add_args = $args['add_args'];
+		$r = '';
+		$page_links = array();
+		$dots = false;
+	
+		if ( $args['prev_next'] && $current && 1 < $current ) :
+			$link = str_replace( '%_%', 2 == $current ? '' : $args['format'], $args['base'] );
+			$link = str_replace( '%#%', $current - 1, $link );
+			if ( $add_args )
+				$link = add_query_arg( $add_args, $link );
+			$link .= $args['add_fragment'];
+	
+			/**
+			 * Filter the paginated links for the given archive pages.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param string $link The paginated link URL.
+			 */
+			$page_links[] = '<a class="prev page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '">' . $args['prev_text'] . '</a>';
+		endif;
+		for ( $n = 1; $n <= $total; $n++ ) :
+			if ( $n == $current ) :
+				$page_links[] = "<span class='page-numbers current'><span class='sr-only'>(current) </span>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</span>";
+				$dots = true;
+			else :
+				if ( $args['show_all'] || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) :
+					$link = str_replace( '%_%', 1 == $n ? '' : $args['format'], $args['base'] );
+					$link = str_replace( '%#%', $n, $link );
+					if ( $add_args )
+						$link = add_query_arg( $add_args, $link );
+					$link .= $args['add_fragment'];
+	
+					/** This filter is documented in wp-includes/general-template.php */
+					$page_links[] = "<a class='page-numbers' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</a>";
+					$dots = true;
+				elseif ( $dots && ! $args['show_all'] ) :
+					$page_links[] = '<span class="page-numbers dots">' . __( '&hellip;' ) . '</span>';
+					$dots = false;
+				endif;
+			endif;
+		endfor;
+		if ( $args['prev_next'] && $current && ( $current < $total || -1 == $total ) ) :
+			$link = str_replace( '%_%', $args['format'], $args['base'] );
+			$link = str_replace( '%#%', $current + 1, $link );
+			if ( $add_args )
+				$link = add_query_arg( $add_args, $link );
+			$link .= $args['add_fragment'];
+	
+			/** This filter is documented in wp-includes/general-template.php */
+			$page_links[] = '<a class="next page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '">' . $args['next_text'] . '</a>';
+		endif;
+		switch ( $args['type'] ) {
+			case 'array' :
+				return $page_links;
+	
+			case 'list' :
+				$r .= "<ul class='pagination pagination-lg'>\n\t<li>";
+				$r .= join("</li>\n\t<li>", $page_links);
+				$r .= "</li>\n</ul>\n";
+				break;
+	
+			default :
+				$r = join("\n", $page_links);
+				break;
+		}
+		return $r;
+	} // end bootplate_paginate_links()
+}// end if !exists
 
 // Detect and USE functions from a few subtitle plugins
 /* Supports:
@@ -542,7 +697,7 @@ if(!function_exists('action_bootplate_credits')) {
 		echo '
 		<div id="bootplate-credit">
 			<div class="container text-center">
-				<p><small>optional credit: <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow">Bootplate v'.bootplate_info('version').'</a></small></p>
+				<p><small>Made with <span class="sr-only">love</span><a href="http://jdmdigital.co" target="_blank" rel="nofollow"><span class="bp-heart"></span></a> and <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow">Bootplate v'.bootplate_info('version').'</a></small></p>
 			</div>
 		</div><!--/#bootplate-credit-->
 		';
