@@ -137,10 +137,14 @@ Elements here should ONLY be used/viewable below the fold.
 .sidebar ul.menu li a:hover, .sidebar ul.menu li a:focus{text-decoration: none; color: #555555; background-color: #f5f5f5;}
 .sidebar ul.menu li.current-menu-item a, .sidebar ul.menu li.current-menu-item a:hover, .sidebar ul.menu li.current-menu-item a:focus{color: #fff;}
 .sidebar .widget_recent_entries{opacity:1;transition:opacity ease-in 0.3s;}
-.widget_recent_entries ul{list-style:none; padding-left:0;}
+.widget_recent_entries ul, .widget_rss ul{list-style:none; padding-left:0;}
 .widget_recent_entries ul li a{display:block;}
-.widget_recent_entries .post-date{display:block; color:#777; font-size:0.8em; margin-bottom:8px;}
+.widget_recent_entries .post-date, .widget_rss cite, .widget_rss span{display:block; color:#777; font-size:0.8em; margin-bottom:8px; font-style:normal;}
 footer .widget_recent_entries ul li a{}
+.widget_rss{opacity:1; transition:opacity 0.3s ease-in;} 
+.widget_rss ul li a {font-size:1em;}
+.widget-title a:first-child{display:none;}
+.widget-title a{color:#333;}
 
 /* Form Styles */
 .checkbox label, .checkbox-inline, .radio label, .radio-inline{padding-left:1.8rem;}
@@ -245,11 +249,15 @@ button[type=submit].processing,input[type=submit].processing, button.processing,
 .alignleft {float: left;margin: 8px 20px 20px 0;}
 .alignright {float: right;margin: 8px 0 20px 20px;}
 .aligncenter {float:none;clear: both;display: block;margin: 20px 0;width:100%; height:auto;}
-.wp-caption {background:#f2f2f2;	border: none;	color: #555;	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;	margin: 0 0 20px 0;	max-width: 100%;	padding:8px 8px 3px;	text-align: inherit; line-height:2;}
+.wp-caption {background:#f2f2f2;	border: none;	color: #555;	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;	margin: 0 0 20px 0;	max-width: 100%;	padding:8px 8px 3px;	text-align: inherit; line-height:2; font-size:0.8em;}
 .wp-caption.alignleft {	margin: 8px 20px 20px 0;}
 .wp-caption.alignright {	margin: 8px 0 20px 20px;}
 .wp-caption.aligncenter {	margin: 8px auto;}
 .wp-caption .wp-caption-text,.wp-caption-dd {font-size: 14px;	line-height: 1.5;	padding: 8px 0;}
+a.tweetable {color: #444; background-color:#f8f8f8; padding:1px 2px 3px 7px; font-size:0.99rem; transition:all 0.2s;}
+a.tweetable:hover, a.tweetable:focus, a.tweetable:active{background-color:#f4f4f4; color:#222; transition:all 0.2s; text-decoration:none;}
+a.tweetable::before{font-family:'bootplate'; content: '\e81e'; margin-right:7px; font-size:80%; line-height:1.2; color:#55ACEE; opacity:0.9; transition:all 0.2s;}
+a.tweetable:hover::before{opacity:1;}
 /* == Bootstrap Cards (v4) == */
 .card{position: relative;  margin-bottom: 30px;  border-radius: 6px; background-color:#F8F8F8; border: 1px solid #eee;}
 .bg-default .card{background-color:#fff; border: 1px solid #ccc;}
@@ -260,7 +268,6 @@ button[type=submit].processing,input[type=submit].processing, button.processing,
 .vcenter {white-space:nowrap;}
 .card-block {  padding: 15px;}
 .card-title {  margin-top: 0;  margin-bottom: .75rem;}
-h4.card-title, .h4.card-title{font-size:22px;}
 .card-subtitle {  margin-top: -.375rem;  margin-bottom: 0;}
 .card-text:last-child {  margin-bottom: 0;}
 .card-link:hover {  text-decoration: none;}
@@ -280,7 +287,7 @@ h4.card-title, .h4.card-title{font-size:22px;}
 .card-img-overlay {  position: absolute;  top: 0;  right: 0;  bottom: 0;  left: 0;  padding: 1.25rem;}
 .card-img-top {  border-radius: 6px 6px 0 0; /*width:100%; height:auto; max-height:200px; overflow:hidden;*/}
 .card-img-bottom {  border-radius: 0 0 6px 6px; width:100%; height:auto; max-height:200px; overflow:hidden;}
-.card .imglazy{height:200px; max-height:200px; width:100%; background-color:#eee;border-radius: 6px 6px 0 0; overflow:hidden;}
+.card .imglazy{height:200px; max-height:200px; width:100%; background-color:#ccc;border-radius: 6px 6px 0 0; overflow:hidden;}
 .card .imglazy img{width:100%; height:auto;text-align:center;}
 .card-deck {  display: table;  table-layout: fixed;  border-spacing: 1.25rem 0;}
 .card-deck .card {  display: table-cell;  width: 1%;  vertical-align: top;}

@@ -1,7 +1,6 @@
 <?php
 /*
- * The Default Home Page
- * Used ONLY if "static home page option" isset.
+ * Template Name: Page: Home Page
  */
 
 get_header(); ?>

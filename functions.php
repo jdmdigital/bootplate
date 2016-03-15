@@ -158,9 +158,18 @@ function bootplate_widgets_init() {
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => 'Page Sidebar',
+		'name'          => 'Page Sidebar Left',
 		'id'            => 'page-sidebar',
-		'description'   => 'Used for pages using the Page - Sidebar (left or right) template.',
+		'description'   => 'Used for pages using the Page - Sidebar LEFT template.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => 'Page Sidebar Right',
+		'id'            => 'page-sidebar-right',
+		'description'   => 'Used for pages using the Page - Sidebar RIGHT template.',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -621,6 +630,20 @@ if(!function_exists('result_type')) {
 
 require get_template_directory() . '/inc/shortcodes.php';
 require get_template_directory() . '/inc/custom_subtitles.php';
+
+// Shortcodes empty <p> fix
+if( !function_exists('jdm_fix_shortcodes') ) {
+	function jdm_fix_shortcodes($content){   
+		$array = array (
+			'<p>[' => '[', 
+			']</p>' => ']', 
+			']<br />' => ']'
+		);
+		$content = strtr($content, $array);
+		return $content;
+	}
+	add_filter('the_content', 'jdm_fix_shortcodes');
+}
 
 // add a favicon to front-end head 
 /*function site_favicons() {

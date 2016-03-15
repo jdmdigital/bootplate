@@ -77,6 +77,7 @@ img.border{border:1px solid #222;}
 .hidden-xs-up{display:none;}
 .jumbotron .jumboscroll{position:absolute; bottom:30px; left:0; right:0; margin: 0 auto;}
 p, ul, ol{margin-bottom:20px;}
+h1, .h1, h2, .h2, h3, .h3{margin-top:30px;}
 abbr{border-bottom: 1px dotted #888;cursor: help; text-decoration:none;}
 .btn-circle {display: table-cell; vertical-align: middle; text-align: center; border-radius:50%; height:80px; width:80px; font-size:12px; text-wrap:normal;}
 .btn-circle span{font-size:22px;}
@@ -103,6 +104,9 @@ abbr{border-bottom: 1px dotted #888;cursor: help; text-decoration:none;}
 */
 html{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);font-size:18px;}
 body{color: #555; background-color: #fff; font-size: 1rem; font-weight:300; line-height:1.4;}
+.h1, h1{color:#111;}
+.h2, h2{color:#333;}
+.h3, h3, .section_title{color:#666;}
 mark, .mark{color: #000; background-color: #fcf8e3;}
 fieldset {  border-color: #c0c0c0;}
 pre{border-color:#999;}
@@ -259,6 +263,7 @@ a.thumbnail:hover,a.thumbnail:focus,a.thumbnail.active {  border-color: #337ab7;
 /* Default/Secondary: #ccc */
 .jumbotron{background-color: #eee;}
 .btn-default, .btn-secondary {  color: #333;  background-color: #fff;  border-color: #ccc;}
+.bg-default h2{color:#111;}
 .btn-secondary:focus,.btn-secondary.focus,.btn-secondary:active,.btn-secondary.active,.open > .btn-secondary.dropdown-toggle, .btn-default:focus,.btn-default.focus {  color: #333;  background-color: #e6e6e6;  border-color: #8c8c8c;}
 .btn-secondary:hover, .btn-default:hover {  color: #333;  background-color: #e6e6e6;  border-color: #adadad;}
 .btn-default:active,.btn-default.active,.open > .dropdown-toggle.btn-default {  color: #333;  background-color: #e6e6e6;  border-color: #adadad;}
@@ -305,7 +310,7 @@ a.thumbnail:hover,a.thumbnail:focus,a.thumbnail.active {  border-color: #337ab7;
 
 
 /* Success: #3c763d */
-.bg-success {  background-color: #3c763d;}
+.bg-success {  background-color: #3c763d; color:rgba(255,255,255,0.8);}
 a.bg-success:hover,a.bg-success:focus {  background-color: #c1e2b3;}
 .text-success,.card-link-success {  color: #3c763d;}
 a.text-success:hover,a.text-success:focus {  color: #2b542c;}
@@ -346,7 +351,7 @@ a.list-group-item-success.active,button.list-group-item-success.active,a.list-gr
 .serp cite{display:block; color: #3c763d; font-style:normal; font-size:0.8em; margin-bottom:10px;}
 
 /* Warning: #8a6d3b */
-.bg-warning {  background-color: #8a6d3b;}
+.bg-warning {  background-color: #8a6d3b; color:rgba(255,255,255,0.8);}
 a.bg-warning:hover,a.bg-warning:focus {  background-color: #f7ecb5;}
 .text-warning,.card-link-warning  {  color: #8a6d3b;}
 a.text-warning:hover,a.text-warning:focus {  color: #66512c;}
@@ -387,7 +392,7 @@ a.list-group-item-warning.active,button.list-group-item-warning.active,a.list-gr
 .btn-warning-outline.disabled:hover,.btn-warning-outline:disabled:hover,fieldset[disabled] .btn-warning-outline:hover {  border-color: #f8d9ac;}
 
 /* Danger: #a94442 */
-.bg-danger {  background-color: #a94442;}
+.bg-danger {  background-color: #a94442; color:rgba(255,255,255,0.8);}
 a.bg-danger:hover,a.bg-danger:focus {  background-color: #e4b9b9;}
 .text-danger,.card-link-danger  {  color: #a94442;}
 a.text-danger:hover,a.text-danger:focus {  color: #843534;}
@@ -472,6 +477,7 @@ section .well{background-color:rgba(255,255,255,0.8); padding:15px 15px 15px 30p
 section .c-indicator{background-color:#fff; color:#fff;}
 .jumbotron{margin-bottom:0;}
 section{padding-top:20px;}
+.h3, h3, .section_title{color:#666;}
 
 .sidebar .widget{margin-bottom:45px;}
 article.post{border-top:5px solid #222; padding-top:1px; padding-bottom:5px; padding-left:5px; padding-right:5px; margin-bottom:30px;}
@@ -491,7 +497,10 @@ article.post{border-top:5px solid #222; padding-top:1px; padding-bottom:5px; pad
 /* == WIDGETS == */
 .widget{border-radius:6px;}
 .widget-title{margin-top:0;}
-
+h4.widget-title a{color:#444; font-size: 1em;}
+.widget_recent_entries ul, .widget_rss ul{list-style:none; padding-left:0;}
+.widget_rss ul{opacity:1; transition:opacity 0.3s ease-in;}
+.widget_rss ul a, .widget_rss span, .widget_rss cite{display:block;}
 footer{opacity:0; background-color:#000; }
 footer small{font-size:0.6em;}
 article h4, article .h4{font-size:24px;}
@@ -544,6 +553,8 @@ article h4, article .h4{font-size:24px;}
 	.jumbotron .display-3{font-size:400%;font-size: 5rem; }
 	.jumbotron .lead{font-size:1.8rem;}
 	h4.card-title, .h4.card-title{font-size:24px;}
+	.card{position: relative;  margin-bottom: 30px;  border-radius: 6px; background-color:#F8F8F8; border: 1px solid #eee;}
+	.bg-default .card{background-color:#fff; border: 1px solid #ccc;}
 	.margin-left{margin-left:15px;}
 	.padding-top-30{padding-top:30px;}
 	.padding-bottom-30{padding-bottom:30px;}
