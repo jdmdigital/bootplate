@@ -129,6 +129,18 @@ Elements here should ONLY be used/viewable below the fold.
 .pagination > li > a:focus,.pagination > li > a:hover,.pagination > li > span:focus,.pagination > li > span:hover {  color: #014c8c;  background-color: #eceeef;  border-color: #ddd;}
 .pagination > .active > a,.pagination > .active > a:focus,.pagination > .active > a:hover,.pagination > .active > span,.pagination > .active > span:focus,.pagination > .active > span:hover {  z-index: 2;  color: #fff;  cursor: default;  background-color: #008bbb;  border-color: #008bbb;}
 .pagination > .disabled > span,.pagination > .disabled > span:focus,.pagination > .disabled > span:hover,.pagination > .disabled > a,.pagination > .disabled > a:focus,.pagination > .disabled > a:hover {  color: #818a91;  cursor: not-allowed;  background-color: #fff;  border-color: #ddd;}
+.sidebar ul.menu{opacity:1; transition:opacity ease-in 0.3s;}
+.sidebar ul.menu li{}
+.sidebar ul.menu li:first-child a{border-top-right-radius: 4px;  border-top-left-radius: 4px;}
+.sidebar ul.menu li:last-child a{margin-bottom: 0;  border-bottom-right-radius: 4px;  border-bottom-left-radius: 4px;}
+.sidebar ul.menu li a{position: relative;  display: block;color: #555555; background-color: #ffffff;  border: 1px solid #dddddd; padding: 10px 15px;  margin-bottom: -1px;}
+.sidebar ul.menu li a:hover, .sidebar ul.menu li a:focus{text-decoration: none; color: #555555; background-color: #f5f5f5;}
+.sidebar ul.menu li.current-menu-item a, .sidebar ul.menu li.current-menu-item a:hover, .sidebar ul.menu li.current-menu-item a:focus{color: #fff;}
+.sidebar .widget_recent_entries{opacity:1;transition:opacity ease-in 0.3s;}
+.widget_recent_entries ul{list-style:none; padding-left:0;}
+.widget_recent_entries ul li a{display:block;}
+.widget_recent_entries .post-date{display:block; color:#777; font-size:0.8em; margin-bottom:8px;}
+footer .widget_recent_entries ul li a{}
 
 /* Form Styles */
 .checkbox label, .checkbox-inline, .radio label, .radio-inline{padding-left:1.8rem;}
@@ -339,7 +351,7 @@ figure.thumbnail{background-color:#eee; color:#111;}
 /* END slick */
 
 /* == FOOTER STYLES == */
-body footer{opacity:1; background-color:#000; color:#999;padding-top:3rem;  padding-bottom:2rem; margin-top:2rem; -webkit-transition: all 0.5s ease;-moz-transition: all 0.5s ease;-ms-transition: all 0.5s ease;-o-transition: all 0.5s ease;transition: all 0.5s ease;}
+body footer{opacity:1; background-color:#000; color:#999;padding-top:3rem;  padding-bottom:2rem; -webkit-transition: all 0.5s ease;-moz-transition: all 0.5s ease;-ms-transition: all 0.5s ease;-o-transition: all 0.5s ease;transition: all 0.5s ease;}
 .no-cssremunit footer{padding-top:60px; padding-bottom:60px;}
 footer .widget{background-color:rgba(51,51,51,0.5); padding:15px; margin-bottom:30px;}
 #widget-footer {margin-bottom:3rem;}

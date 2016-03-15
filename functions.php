@@ -166,6 +166,10 @@ function bootplate_widgets_init() {
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
+	
+	//include(get_template_directory() . '/inc/widgets.php');
+	//register_widget( 'bootplate_listgroup_widget' );
+	
 }
 add_action( 'widgets_init', 'bootplate_widgets_init' );
 
@@ -594,13 +598,13 @@ if(!function_exists('add_image_class')) {
 }
 
 // Echos the result type
-// Used in serps (I think)
+// Used in serps (I think) - BROKEN
 if(!function_exists('result_type')) {
 	function result_type() {
 		global $post, $page;
 		if(is_page()) {
 			echo 'Page';
-		} elseif (is_post()) {
+		} elseif (is_single()) {
 			$format = get_post_format();
 			if(!$format){
 				echo 'Post';

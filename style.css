@@ -83,7 +83,12 @@ abbr{border-bottom: 1px dotted #888;cursor: help; text-decoration:none;}
 .btn-inverse.btn-secondary-outline{border-color:rgba(255,255,255,0.9); color:#fff;}
 .btn-inverse.btn-secondary-outline:hover, .btn-inverse.btn-secondary-outline:focus{color:#222;}
 .flexbox .vcenter{}
-
+.sidebar ul.menu{list-style:none; padding-left:0; opacity:0.3; transition:opacity ease-in 0.3s;}
+.sidebar ul.menu li a{color: #555555; border: 1px solid #ddd;display: block; margin-bottom: -1px; padding: 10px 15px;  position: relative;}
+.sidebar ul.menu li.current-menu-item a{color: #fff;}
+.sidebar .widget_recent_entries{opacity:0.3;transition:opacity ease-in 0.3s;}
+.widget_recent_entries ul{list-style:none; padding-left:0;}
+.widget_recent_entries ul li a, .widget_recent_entries .post-date{display:block;}
 /* 
 	== CUSTOM COLORS == 
 	You can do a find and replace for these color pallets to change ALL the site-wide colors.
@@ -199,9 +204,9 @@ button:disabled:hover{background-color:#333; border-color:#333; color:#777;}
 .breadcrumb > li + li:before {color: #ccc;}
 .breadcrumb > .active {color: #777;}
 
-.serp{background-color:transparent; border-radius:6px; padding:5px 15px;}
-.serp:hover, .serp:focus{background-color:rgba(255,255,255,0.9); cursor:pointer;}
-
+.serp{background-color:transparent; border-radius:6px; padding:10px 15px 20px; border:1px solid #F8F8F8; margin-bottom:20px; min-height:100px;}
+.serp:hover, .serp:focus{background-color:rgba(255,255,255,0.8); border:1px solid #ddd;}
+.serp p{margin-bottom:0; display:none;}
 /* Custom: #6f5499 */
 .bg-custom{background-color: #6f5499; background-image: linear-gradient(to bottom, #563d7c 0px, #6f5499 100%); background-repeat: repeat-x; color: #cdbfe3; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);}
 a, #bootplate-credit p a{color: #6f5499;}
@@ -213,6 +218,7 @@ a:active, #bootplate-credit p a:active{}
 
 /* Primary: #337ab7 */
 .bg-primary {color: #fff;  background-color:#337ab7;}
+.sidebar ul.menu li.current_page_item a, .sidebar ul.menu li.current_page_item a:hover, .sidebar ul.menu li.current_page_item a:focus{z-index: 2;  color: #ffffff;  background-color: #337ab7;  border-color: #337ab7;}
 .pagination > li > span.current {background-color: #337ab7;    border-color: #337ab7;    color: #fff;    cursor: default;    z-index: 3;}
 .jumbotron.bg-primary {background-color:#337ab7;}
 .jumbotron.bg-primary p{color:rgba(255,255,255,0.7);}
@@ -337,7 +343,7 @@ a.list-group-item-success.active,button.list-group-item-success.active,a.list-gr
 .btn-success-outline:hover {  color: #fff;  background-color: #5cb85c;  border-color: #5cb85c;}
 .btn-success-outline.disabled:focus,.btn-success-outline.disabled.focus,.btn-success-outline:disabled:focus,.btn-success-outline:disabled.focus,fieldset[disabled] .btn-success-outline:focus,fieldset[disabled] .btn-success-outline.focus {  border-color: #a3d7a3;}
 .btn-success-outline.disabled:hover,.btn-success-outline:disabled:hover,fieldset[disabled] .btn-success-outline:hover {  border-color: #a3d7a3;}
-
+.serp cite{display:block; color: #3c763d; font-style:normal; font-size:0.8em; margin-bottom:10px;}
 
 /* Warning: #8a6d3b */
 .bg-warning {  background-color: #8a6d3b;}
@@ -487,7 +493,7 @@ article.post{border-top:5px solid #222; padding-top:1px; padding-bottom:5px; pad
 .widget-title{margin-top:0;}
 
 footer{opacity:0; background-color:#000; }
-
+footer small{font-size:0.6em;}
 article h4, article .h4{font-size:24px;}
 
 /* == Custom, Mobile-First Media Queries == */
@@ -524,6 +530,7 @@ article h4, article .h4{font-size:24px;}
 	.pad200{padding:250px 0;}
 	.jumbotron .display-3{font-size:300%;font-size: 4rem; }
 	.hidden-xs, .nav > li.hidden-xs{display:none;}
+	.serp p{display:block;}
 }
 
 /* == Small Devices, Tablets == */
@@ -567,6 +574,7 @@ article h4, article .h4{font-size:24px;}
 	.flexbox .full-height{display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: center;	-webkit-align-items: center;	-webkit-box-align: center;	align-items: center;}
 	.the-excerpt{min-height:200px;}
 	article h2.h4{min-height:60px;}
+	article.serp h2.h4{min-height:10px;}
 }
 
 /* == Medium Devices, Desktops == */

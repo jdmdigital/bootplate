@@ -25,7 +25,7 @@
 <?php endwhile; ?>
 
 <?php if($wp_query->found_posts > get_option('posts_per_page')): ?>
-<div class="row margin-top">
+<div class="margin-top">
 	<div class="col-lg-12 wp-pagination">
 		<?php
 		global $wp_query;

@@ -1,9 +1,11 @@
-<?php
+<?php 
 /*
-Template Name: Page with Search
+Template Name: Search Page
 */
-
-get_header(); ?>
+get_header(); 
+global $wp_query;
+$total_results = $wp_query->found_posts;
+?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 <header class="jumbotron jumbotron-fluid bg-custom full-height text-center">
