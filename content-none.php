@@ -5,12 +5,12 @@
 ?>
 <header class="jumbotron jumbotron-fluid bg-danger">
 	<div class="container">
-		<h1>Nothing Found.</h1>
-		<p>We're sorry, but we can't seem to find that. Details below.</p>
+		<h1>Dang Nabbit!</h1>
+		<p>We're sorry, but that didn't work. Details below.</p>
 	</div>
 </header>
 <section class="no-results not-found">
-	<div class="container">
+	<div class="container" style="min-height:500px;">
 		<h2>Error Details</h2>
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 		<p><?php printf( 'Ready to publish your first post? <a href="%1$s">Let&rsquo;s do this</a>!', esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
