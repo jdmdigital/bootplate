@@ -183,6 +183,7 @@ button:disabled:hover{background-color:#333; border-color:#333; color:#777;}
 .navbar-inverse .btn-link:hover,.navbar-inverse .btn-link:focus {  color: #fff;}
 .navbar-inverse .btn-link[disabled]:hover,fieldset[disabled] .navbar-inverse .btn-link:hover,.navbar-inverse .btn-link[disabled]:focus,fieldset[disabled] .navbar-inverse .btn-link:focus {  color: #444;}
 #primary-menu span.bp-search{margin-left: 0.2em;margin-right: 0.2em; min-width:1em;}
+.caret {display: inline-block;  width: 0;  height: 0;  margin-left: 2px;  vertical-align: middle;  border-top: 4px solid;  border-top: 4px solid \9;  border-right: 4px solid transparent;  border-left: 4px solid transparent; content:'';}
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/
@@ -216,7 +217,7 @@ button:disabled:hover{background-color:#333; border-color:#333; color:#777;}
 .serp:hover, .serp:focus{background-color:rgba(255,255,255,0.8); border:1px solid #ddd;}
 .serp p{margin-bottom:0; display:none;}
 /* Custom: #6f5499 */
-.bg-custom{background-color: #6f5499; background-image: linear-gradient(to bottom, #563d7c 0px, #6f5499 100%); background-repeat: repeat-x; color: #cdbfe3; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);}
+.bg-custom, header.bg-custom{background-color: #6f5499; background-image: linear-gradient(to bottom, #563d7c 0px, #6f5499 100%); background-repeat: repeat-x; color: #cdbfe3; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);}
 a, #bootplate-credit p a{color: #6f5499;}
 a:hover, a:focus, #bootplate-credit p a:hover, #bootplate-credit p a:focus{color: #23527c;}
 a:active, #bootplate-credit p a:active{}
