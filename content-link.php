@@ -28,19 +28,13 @@
 <div class="margin-top">
 	<div class="col-lg-12 wp-pagination">
 		<?php
-		global $wp_query;
-		$big = 999999999; // need an unlikely integer
-		
-		echo bootplate_paginate_links( array(
-			'base'					=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-			'format'				=> '?paged=%#%',
-			'current'				=> max( 1, get_query_var('paged') ),
-			'prev_next' 			=> true,
-			'prev_text' 			=> __('<span class="bp-left-open"></span>', 'bootplate'),
-			'next_text' 			=> __('<span class="bp-right-open"></span>', 'bootplate'),
-			'type' 					=> 'list',
-			'total' 				=> $wp_query->max_num_pages,
-			'before_page_number' 	=> '<span class="sr-only screen-reader-text">'.__('Page', 'bootplate').'</span>'
+		wp_link_pages( array(
+			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'bootplate' ) . '</span>',
+			'after'       => '</div>',
+			'link_before' => '<span>',
+			'link_after'  => '</span>',
+			'pagelink'    => '<span class="sr-only screen-reader-text">' . __( 'Page', 'bootplate' ) . ' </span>%',
+			'separator'   => '<span class="sr-only screen-reader-text">, </span>',
 		) );
 		?>
 	</div>

@@ -5,8 +5,8 @@
 ?>
 <header class="jumbotron jumbotron-fluid bg-danger">
 	<div class="container">
-		<h1>Dang Nabbit!</h1>
-		<p>We're sorry, but that didn't work. Details below.</p>
+		<h1><?php _e('Dang Nabbit!', 'bootplate'); ?></h1>
+		<p><?php _e('We&rsquo;re sorry, but that didn&rsquo;t work. Details below.', 'bootplate'); ?></p>
 	</div>
 </header>
 <section class="no-results not-found">
@@ -15,11 +15,9 @@
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 		<p><?php printf( 'Ready to publish your first post? <a href="%1$s">Let&rsquo;s do this</a>!', esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 		<?php elseif ( is_search() ) : ?>
-		<p>Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
-		<?php get_search_form(); ?>
+		<p><?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'bootplate'); ?></p>
 		<?php else : ?>
-		<p>It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.</p>
-		<?php get_search_form(); ?>
+		<p><?php _e('It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching would help.', 'bootplate'); ?></p>
 		<?php endif; ?>
 	</div><!-- .container -->
 </section><!-- .no-results -->

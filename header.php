@@ -9,15 +9,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
-	<?php wp_head(); ?>
 	
-	<link rel="preload" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/body.css" as="style" onload="this.rel='stylesheet'" type="text/css" />
-	<noscript><link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/body.css" type="text/css" /></noscript>
-	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/loadcss.js" type="text/javascript"></script>
+		<?php wp_head(); ?>
+	
+	<?php bootplate_async_css(); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -26,7 +21,7 @@
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggler hidden-sm-up is-closed navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-menu" aria-expanded="false" aria-controls="primary-menu">
-				<span class="sr-only">Toggle Menu</span>
+				<span class="sr-only screen-reader-text">Toggle Menu</span>
 				<span class="hamb-top"></span>
 				<span class="hamb-middle"></span>
 				<span class="hamb-bottom"></span>
@@ -49,9 +44,9 @@
 					)
 				);
 				?>
-				<li><a href="/search/"><span class="bp-search"></span><span class="sr-only">Site Search</span></a></li>
+				<li><a href="/search/"><span class="bp-search"></span><span class="hidden-sm-up"><?php _e('Site Search', 'bootplate'); ?></span></a></li>
 			</ul>
 		</div><!-- /#primary-menu -->
 	</div><!--/.container-->
 </nav>
-<a class="skip-link sr-only" href="#content">Skip to content</a>
+<a class="skip-link sr-only screen-reader-text" href="#content"><?php _e('Skip to content', 'bootplate'); ?></a>

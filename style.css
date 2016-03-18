@@ -1,13 +1,14 @@
 /*
 Theme Name: 		Bootplate
 Theme URI: 			http://bootplate.jdmdigital.co
-Description: 		A wordpress 3.8+ boilerplate theme built on Bootstrap v4.  "BootPlate", get it?
+Description: 		A WordPress boilerplate theme built on the latest version of Bootstrap 3.3.x (with some added stuff from Bootstrap v4 Alpha 2).  "Boot-plate", get it?
+Version: 			0.5
+License: 			GNU General Public License v2 or later
+License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 Author: 			JDM Digital
 Author URI: 		http://jdmdigital.co
 Tags: 				black, blue, white, light, fluid-layout, responsive-layout, custom-menu, featured-image-header, flexible-header, full-width-template, theme-options
-Template:         	bootplate
-Version:			0.5
-Template Version:	0.5
+Text Domain: 		bootplate
 GitHub Theme URI:	https://github.com/jdmdigital/bootplate
 GitHub Branch:		master
 */
@@ -90,6 +91,9 @@ abbr{border-bottom: 1px dotted #888;cursor: help; text-decoration:none;}
 .sidebar .widget_recent_entries{opacity:0.3;transition:opacity ease-in 0.3s;}
 .widget_recent_entries ul{list-style:none; padding-left:0;}
 .widget_recent_entries ul li a, .widget_recent_entries .post-date{display:block;}
+.screen-reader-text{}
+.sticky{}
+.bypostauthor{}
 /* 
 	== CUSTOM COLORS == 
 	You can do a find and replace for these color pallets to change ALL the site-wide colors.

@@ -47,7 +47,7 @@
 						'menu'              => 'social',
 						'theme_location'    => 'social',
 						'depth'             => 0,
-						'link_before'    => '<span class="sr-only">',
+						'link_before'    => '<span class="sr-only screen-reader-text">',
 						'link_after'     => '</span>',
 						'container'         => '',
 						'menu_class'        => 'list-inline',

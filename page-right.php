@@ -48,8 +48,8 @@ get_header(); ?>
 			</div>
 			
 			<div class="col-md-4 sidebar sidebar-right hidden-sm hidden-xs">
-			<?php if(is_active_sidebar('page-sidebar')) : ?>
-				<?php dynamic_sidebar('page-sidebar'); ?>
+			<?php if(is_active_sidebar('page-sidebar-right')) : ?>
+				<?php dynamic_sidebar('page-sidebar-right'); ?>
 			<?php else : ?>
 				<div class="widget">
 					<h4 class="widget-title">No Widgets</h4>

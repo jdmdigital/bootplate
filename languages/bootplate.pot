@@ -1,0 +1,304 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bootplate\n"
+"POT-Creation-Date: 2016-03-18 15:13-0600\n"
+"PO-Revision-Date: 2016-03-18 15:14-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:7
+msgid "Oops! Error 404."
+msgstr "Oops! Error 404."
+
+#: 404.php:8
+msgid ""
+"Oops.  Looks like the page you&rsquo;re looking for doesn&rsquo;t exist or "
+"can&rsquo;t be found.  You might try searching."
+msgstr ""
+"Oops.  Looks like the page you&rsquo;re looking for doesn&rsquo;t exist or "
+"can&rsquo;t be found.  You might try searching."
+
+#: 404.php:20 content-none.php:18
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+
+#: 404.php:22 content-none.php:20
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching would help."
+msgstr ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching would help."
+
+#: comments.php:29
+msgid "Comment"
+msgstr "Comment"
+
+#: content-link.php:7 content.php:7
+msgid "Previous Article"
+msgstr "Previous Article"
+
+#: content-link.php:8 content.php:8
+msgid "Next Article"
+msgstr "Next Article"
+
+#: content-link.php:22 content.php:22
+msgid "By"
+msgstr "By"
+
+#: content-link.php:22 content.php:22
+msgid "last updated"
+msgstr "last updated"
+
+#: content-link.php:22 content.php:22
+msgid "in"
+msgstr "in"
+
+#: content-link.php:32
+msgid "Pages:"
+msgstr "Pages:"
+
+#: content-link.php:36 content.php:43 functions.php:656 search.php:53
+msgid "Page"
+msgstr "Page"
+
+#: content-none.php:8
+msgid "Dang Nabbit!"
+msgstr "Dang Nabbit!"
+
+#: content-none.php:9
+msgid "We&rsquo;re sorry, but that didn&rsquo;t work. Details below."
+msgstr "We&rsquo;re sorry, but that didn&rsquo;t work. Details below."
+
+#: content.php:39 search.php:49
+msgid "<span class=\"bp-left-open\"></span>"
+msgstr ""
+
+#: content.php:40 search.php:50
+msgid "<span class=\"bp-right-open\"></span>"
+msgstr ""
+
+#: functions.php:76
+msgid "Primary Menu"
+msgstr "Primary Menu"
+
+#: functions.php:77
+msgid "Blog Categories Menu"
+msgstr "Blog Categories Menu"
+
+#: functions.php:78
+msgid "Footer Links Menu"
+msgstr "Footer Links Menu"
+
+#: functions.php:79
+msgid "Social Links Menu"
+msgstr "Social Links Menu"
+
+#: functions.php:121
+msgid "Footer Widget 1"
+msgstr "Footer Widget 1"
+
+#: functions.php:123
+msgid "The first footer widget area."
+msgstr "The first footer widget area."
+
+#: functions.php:130
+msgid "Footer Widget 2"
+msgstr "Footer Widget 2"
+
+#: functions.php:132
+msgid "The second footer widget area."
+msgstr "The second footer widget area."
+
+#: functions.php:139
+msgid "Footer Widget 3"
+msgstr "Footer Widget 3"
+
+#: functions.php:141
+msgid "The third footer widget area."
+msgstr "The third footer widget area."
+
+#: functions.php:148
+msgid "Footer Widget 4"
+msgstr "Footer Widget 4"
+
+#: functions.php:150
+msgid "The fourth footer widget area."
+msgstr "The fourth footer widget area."
+
+#: functions.php:157 functions.php:166
+msgid "Blog Sidebar"
+msgstr "Blog Sidebar"
+
+#: functions.php:159
+msgid "Used for sidebar for blog post listings."
+msgstr "Used for sidebar for blog post listings."
+
+#: functions.php:168 functions.php:177
+msgid "Used for pages using the Page - Sidebar LEFT template."
+msgstr "Used for pages using the Page - Sidebar LEFT template."
+
+#: functions.php:175
+msgid "Page Sidebar Left"
+msgstr "Page Sidebar Left"
+
+#: functions.php:184
+msgid "Page Sidebar Right"
+msgstr "Page Sidebar Right"
+
+#: functions.php:186
+msgid "Used for pages using the Page - Sidebar RIGHT template."
+msgstr "Used for pages using the Page - Sidebar RIGHT template."
+
+#: functions.php:298 functions.php:300
+msgid "Older Comments"
+msgstr "Older Comments"
+
+#: functions.php:304 functions.php:306
+msgid "Newer Comments"
+msgstr "Newer Comments"
+
+#: functions.php:384
+#, php-format
+msgid "%1$s %2$s"
+msgstr ""
+
+#: functions.php:384
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: functions.php:390
+msgid "Your comment is awaiting moderation."
+msgstr "Your comment is awaiting moderation."
+
+#: functions.php:392
+msgid "edit"
+msgstr "edit"
+
+#: functions.php:439
+msgid "&laquo; Previous"
+msgstr "&laquo; Previous"
+
+#: functions.php:440
+msgid "Next &raquo;"
+msgstr "Next &raquo;"
+
+#: functions.php:525
+msgid "&hellip;"
+msgstr ""
+
+#: functions.php:660
+msgid "Post"
+msgstr "Post"
+
+#: functions.php:665
+msgid "Media"
+msgstr "Media"
+
+#: functions.php:763
+msgid "Built on"
+msgstr "Built on"
+
+#: functions.php:773
+msgid "Made with"
+msgstr "Made with"
+
+#: functions.php:773
+msgid "love"
+msgstr "love"
+
+#: functions.php:773
+msgid "and"
+msgstr "and"
+
+#: header.php:47 searchform.php:5
+msgid "Site Search"
+msgstr "Site Search"
+
+#: header.php:52
+msgid "Skip to content"
+msgstr "Skip to content"
+
+#: inc/customizer.php:31
+msgid "Base Color Scheme"
+msgstr "Base Color Scheme"
+
+#: inc/customizer.php:46
+msgid "Header and Sidebar Text Color"
+msgstr "Header and Sidebar Text Color"
+
+#: inc/customizer.php:47 inc/customizer.php:63 inc/customizer.php:68
+msgid "Applied to the header on small screens and the sidebar on wide screens."
+msgstr ""
+"Applied to the header on small screens and the sidebar on wide screens."
+
+#: inc/customizer.php:62
+msgid "Header and Sidebar Background Color"
+msgstr "Header and Sidebar Background Color"
+
+#: inc/customizer.php:113
+msgid "Default"
+msgstr "Default"
+
+#: inc/customizer.php:124
+msgid "Dark"
+msgstr "Dark"
+
+#: inc/customizer.php:135
+msgid "Yellow"
+msgstr "Yellow"
+
+#: inc/customizer.php:146
+msgid "Pink"
+msgstr "Pink"
+
+#: inc/customizer.php:157
+msgid "Purple"
+msgstr "Purple"
+
+#: inc/customizer.php:168
+msgid "Blue"
+msgstr "Blue"
+
+#: inc/widgets.php:105
+#, php-format
+msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
+msgstr "No menus have been created yet. <a href=\"%s\">Create some</a>."
+
+#: inc/widgets.php:109
+msgid "Title:"
+msgstr "Title:"
+
+#: inc/widgets.php:113
+msgid "Select Menu:"
+msgstr "Select Menu:"
+
+#: inc/widgets.php:115
+msgid "&mdash; Select &mdash;"
+msgstr "&mdash; Select &mdash;"
+
+#: search.php:13
+msgid "Search Results"
+msgstr "Search Results"
+
+#: searchform.php:3
+msgid "Search..."
+msgstr "Search..."

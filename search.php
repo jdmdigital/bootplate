@@ -10,7 +10,7 @@ get_header(); ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-lg-8">
-				<h1 class="h2">Search Results</h1>
+				<h1 class="h2"><?php _e('Search Results', 'bootplate'); ?></h1>
 				<?php if(($wp_query->found_posts) > get_option('posts_per_page')) : ?>
 				<p><?php echo 'Showing <b>'.get_option('posts_per_page').'</b> of <b>'.$wp_query->found_posts.' results</b> found searching for <b>'.get_search_query().'</b>'; ?></p>
 				<?php else : ?>
@@ -46,11 +46,11 @@ get_header(); ?>
 					'format'				=> '?paged=%#%',
 					'current'				=> max( 1, get_query_var('paged') ),
 					'prev_next' 			=> true,
-					'prev_text' 			=> __('<span class="bp-left-open"></span>'),
-					'next_text' 			=> __('<span class="bp-right-open"></span>'),
+					'prev_text' 			=> __('<span class="bp-left-open"></span>', 'bootplate'),
+					'next_text' 			=> __('<span class="bp-right-open"></span>', 'bootplate'),
 					'type' 					=> 'list',
 					'total' 				=> $wp_query->max_num_pages,
-					'before_page_number' 	=> '<span class="sr-only">Page </span>'
+					'before_page_number' 	=> '<span class="sr-only screen-reader-text">'.__('Page', 'bootplate').' </span>'
 				) );
 				?>
 			</div>

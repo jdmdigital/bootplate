@@ -24,6 +24,7 @@
  
 define('VERSION', 0.5);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
+define("BRANCH", '');
  
 // get_wpversion()
 if(!function_exists('get_wpversion')){
@@ -41,7 +42,9 @@ if(!function_exists('bootplate_version')) {
 		if($data == 'repo') {
 			return $repo;
 		} elseif($data == 'branch') {
-			return $branch;
+			if($branch != '') {
+				return $branch;
+			}
 		} else {
 			return $version;
 		}
@@ -70,10 +73,10 @@ if ( !function_exists('bootplate_setup') ) {
 		
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus( array(
-			'primary' => __( 'Primary Menu' ),
-			'blogcats'  => __( 'Blog Categories Menu' ),
-			'footer'  => __( 'Footer Links Menu' ),
-			'social'  => __( 'Social Links Menu' ),
+			'primary' => __( 'Primary Menu', 'bootplate' ),
+			'blogcats'  => __( 'Blog Categories Menu', 'bootplate' ),
+			'footer'  => __( 'Footer Links Menu', 'bootplate' ),
+			'social'  => __( 'Social Links Menu', 'bootplate' ),
 		) );
 		
 		// Include Bootstrap Nav Walker
@@ -88,6 +91,8 @@ if ( !function_exists('bootplate_setup') ) {
 		add_theme_support( 'post-formats', array(
 			'quote', 'link'
 		) );
+		
+		load_theme_textdomain( 'bootplate', get_template_directory().'/languages' );
 		
 		
 		//$color_scheme  = bootplate_get_color_scheme();
@@ -113,63 +118,72 @@ add_action( 'after_setup_theme', 'bootplate_setup' );
  */
 function bootplate_widgets_init() {
 	register_sidebar( array(
-		'name'          => 'Footer Widget 1',
+		'name'          => __('Footer Widget 1', 'bootplate'),
 		'id'            => 'footer-1',
-		'description'   => 'The first footer widget area.',
+		'description'   => __('The first footer widget area.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => 'Footer Widget 2',
+		'name'          => __('Footer Widget 2', 'bootplate'),
 		'id'            => 'footer-2',
-		'description'   => 'The second footer widget area.',
+		'description'   => __('The second footer widget area.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => 'Footer Widget 3',
+		'name'          => __('Footer Widget 3', 'bootplate'),
 		'id'            => 'footer-3',
-		'description'   => 'The third footer widget area.',
+		'description'   => __('The third footer widget area.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => 'Footer Widget 4',
+		'name'          => __('Footer Widget 4', 'bootplate'),
 		'id'            => 'footer-4',
-		'description'   => 'The fourth footer widget area.',
+		'description'   => __('The fourth footer widget area.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => 'Blog Sidebar',
+		'name'          => __('Blog Sidebar', 'bootplate'),
 		'id'            => 'blog-sidebar',
-		'description'   => 'Used for sidebar for blog post listings.',
+		'description'   => __('Used for sidebar for blog post listings.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => 'Page Sidebar Left',
-		'id'            => 'page-sidebar',
-		'description'   => 'Used for pages using the Page - Sidebar LEFT template.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>',
-	) );
-	register_sidebar( array(
-		'name'          => 'Page Sidebar Right',
+		'name'          => __('Blog Sidebar', 'bootplate'),
 		'id'            => 'page-sidebar-right',
-		'description'   => 'Used for pages using the Page - Sidebar RIGHT template.',
+		'description'   => __('Used for pages using the Page - Sidebar LEFT template.', 'bootplate'),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => __('Page Sidebar Left', 'bootplate'),
+		'id'            => 'page-sidebar-right',
+		'description'   => __('Used for pages using the Page - Sidebar LEFT template.', 'bootplate'),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+	register_sidebar( array(
+		'name'          => __('Page Sidebar Right', 'bootplate'),
+		'id'            => 'page-sidebar-right',
+		'description'   => __('Used for pages using the Page - Sidebar RIGHT template.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -196,6 +210,16 @@ function bootplate_scripts() {
 	// Load the IE-specific stylesheet.
 	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), '' );
 	wp_style_add_data( 'bootplate-ie', 'conditional', 'lt IE 9' );
+	
+	wp_deregister_script( 'html5shiv-maxcdn' );
+	wp_register_script( 'html5shiv-maxcdn', '//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js', '', '', false );
+	wp_enqueue_script( 'html5shiv-maxcdn' );
+	wp_script_add_data( 'html5shiv-maxcdn', 'conditional', 'lt IE 9' );
+	
+	wp_deregister_script( 'respond-js' );
+	wp_register_script( 'respond-js', '//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js', '', '', false );
+	wp_enqueue_script( 'respond-js' );
+	wp_script_add_data( 'respond-js', 'conditional', 'lt IE 9' );
 
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '', '', true );
@@ -213,18 +237,37 @@ function bootplate_scripts() {
 add_action( 'wp_enqueue_scripts', 'bootplate_scripts' );
 
 // Get rid of bloated styles
-function jdm_deregister_styles() {
-	wp_deregister_style( 'contact-form-7' );
+function bootplate_deregister_styles() {
+	//wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style('shorty');
-	wp_deregister_style('front-css-yuzo_related_post');
+	//wp_deregister_style('front-css-yuzo_related_post');
 }
-add_action( 'wp_print_styles', 'jdm_deregister_styles', 100 );
+add_action( 'wp_print_styles', 'bootplate_deregister_styles', 100 );
 
 require get_template_directory() . '/inc/template-tags.php';
 
+// LoadCSS - Async Load of body.css (below the fold styles)
+if(!function_exists('bootplate_async_css')) {
+	function bootplate_async_css() {
+		$tempdir = esc_url(get_template_directory_uri());
+		
+		if(file_exists($tempdir.'/css/body.min.css')) {
+			$bodycss = 'body.min.css';
+		} else {
+			$bodycss = 'body.css';
+		}
+		
+		echo '
+		<link rel="preload" href="'.$tempdir.'/css/'.$bodycss.'" as="style" onload="this.rel=\'stylesheet\'" type="text/css" />
+		<noscript><link rel="stylesheet" href="'.$tempdir.'/css/'.$bodycss.'" type="text/css" /></noscript>
+		<script src="'.$tempdir.'/js/loadcss.js" type="text/javascript"></script>
+		';
+	}
+}
+
 // Nicer Search - Creates a specific /search/ page instead of index.php?s=, which confuses google.
-if(!function_exists('jdm_nice_search_redirect')) {
-	function jdm_nice_search_redirect() {
+if(!function_exists('bootplate_nice_search_redirect')) {
+	function bootplate_nice_search_redirect() {
 		global $wp_rewrite;
 		if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() )
 			return;
@@ -235,16 +278,16 @@ if(!function_exists('jdm_nice_search_redirect')) {
 			exit();
 		}
 	}
-	add_action( 'template_redirect', 'jdm_nice_search_redirect' );
+	add_action( 'template_redirect', 'bootplate_nice_search_redirect' );
 }
 
 
-if ( ! function_exists( 'jdm_comment_nav' ) ) :
+if ( ! function_exists( 'bootplate_comment_nav' ) ) :
 /**
  * Display navigation to next/previous comments when applicable.
  * based on: Twenty Fifteen 1.0
  */
-function jdm_comment_nav() {
+function bootplate_comment_nav() {
 	// Are there comments to navigate through?
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 	?>
@@ -252,15 +295,15 @@ function jdm_comment_nav() {
 		<ul class="pager">
 			<?php
 				if ( $prev_link = get_previous_comments_link( '<span class="bp-left-open"></span>' ) ) {
-					printf( '<li class="pager-prev" title="Older Comments">%s</li>', $prev_link );
+					printf( '<li class="pager-prev" title="'.__('Older Comments', 'bootplate').'">%s</li>', $prev_link );
 				} else {
-					echo '<li class="pager-prev disabled" title="Older Comments"><a><span class="bp-left-open"></span></a></li>';
+					echo '<li class="pager-prev disabled" title="'.__('Older Comments', 'bootplate').'"><a><span class="bp-left-open"></span></a></li>';
 				}
 
 				if ( $next_link = get_next_comments_link( '<span class="bp-right-open"></span>' ) ) {
-					printf( '<li class="pager-next" title="Newer Comments">%s</li>', $next_link );
+					printf( '<li class="pager-next" title="'.__('Newer Comments', 'bootplate').'">%s</li>', $next_link );
 				} else {
-					echo '<li class="pager-next disabled" title="Newer Comments"><a><span class="bp-right-open"></span></a></li>';
+					echo '<li class="pager-next disabled" title="'.__('Newer Comments', 'bootplate').'"><a><span class="bp-right-open"></span></a></li>';
 				}
 			?>
 		</ul><!-- .nav-links -->
@@ -331,7 +374,6 @@ if(!function_exists('bootplate_comments')) {
 		<div class="<?php bootplate_comment_classes(1); ?>">
 			<figure class="thumbnail">
 				<?php echo get_avatar( $comment, 80 ); ?>
-				<?php //printf( __( '<figcaption class="text-center">%s</figcaption>' ), get_comment_author_link() ); ?>
 			</figure>
 		</div>
 		<div class="<?php bootplate_comment_classes(2); ?>">
@@ -339,16 +381,15 @@ if(!function_exists('bootplate_comments')) {
 				<div class="panel-body">
 					<header class="text-left">
 						<div class="comment-user"><b><?php comment_author(); ?></b></div>
-						<time class="comment-date" datetime="<?php printf( __('%1$s %2$s'), get_comment_date(),  get_comment_time() ); ?>"><?php printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></time>
+						<time class="comment-date" datetime="<?php printf( __('%1$s %2$s', 'bootplate'), get_comment_date(),  get_comment_time() ); ?>"><?php printf( __('%1$s at %2$s', 'bootplate'), get_comment_date(),  get_comment_time() ); ?></time>
 					</header>
 					<div class="comment-post<?php if ( $comment->comment_approved == '0' ) {echo ' in-moderation'; } ?>">
 						<?php comment_text(); ?>
 					</div>
 					<?php if ( $comment->comment_approved == '0' ) : ?>
-					<p class="text-right text-info no-margin-bottom">Your comment is awaiting moderation.</p>
+					<p class="text-right text-info no-margin-bottom"><?php  _e('Your comment is awaiting moderation.', 'bootplate'); ?></p>
 					<?php else : ?>
-					<!--<p class="text-right"><a href="#" class="btn btn-info btn-sm">reply</a></p>-->
-					<p class="text-right no-margin-bottom"><?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => 2 ) ) ); ?>  <?php edit_comment_link( __( 'edit' ), '  ', '' ); ?></p>
+					<p class="text-right no-margin-bottom"><?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => 2 ) ) ); ?>  <?php edit_comment_link( __( 'edit', 'bootplate' ), '  ', '' ); ?></p>
 					<?php endif; ?>
 				</div><!--/panel-body-->
 			</div><!--/.panel-default-->
@@ -395,8 +436,8 @@ if(!function_exists('bootplate_paginate_links')) {
 			'current' => $current,
 			'show_all' => false,
 			'prev_next' => true,
-			'prev_text' => __('&laquo; Previous'),
-			'next_text' => __('Next &raquo;'),
+			'prev_text' => __('&laquo; Previous', 'bootplate'),
+			'next_text' => __('Next &raquo;', 'bootplate'),
 			'end_size' => 1,
 			'mid_size' => 2,
 			'type' => 'plain',
@@ -467,7 +508,7 @@ if(!function_exists('bootplate_paginate_links')) {
 		endif;
 		for ( $n = 1; $n <= $total; $n++ ) :
 			if ( $n == $current ) :
-				$page_links[] = "<span class='page-numbers current'><span class='sr-only'>(current) </span>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</span>";
+				$page_links[] = "<span class='page-numbers current'><span class='sr-only screen-reader-text'>(current) </span>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</span>";
 				$dots = true;
 			else :
 				if ( $args['show_all'] || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) :
@@ -481,7 +522,7 @@ if(!function_exists('bootplate_paginate_links')) {
 					$page_links[] = "<a class='page-numbers' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</a>";
 					$dots = true;
 				elseif ( $dots && ! $args['show_all'] ) :
-					$page_links[] = '<span class="page-numbers dots">' . __( '&hellip;' ) . '</span>';
+					$page_links[] = '<span class="page-numbers dots">' . __( '&hellip;', 'bootplate' ) . '</span>';
 					$dots = false;
 				endif;
 			endif;
@@ -589,61 +630,47 @@ if(!function_exists('have_bootplate_btns')) {
 }
 
 // Customize Get_Avatar Classes
-if(!function_exists('change_avatar_css')) {
-	function change_avatar_css($class) {
+if(!function_exists('bootplate_change_avatar_css')) {
+	function bootplate_change_avatar_css($class) {
 		$class = str_replace("class='avatar", "class='img-responsive img-thumbnail", $class) ;
 		return $class;
 	}
-	add_filter('get_avatar','change_avatar_css');
+	add_filter('get_avatar','bootplate_change_avatar_css');
 }
 
 // Add Image Class(es) - EX: .img-rounded or .img-circle
-if(!function_exists('add_image_class')) {
-	function add_image_class($class){
+if(!function_exists('bootplate_add_image_class')) {
+	function bootplate_add_image_class($class){
 		$class .= ' img-responsive img-fluid';
 		return $class;
 	}
-	add_filter('get_image_tag_class','add_image_class');
+	add_filter('get_image_tag_class','bootplate_add_image_class');
 }
 
 // Echos the result type
 // Used in serps (I think) - BROKEN
-if(!function_exists('result_type')) {
-	function result_type() {
+if(!function_exists('bootplate_result_type')) {
+	function bootplate_result_type() {
 		global $post, $page;
 		if(is_page()) {
-			echo 'Page';
+			echo __('Page', 'bootplate');
 		} elseif (is_single()) {
 			$format = get_post_format();
 			if(!$format){
-				echo 'Post';
+				echo __('Post', 'bootplate');
 			} else {
 				echo ucfirst($format);
 			}
 		} else {
-			echo 'Media';
+			echo __('Media', 'bootplate');
 		}
 	}
 }
 
 //require get_template_directory() . '/inc/customizer.php';
 
-require get_template_directory() . '/inc/shortcodes.php';
+//require get_template_directory() . '/inc/shortcodes.php';
 require get_template_directory() . '/inc/custom_subtitles.php';
-
-// Shortcodes empty <p> fix
-if( !function_exists('jdm_fix_shortcodes') ) {
-	function jdm_fix_shortcodes($content){   
-		$array = array (
-			'<p>[' => '[', 
-			']</p>' => ']', 
-			']<br />' => ']'
-		);
-		$content = strtr($content, $array);
-		return $content;
-	}
-	add_filter('the_content', 'jdm_fix_shortcodes');
-}
 
 // add a favicon to front-end head 
 /*function site_favicons() {
@@ -662,8 +689,8 @@ add_action('wp_head', 'site_favicons');*/
 add_action('admin_head', 'admin_favicons');*/
 
 // Remove WP Links in Admin
-if(!function_exists('jdm_remove_wp_admin_links')){
-	function jdm_remove_wp_admin_links() {
+if(!function_exists('bootplate_remove_wp_admin_links')){
+	function bootplate_remove_wp_admin_links() {
 		global $wp_admin_bar;
 		$wp_admin_bar->remove_menu('about');
 		$wp_admin_bar->remove_menu('wporg');
@@ -672,22 +699,22 @@ if(!function_exists('jdm_remove_wp_admin_links')){
 		$wp_admin_bar->remove_menu('feedback');
 		//$wp_admin_bar->remove_menu('view-site');
 	}
-	add_action( 'wp_before_admin_bar_render', 'jdm_remove_wp_admin_links' );
+	add_action( 'wp_before_admin_bar_render', 'bootplate_remove_wp_admin_links' );
 }
 
 // Remove WP Icon from Admin Bar
-if(!function_exists('jdm_remove_wp_logo_adminbar')){
-	function jdm_remove_wp_logo_adminbar() {
+if(!function_exists('bootplate_remove_wp_logo_adminbar')){
+	function bootplate_remove_wp_logo_adminbar() {
 		global $wp_admin_bar;
 		$wp_admin_bar->remove_menu('wp-logo');
 	}
 	 
-	add_action( 'wp_before_admin_bar_render', 'jdm_remove_wp_logo_adminbar' );
+	add_action( 'wp_before_admin_bar_render', 'bootplate_remove_wp_logo_adminbar' );
 }
 
 // Change "Howdy, Admin" because it's lame
-if(!function_exists('jdm_no_wp_howdy')) {
-	function jdm_no_wp_howdy( $wp_admin_bar ) {
+if(!function_exists('bootplate_no_wp_howdy')) {
+	function bootplate_no_wp_howdy( $wp_admin_bar ) {
 		$user_id = get_current_user_id();
 		$current_user = wp_get_current_user();
 		$profile_url = get_edit_profile_url( $user_id );
@@ -709,14 +736,33 @@ if(!function_exists('jdm_no_wp_howdy')) {
 			) );
 		}
 	}
-	add_action( 'admin_bar_menu', 'jdm_no_wp_howdy', 11 );
+	add_action( 'admin_bar_menu', 'bootplate_no_wp_howdy', 11 );
+}
+
+/**
+ * Disable the emoji's
+ * Note: Emoticons will still work and emoji's will still work in browsers which have built in support for them. 
+ * This function simply removes the extra code bloat used to add support for emoji's in older browswers.
+ */
+if (!function_exists('disable_emojis') && !function_exists('bootplate_disable_emoji_bloat')) {
+	function bootplate_disable_emoji_bloat() {
+		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+		remove_action( 'wp_print_styles', 'print_emoji_styles' );
+		remove_action( 'admin_print_styles', 'print_emoji_styles' );	
+		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );	
+		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+		//add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+	}
+	add_action( 'init', 'bootplate_disable_emoji_bloat' );
 }
 
 // customize admin footer text
-function custom_admin_footer() {
-	echo '<a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow">Bootplate v'.bootplate_info('version').'</a>, by <a href="http://jdmdigital.co" target="_blank">JDM Digital</a>. Using <a href="http://wordpress.org" target="_blank">WordPress'. ' v'. get_wpversion().'</a>';
+function bootplate_admin_footer() {
+	echo __('Built on', 'bootplate').' <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a> and <a href="http://wordpress.org" target="_blank">WordPress'. ' v'. get_wpversion().'</a>';
 } 
-add_filter('admin_footer_text', 'custom_admin_footer');
+add_filter('admin_footer_text', 'bootplate_admin_footer');
 
 // define bootstrap_credits callback 
 if(!function_exists('action_bootplate_credits')) {
@@ -724,7 +770,7 @@ if(!function_exists('action_bootplate_credits')) {
 		echo '
 		<div id="bootplate-credit">
 			<div class="container text-center">
-				<p><small>Made with <span class="sr-only">love</span><a href="http://jdmdigital.co" target="_blank" rel="nofollow"><span class="bp-heart"></span></a> and <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow">Bootplate v'.bootplate_info('version').'</a></small></p>
+				<p><small>'.__('Made with', 'bootplate').' <span class="sr-only screen-reader-text">'.__('love', 'bootplate').'</span><span class="bp-heart"></span> '.__('and', 'bootplate').' <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a></small></p>
 			</div>
 		</div><!--/#bootplate-credit-->
 		';

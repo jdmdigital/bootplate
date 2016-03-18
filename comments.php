@@ -3,7 +3,7 @@
  * The template for displaying comments
  * Updated to use Bootstrap 3.3.x classes
  * 
- * Requires jdm_comment_nav() in function.php
+ * Requires bootplate_comment_nav() in function.php
  */
 
 /*
@@ -26,9 +26,9 @@ if ( post_password_required() ) {
 				if($commentsnum > 2) {$commentsclass = 'text-success';} else {$commentsclass = 'text-normal';}
 			?>
 				
-				<h4 class="comments-title"><strong class="<?php echo $commentsclass; ?>"><?php echo get_comments_number(); ?></strong> Comment<?php if($commentsnum > 1){echo 's';} ?></h4>
+				<h4 class="comments-title"><strong class="<?php echo $commentsclass; ?>"><?php echo get_comments_number(); ?></strong> <?php _e('Comment', 'bootplate'); ?><?php if($commentsnum > 1 && $commentsnum != 0){echo 's';} ?></h4>
 		
-				<?php //if($commentsnum > 2) { jdm_comment_nav(); } ?>
+				<?php //if($commentsnum > 2) { bootplate_comment_nav(); } ?>
 		
 				<div class="comment-list">
 					<?php
@@ -44,7 +44,7 @@ if ( post_password_required() ) {
 					?>
 				</div><!-- .comment-list -->
 		
-				<?php if($commentsnum > 2) { jdm_comment_nav(); } ?>
+				<?php if($commentsnum > 2) { bootplate_comment_nav(); } ?>
 		
 			<?php endif; // have_comments() ?>
 		

@@ -250,8 +250,8 @@ get_header(); ?>
 					<span class="i-code">0xe822</span>
 				</div>
 				<div title="Code: 0xe823" class="col-sm-6 col-md-3 the-icons">
-					<i class="demo-icon bp-wordpress"></i> 
-					<span class="i-name"><input type="text" class="form-control" readonly value=".bp-wordpress" /></span>
+					<i class="demo-icon bp-WordPress"></i> 
+					<span class="i-name"><input type="text" class="form-control" readonly value=".bp-WordPress" /></span>
 					<span class="i-code">0xe823</span>
 				</div>								
 			</div><!--/row-->
