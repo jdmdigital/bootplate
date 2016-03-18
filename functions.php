@@ -202,11 +202,27 @@ add_action( 'widgets_init', 'bootplate_widgets_init' );
 function bootplate_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.5' );
 	
-	if(file_exists(get_template_directory_uri() . '/style.min.css')) {
-		wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), '' );
+	if(is_child_theme()) {
+		// Load Parent.css instead of the full style.css file (or the minified version).
+		if(file_exists(get_template_directory_uri() . '/css/parent.min.css')) {
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), '' );
+		} else {
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), '' );
+		}
+		if(file_exists(get_stylesheet_directory_uri() . '/style.min.css')) {
+			wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), '' );
+		} else {
+			wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri(), array('bootstrap'), '' );
+		}
 	} else {
-		wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), '' );
+		// Using Parent Theme. Load full style.css (or the minified version).
+		if(file_exists(get_template_directory_uri() . '/style.min.css')) {
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), '' );
+		} else {
+			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), '' );
+		}
 	}
+	
 	// Load the IE-specific stylesheet.
 	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), '' );
 	wp_style_add_data( 'bootplate-ie', 'conditional', 'lt IE 9' );
@@ -249,7 +265,7 @@ require get_template_directory() . '/inc/template-tags.php';
 // LoadCSS - Async Load of body.css (below the fold styles)
 if(!function_exists('bootplate_async_css')) {
 	function bootplate_async_css() {
-		$tempdir = esc_url(get_template_directory_uri());
+		$tempdir = get_template_directory_uri();
 		
 		if(file_exists($tempdir.'/css/body.min.css')) {
 			$bodycss = 'body.min.css';

@@ -69,7 +69,7 @@ Elements here should ONLY be used/viewable below the fold.
 .bp-skype:before, .links-social a[href*="skype.com"]:before { content: '\e820'; } 
 .bp-linkedin:before, .links-social a[href*="linkedin.com"]:before { content: '\e821'; } 
 .bp-github-circled:before, .links-social a[href*="github.com"]:before { content: '\e822'; } 
-.bp-wordpress:before, .links-social a[href*="wordpress.com"]:before, .links-social a[href*="wordpress.org"]:before { content: '\e823'; } 
+.bp-WordPress:before, .links-social a[href*="WordPress.com"]:before, .links-social a[href*="wordpress.org"]:before { content: '\e823'; } 
 .bp-facebook:before, .links-social a[href*="facebook.com"]:before { content: '\e824'; } 
 .bp-vimeo-1:before { content: '\e825'; } 
 .bp-instagram-filled:before, .links-social a[href*="instagram.com"]:before { content: '\e826'; } 
