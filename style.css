@@ -499,6 +499,7 @@ section .well{background-color:rgba(255,255,255,0.8); padding:15px 15px 15px 30p
 section .c-indicator{background-color:#fff; color:#fff;}
 .jumbotron{margin-bottom:0;}
 section{padding-top:10px;padding-bottom:10px;}
+section:first-of-type{padding-top:30px;}
 .h3, h3, .section_title{color:#666;}
 
 .sidebar .widget{margin-bottom:45px;}
