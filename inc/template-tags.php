@@ -24,9 +24,17 @@ if(!function_exists('get_bootplate_widget_footer_cols')) {
 			$gotall = false;
 		}
 		
-		if($gotall) {$classes = 'col-sm-6 col-lg-3';}
-		if(($got1 && $got2) || ($got3 && $got4)) {$classes = 'col-sm-6';}
-		if($got1 && $got2 && $got3 && !$got4) {$classes = 'col-sm-4';}
+		if($gotall) {
+			$classes = 'col-sm-6 col-lg-3';
+		} elseif(($got1 && $got2 && !$got3 && !$got4) || (!$got1 && !$got2 && $got3 && $got4)) {
+			$classes = 'col-sm-6';
+		} elseif(($got1 && $got2 && $got3) && !$got4) {
+			$classes = 'col-sm-4';
+		} elseif ($got1 && $got2 && $got3 && $got4) {
+			$classes = 'col-sm-6 col-lg-3';
+		} else {
+			$classes = 'col-md-12';
+		}
 		
 		if($gotsome) {
 			return $classes;

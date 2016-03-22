@@ -163,9 +163,9 @@ function bootplate_widgets_init() {
 		'after_title'   => '</h4>',
 	) );
 	register_sidebar( array(
-		'name'          => __('Blog Sidebar', 'bootplate'),
+		'name'          => __('Page Sidebar Right', 'bootplate'),
 		'id'            => 'page-sidebar-right',
-		'description'   => __('Used for pages using the Page - Sidebar LEFT template.', 'bootplate'),
+		'description'   => __('Used for pages using the Page - Sidebar RIGHT template.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
@@ -173,17 +173,8 @@ function bootplate_widgets_init() {
 	) );
 	register_sidebar( array(
 		'name'          => __('Page Sidebar Left', 'bootplate'),
-		'id'            => 'page-sidebar-right',
+		'id'            => 'page-sidebar-left',
 		'description'   => __('Used for pages using the Page - Sidebar LEFT template.', 'bootplate'),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>',
-	) );
-	register_sidebar( array(
-		'name'          => __('Page Sidebar Right', 'bootplate'),
-		'id'            => 'page-sidebar-right',
-		'description'   => __('Used for pages using the Page - Sidebar RIGHT template.', 'bootplate'),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="widget-title">',
