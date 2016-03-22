@@ -272,6 +272,99 @@ if(!function_exists('bootplate_async_css')) {
 	}
 }
 
+/* Basic Bootplate SEO tags in header
+ * Does nothing if SEO plugin is installed and activated
+ * @since Bootplate v0.5
+ *
+ * TESTS FOR:
+ *  - SEO Ultimate: https://wordpress.org/plugins/seo-ultimate/ 
+ *  - Yoast: https://wordpress.org/plugins/wordpress-seo/
+ *  - Stallion: https://wordpress.org/plugins/stallion-wordpress-seo-plugin/
+ *  - Squirrley: https://wordpress.org/plugins/squirrly-seo/
+ *  - seo-wizard: https://wordpress.org/plugins/seo-wizard/
+ *  - WP Meta SEO: https://wordpress.org/plugins/wp-meta-seo/
+ */
+if(!function_exists('have_seo')) {
+	function have_seo($info = 'have'){
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		if(is_plugin_active('seo-ultimate/seo-ultimate.php')) {
+			$seoplugin = true;
+			$pluginname = 'seo-ultimate';
+		} elseif(is_plugin_active('wordpress-seo/wp-seo.php')) {
+			$seoplugin = true;
+			$pluginname = 'wordpress-seo';
+		} elseif(is_plugin_active('stallion-wordpress-seo-plugin/stallion-wordpress-seo-plugin.php')) {
+			$seoplugin = true;
+			$pluginname = 'stallion-wordpress-seo-plugin';
+		} elseif(is_plugin_active('squirrly-seo/squirrly.php')) {
+			$seoplugin = true;
+			$pluginname = 'squirrly-seo';
+		} elseif(is_plugin_active('seo-wizard/wp-seo-wizard.php')) {
+			$seoplugin = true;
+			$pluginname = 'seo-wizard';
+		} elseif(is_plugin_active('wp-meta-seo/wp-meta-seo.php')) {
+			$seoplugin = true;
+			$pluginname = 'wp-meta-seo';
+		} else {
+			$seoplugin = false;
+			$pluginname = '';
+		}
+		
+		if(isset($info) && $info == 'name'){
+			return $pluginname;
+		} else {
+			return $seoplugin;
+		}
+		
+	}
+}
+
+if(!function_exists('bootplate_meta')) {
+	function bootplate_meta(){
+		if(!have_seo()) {
+			// Let's do the work
+			global $post, $page;
+			
+			$metadescription = bootplate_get_meta_description();		
+			
+			echo '<meta name="description" content="'.$metadescription.'" />'."\r\n";
+			echo '	<meta name="author" content="'.get_bloginfo('name').'" />'."\r\n";
+			echo '	<meta itemprop="name" content="'.get_bloginfo('name').'" />'."\r\n";
+			echo '	<meta itemprop="description" content="'.$metadescription.'" />'."\r\n";
+			echo '	<meta property="og:site_name" content="'.get_bloginfo('name').'" />'."\r\n";;
+			echo '	<meta property="og:title" content="'.get_bloginfo('name').'" />'."\r\n";
+			echo '	<meta property="og:description" content="'.$metadescription.'" />'."\r\n";
+			echo '	<meta property="og:url" content="'.get_bloginfo('url').'" />'."\r\n";
+			echo '	<meta name="robots" content="noodp"/>'."\r\n";
+		} else {
+			// Let the plugin do the work
+			echo '';
+		}
+	}
+}
+
+// Returns content for a meta description
+if(!function_exists('bootplate_get_meta_description')) {
+	function bootplate_get_meta_description() {
+		$maxlength = 155;
+		$rawcontent = get_the_content();
+		if(empty($rawcontent)) {
+			$rawcontent = htmlentities(get_bloginfo('description'));
+		} else {
+			$rawcontent = apply_filters('the_content_rss', strip_tags($rawcontent));
+			$rawcontent = preg_replace('/\[.+\]/','', $rawcontent);
+			$chars = array("", "\n", "\r", "chr(13)",  "\t", "\0", "\x0B");
+			$rawcontent = htmlentities(str_replace($chars, " ", $rawcontent));
+		}
+		if (strlen($rawcontent) < $maxlength) {
+			return $rawcontent;
+		} else {
+			$desc = substr($rawcontent,0,$maxlength);
+			return $desc;
+		}
+	}
+}
+
 // Nicer Search - Creates a specific /search/ page instead of index.php?s=, which confuses google.
 if(!function_exists('bootplate_nice_search_redirect')) {
 	function bootplate_nice_search_redirect() {
