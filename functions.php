@@ -365,6 +365,29 @@ if(!function_exists('bootplate_get_meta_description')) {
 	}
 }
 
+// AMP CSS Action
+// Depends on https://github.com/Automattic/amp-wp/
+if(!function_exists('bootplate_amp_css')) {	
+	function bootplate_amp_css( $amp_template ) {
+		/*include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		if(is_plugin_active('amp/amp.php')) {
+			add_action( 'amp_post_template_css', 'bootplate_amp_css' );		
+		}*/
+		// only CSS here please...
+		?>
+		/* Bootplate Styles */
+		html body{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #555; font-size: 18px; font-weight: 300; line-height: 1.4;}
+		body nav.amp-wp-title-bar {background-color: #6f5499;}
+		body .amp-wp-meta, body .amp-wp-meta a, body a{color: #6f5499;}
+		body .amp-wp-title{color:#000;}
+		body .amp-wp-content{color:#333;}
+		body blockquote{background: #eeeeee none repeat scroll 0 0; border-left: 4px solid #888; color: #222;}
+		<?php
+	}
+	add_action( 'amp_post_template_css', 'bootplate_amp_css' );		
+	
+}
+
 // Nicer Search - Creates a specific /search/ page instead of index.php?s=, which confuses google.
 if(!function_exists('bootplate_nice_search_redirect')) {
 	function bootplate_nice_search_redirect() {
