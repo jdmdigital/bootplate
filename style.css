@@ -20,6 +20,7 @@ GitHub Branch:		master
 @viewport           { width: device-width; }
 
 /* == UTILITIES == */
+.nc{display:none;}
 .bold{font-weight:700;}
 .no-margin {margin: 0!important}
 .no-margin-top, .no-top-margin{margin-top:0;}
@@ -220,8 +221,8 @@ button:disabled:hover{background-color:#333; border-color:#333; color:#777;}
 .serp p{margin-bottom:0; display:none;}
 /* Custom: #6f5499 */
 .bg-custom, header.bg-custom{background-color: #6f5499; background-image: linear-gradient(to bottom, #563d7c 0px, #6f5499 100%); background-repeat: repeat-x; color: #cdbfe3; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);}
-a, #bootplate-credit p a{color: #6f5499;}
-a:hover, a:focus, #bootplate-credit p a:hover, #bootplate-credit p a:focus{color: #23527c;}
+a, #bootplate-credit p a, body .gist .gist-meta a{color: #6f5499;}
+a:hover, a:focus, #bootplate-credit p a:hover, #bootplate-credit p a:focus, body .gist .gist-meta a:hover{color: #23527c;}
 a:active, #bootplate-credit p a:active{}
 .bg-custom h2{color:#fff;}
 .bg-custom a{color:#fff; text-decoration:underline;}

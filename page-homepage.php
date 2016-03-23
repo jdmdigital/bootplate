@@ -11,7 +11,7 @@ get_header(); ?>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 				<?php the_title( '<h1 class="display-3">', '</h1>' ); ?>
-				<?php if(have_bootplate_subtitle()) { bootplate_subtitle(); } else { echo '<p class="lead">'.get_bloginfo('description').'</p>';} ?>
+				<?php if(have_bootplate_subtitle()) { bootplate_subtitle(); } else { echo '<p>'.get_bloginfo('description').'</p>';} ?>
 				
 				<?php 
 				if(have_bootplate_btns()) : 
