@@ -1,11 +1,12 @@
 /*
  Main JS functions and function settings
- v 0.5.0
+ v 0.5
 */
 
 // for .full-height when VH CSS until not understood.
 if($('.no-cssvhunit body.logged-in header.dynamic-height, .no-cssvhunit header.full-height').length) {
 	$(window).load(function(){
+		"use strict";
 		var maxheight = $( window ).height();
 		$('.no-cssvhunit body.logged-in header.dynamic-height, .no-cssvhunit header.full-height').height(maxheight);
 	});
@@ -22,6 +23,7 @@ $( document ).ready(function() {
 			hamburger_cross();      
 		});
 		function hamburger_cross() {
+			"use strict";
 			if (isClosed == true) {          
 				trigger.removeClass('is-open is-closed');
 				trigger.addClass('is-closed');
@@ -38,6 +40,7 @@ $( document ).ready(function() {
 	
 	// Processing Buttons
 	$('.btn-process').click(function() {
+		"use strict";
 		$(this).addClass('processing');
 		setTimeout(function(){
 			$(this).removeClass('processing');
@@ -62,6 +65,7 @@ $( document ).ready(function() {
 	
 	// Smooth ScrollTo Function (just add class .scrollto)
 	$('a.scrollto').click(function(evt){
+		"use strict";
 		evt.preventDefault();
 		var scrollto = $(this).attr('href');
 		if (scrollto.indexOf('#') >= 0) {
@@ -71,6 +75,7 @@ $( document ).ready(function() {
 	
 	if($('.jumboscroll').length) {
 		$('.jumboscroll button, .skip-link').click(function(evt){
+			"use strict";
 			evt.preventDefault();
 			var scrollto = $('section:first-of-type');
 			$("html, body").animate({scrollTop: $(scrollto).offset().top }, 900); 
@@ -95,6 +100,7 @@ $( document ).ready(function() {
 	
 	// For social small window
 	$('.mini').click(function(event) {
+		"use strict";
 		var width 	= 	575,
 		height 		= 	400,
 		left   		= 	($(window).width()  - width)  / 2,
@@ -119,6 +125,7 @@ $( document ).ready(function() {
 	
 	// Back To Top Function
 	$('a.back-to-top').click(function() {
+		"use strict";
 		$('body, html').animate({
 			scrollTop: 0
 		}, 750);
