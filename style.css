@@ -610,6 +610,10 @@ article h4, article .h4{font-size:24px;}
 	.the-excerpt{min-height:200px;}
 	article h2.h4{min-height:60px;}
 	article.serp h2.h4{min-height:10px;}
+	.gallery-columns-2 .gallery-item{width:50%; float:left;}
+	.gallery-columns-3 .gallery-item{width:33.33%; float:left;}
+	.gallery-columns-4 .gallery-item{width:25%; float:left;}
+	.gallery-item img{width:100%; height:auto;}
 }
 
 /* == Medium Devices, Desktops == */
@@ -624,6 +628,7 @@ article h4, article .h4{font-size:24px;}
 	.text-input.small{width:15%;}
 	input.form-control-mw50, .group-mw50{max-width:50%;}
 	.mh120{min-height:120px;}
+	.bootplate-card, .mh250{min-height:260px;}
 	a.tweetable::before{opacity:0.4; color:#222; transition:all 0.2s;}
 	a.tweetable:hover::before{opacity:1; color:#55ACEE; transition:all 0.2s;}
 	.full-height .container{margin-top:10vh;}
