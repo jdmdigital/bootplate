@@ -24,7 +24,7 @@
  
 define('VERSION', 0.5);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
-define("BRANCH", 'https://github.com/jdmdigital/bootplate/tree/use-strict');
+define("BRANCH", '');
  
 // get_wpversion()
 if(!function_exists('get_wpversion')){
@@ -84,7 +84,7 @@ if ( !function_exists('bootplate_setup') ) {
 
 		// Switch default core markup to output valid HTML5.
 		add_theme_support( 'html5', array(
-			'search-form', 'comment-form', 'comment-list', 'caption'
+			'search-form', 'comment-form', 'comment-list', 'caption', 'gallery'
 		) );
 		
 		// Add Quote and Link Post Format Support
@@ -793,6 +793,8 @@ if(!function_exists('bootplate_result_type')) {
 //require get_template_directory() . '/inc/customizer.php';
 
 //require get_template_directory() . '/inc/shortcodes.php';
+
+require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/custom_subtitles.php';
 
 // add a favicon to front-end head 
@@ -883,22 +885,72 @@ if (!function_exists('disable_emojis') && !function_exists('bootplate_disable_em
 
 // customize admin footer text
 function bootplate_admin_footer() {
-	echo __('Built on', 'bootplate').' <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a> and <a href="http://wordpress.org" target="_blank">WordPress'. ' v'. get_wpversion().'</a>';
+	if( get_theme_mod( 'bootplate_credit' ) == 1) {
+		echo __('Built on', 'bootplate').' <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a> and <a href="http://wordpress.org" target="_blank">WordPress'. ' v'. get_wpversion().'</a>';
+	}
 } 
 add_filter('admin_footer_text', 'bootplate_admin_footer');
 
 // define bootstrap_credits callback 
 if(!function_exists('action_bootplate_credits')) {
-	function action_bootplate_credits(  ) { 
-		echo '
-		<div id="bootplate-credit">
-			<div class="container text-center">
-				<p><small>'.__('Made with', 'bootplate').' <span class="sr-only screen-reader-text">'.__('love', 'bootplate').'</span><span class="bp-heart"></span> '.__('and', 'bootplate').' <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a></small></p>
-			</div>
-		</div><!--/#bootplate-credit-->
-		';
+	function action_bootplate_credits() { 
+		if( get_theme_mod( 'bootplate_credit' ) == 1) {
+			echo '
+			<div id="bootplate-credit">
+				<div class="container text-center">
+					<p><small>'.__('Made with', 'bootplate').' <span class="sr-only screen-reader-text">'.__('love', 'bootplate').'</span><span class="bp-heart"></span> '.__('and', 'bootplate').' <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a></small></p>
+				</div>
+			</div><!--/#bootplate-credit-->
+			';
+		} else {
+			echo '';
+		}
 	}; 
 	add_action( 'bootplate_credits', 'action_bootplate_credits', 10, 0 ); 
+}
+
+if(!function_exists('get_bootplate_formal_name')) {
+	function get_bootplate_formal_name() {
+		$companyname = get_theme_mod( 'formal_name_textbox', 'none' );
+		if($companyname == 'none') {
+			$companyname = get_bloginfo('name');
+		}
+		return $companyname;
+	}
+}
+
+if(!function_exists('get_bootplate_nav_type')) {
+	function get_bootplate_nav_type() {
+		$navtype = get_theme_mod( 'main_nav_type', 'default-scroll' );
+		if($navtype == 'navbar-fixed-top'){
+			$navpart = 'fixedtop';
+		} elseif($navtype == 'navbar-fixed-bottom'){
+			$navpart = 'fixedbottom';
+		} else {
+			$navpart = '';
+		}
+
+		return $navpart;
+	}
+}
+
+if(!function_exists('get_bootplate_nav_style')) {
+	function get_bootplate_nav_style() {
+		$navstyle = get_theme_mod( 'main_nav_style', '' );
+		if($navstyle == 'Navbar Light'){
+			$navclasses = 'navbar-default '.$navstyle;
+		} elseif ($navstyle == 'Navbar Light w/ Logo') {
+			$navclasses = 'navbar-default navbar-img-logo '.$navstyle;
+		} elseif ($navstyle == 'Navbar Dark w/ Logo') {
+			$navclasses = 'navbar-dark bg-inverse navbar-inverse navbar-img-logo '.$navstyle;
+		} elseif ($navstyle == 'Navbar Dark') {
+			$navclasses = 'navbar-dark bg-inverse navbar-inverse '.$navstyle;
+		} else {
+			// Default
+			$navclasses = 'navbar-dark bg-inverse navbar-inverse bootplate-default-nav-style '.$navstyle;
+		}
+		return $navclasses;
+	}
 }
 
 remove_action('wp_head', 'wp_generator');

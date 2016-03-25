@@ -37,7 +37,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="<?php if ( has_nav_menu( 'social' ) ||  has_nav_menu( 'footer' )) { echo 'col-sm-4 ';} else {echo 'col-lg-12 text-center ';} ?>col-copyright">
-					<p>&copy; <?php echo date('Y'); ?> - <?php bloginfo('name'); ?>.</p>
+					<p>&copy; <?php echo date('Y'); ?> - <?php echo get_bootplate_formal_name(); ?>.</p>
 				</div>
 				<?php
 				// Social Links Menu

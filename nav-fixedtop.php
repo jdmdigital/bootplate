@@ -1,9 +1,9 @@
 <?php
-// Default Navigation Template
-// @since Bootplate v0.5
+// navbar-fixedtop Navigation Template
+// @since Bootplate v0.6
 
 ?>
-<nav class="navbar navbar-full <?php echo get_bootplate_nav_style(); ?> hamburger-cross">
+<nav class="navbar navbar-full navbar-fixed-top <?php echo get_bootplate_nav_style(); ?> hamburger-cross">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggler hidden-sm-up is-closed navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-menu" aria-expanded="false" aria-controls="primary-menu">
