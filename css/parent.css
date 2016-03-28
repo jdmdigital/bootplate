@@ -1,6 +1,7 @@
 /*
 Bootplate Parent CSS is just the basics
 This (simplified) stylesheet is only loaded when a child theme is in use.
+v0.6
 */
 
 @-webkit-viewport   { width: device-width; }
@@ -10,12 +11,13 @@ This (simplified) stylesheet is only loaded when a child theme is in use.
 @viewport           { width: device-width; }
 
 /* == UTILITIES == */
+.nc{display:none;}
 .bold{font-weight:700;}
 .no-margin {margin: 0!important}
 .no-margin-top, .no-top-margin{margin-top:0;}
 .no-margin-bottom{margin-bottom:0;}
-.margin-bottom{margin-bottom:3rem;}
-.no-remunit .margin-bottom{margin-bottom:3em;}
+.margin-bottom, form.wpcf7-form{margin-bottom:3rem;}
+.no-remunit .margin-bottom, .no-remunit form.wpcf7-form{margin-bottom:3em;}
 .jumbotron-fluid .margin-bottom{margin-bottom:3em; margin-bottom:3rem;}
 .margin-top{margin-top:3rem;}
 .no-remunit .margin-top{margin-top:3em;}
@@ -67,11 +69,12 @@ img.border{border:1px solid #222;}
 .navbar.navbar-full{border-radius:0;margin-bottom:0;}
 .hidden-xs-up{display:none;}
 .jumbotron .jumboscroll{position:absolute; bottom:30px; left:0; right:0; margin: 0 auto;}
-p, ul, ol{margin-bottom:20px;}
+p, ul, ol{margin-bottom:30px;}
 h1, .h1, h2, .h2, h3, .h3{margin-top:30px;}
 abbr{border-bottom: 1px dotted #888;cursor: help; text-decoration:none;}
 .btn-circle {display: table-cell; vertical-align: middle; text-align: center; border-radius:50%; height:80px; width:80px; font-size:12px; text-wrap:normal;}
 .btn-circle span{font-size:22px;}
+.btn-secondary-outline {  color: #ccc;  background-color: transparent;  background-image: none;  border-color: #ccc;}
 .btn-inverse.btn-secondary-outline{border-color:rgba(255,255,255,0.9); color:#fff;}
 .btn-inverse.btn-secondary-outline:hover, .btn-inverse.btn-secondary-outline:focus{color:#222;}
 .flexbox .vcenter{}
@@ -84,8 +87,10 @@ abbr{border-bottom: 1px dotted #888;cursor: help; text-decoration:none;}
 .screen-reader-text{}
 .sticky{}
 .bypostauthor{}
-#primary-menu span.bp-search{margin-left: 0.2em;margin-right: 0.2em; min-width:1em;}
+.aside, aside.aside{-moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; border-image: none; border-radius: 6px;  border-style: solid; border-width: 1px 1px 1px 6px; background-color:#fff;  margin-bottom: 30px;  margin-top: 30px; padding: 15px;}
+.aside {border-top:1px solid #ddd; border-right:1px solid #ddd; border-bottom:1px solid #ddd; color:#333;}
 .caret {display: inline-block;  width: 0;  height: 0;  margin-left: 2px;  vertical-align: middle;  border-top: 4px solid;  border-top: 4px solid \9;  border-right: 4px solid transparent;  border-left: 4px solid transparent; content:'';}
+.wpcf7 .form-group{min-height:90px; margin-bottom:10px;}
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/
@@ -125,7 +130,8 @@ p small{line-height:1;}
 section .well{background-color:rgba(255,255,255,0.8); padding:15px 15px 15px 30px; border:1px solid #ccc; border-radius:8px; font-size:1.2rem; display:block; margin-bottom:25px; margin-left:15px; margin-right:15px;}
 section .c-indicator{background-color:#fff; color:#fff;}
 .jumbotron{margin-bottom:0;}
-section{padding-top:20px;}
+section{padding-top:10px;padding-bottom:10px;}
+section:first-of-type{padding-top:30px;}
 .h3, h3, .section_title{color:#666;}
 
 .sidebar .widget{margin-bottom:45px;}
@@ -201,7 +207,7 @@ article h4, article .h4{font-size:24px;}
 	.display-3, .jumbotron .display-2{font-size:300%;font-size: 4rem; }
 	.jumbotron .display-3{font-size:400%;font-size: 5rem; }
 	.jumbotron .lead{font-size:1.8rem;}
-	h4.card-title, .h4.card-title{font-size:24px;}
+	h4.card-title, .h4.card-title{font-size:28px;}
 	.card{position: relative;  margin-bottom: 30px;  border-radius: 6px; background-color:#F8F8F8; border: 1px solid #eee;}
 	.bg-default .card{background-color:#fff; border: 1px solid #ccc;}
 	.margin-left{margin-left:15px;}
@@ -235,6 +241,10 @@ article h4, article .h4{font-size:24px;}
 	.the-excerpt{min-height:200px;}
 	article h2.h4{min-height:60px;}
 	article.serp h2.h4{min-height:10px;}
+	.gallery-columns-2 .gallery-item{width:50%; float:left;}
+	.gallery-columns-3 .gallery-item{width:33.33%; float:left;}
+	.gallery-columns-4 .gallery-item{width:25%; float:left;}
+	.gallery-item img{width:100%; height:auto;}
 }
 
 /* == Medium Devices, Desktops == */
@@ -249,6 +259,7 @@ article h4, article .h4{font-size:24px;}
 	.text-input.small{width:15%;}
 	input.form-control-mw50, .group-mw50{max-width:50%;}
 	.mh120{min-height:120px;}
+	.bootplate-card, .mh250{min-height:260px;}
 	a.tweetable::before{opacity:0.4; color:#222; transition:all 0.2s;}
 	a.tweetable:hover::before{opacity:1; color:#55ACEE; transition:all 0.2s;}
 	.full-height .container{margin-top:10vh;}

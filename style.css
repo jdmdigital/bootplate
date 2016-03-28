@@ -2,7 +2,7 @@
 Theme Name: 		Bootplate
 Theme URI: 			http://bootplate.jdmdigital.co
 Description: 		A WordPress boilerplate theme built on the latest version of Bootstrap 3.3.x (with some added stuff from Bootstrap v4 Alpha 2).  "Boot-plate", get it?
-Version: 			0.5
+Version: 			0.6
 License: 			GNU General Public License v2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 Author: 			JDM Digital
@@ -135,13 +135,14 @@ hr{border-color:#eee; border-width:4px;}
 button:disabled{background-color:#555; border-color:#555; color:#888;}
 button:disabled:hover{background-color:#333; border-color:#333; color:#777;}
 .bg-default{background-color: #f8f8f8;}
-.navbar-default {  background-color: #f8f8f8;  border-color: #e7e7e7;}
+.navbar-default {  background-color: #f8f8f8; border-bottom:none;}
+.navbar-default li.highlight a{color:#fff; background-color:rgba(0,0,0,0.7);}
 .navbar-default .navbar-brand {  color: #777;}
 .navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus {  color: #5e5e5e;}
-.navbar-default .navbar-text {  color: #777;}
-.navbar-default .navbar-nav > li > a {  color: #777;}
-.navbar-default .navbar-nav > li > a:hover,.navbar-default .navbar-nav > li > a:focus {color: #333;}
-.navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus {  color: #555;  background-color: #e7e7e7;}
+.navbar-default .navbar-text {  color: #555;}
+.navbar-default .navbar-nav > li > a {  color: #555;}
+.navbar-default .navbar-nav > li > a:hover,.navbar-default .navbar-nav > li > a:focus {color: #444;}
+.navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus {  color: #444;  background-color: #e7e7e7;}
 .navbar-default .navbar-nav > .disabled > a,.navbar-default .navbar-nav > .disabled > a:hover,.navbar-default .navbar-nav > .disabled > a:focus {  color: #ccc;}
 .navbar-default .navbar-toggle {  border-color: #ddd;}
 .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {  background-color: #ddd;}
@@ -160,7 +161,7 @@ button:disabled:hover{background-color:#333; border-color:#333; color:#777;}
 .navbar-default .btn-link:hover,.navbar-default .btn-link:focus {  color: #333;}
 .navbar-default .btn-link[disabled]:hover,fieldset[disabled] .navbar-default .btn-link:hover,.navbar-default .btn-link[disabled]:focus,fieldset[disabled] .navbar-default .btn-link:focus {  color: #ccc;}
 .navbar-inverse {  background-color: #222;  border-color: #080808;}
-.navbar-inverse .navbar-brand, #primary-menu li a span{color:#ddd;}
+.navbar-inverse .navbar-brand, .navbar-inverse #primary-menu li a span{color:#ddd;}
 .navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-brand:focus {  color: #fff;}
 .navbar-inverse .navbar-text {  color: #9d9d9d;}
 .navbar-inverse .navbar-nav > li > a {  color: #9d9d9d;}
@@ -232,6 +233,10 @@ a:active, #bootplate-credit p a:active{}
 .c-input > input:checked ~ .c-indicator{background-color:#6f5499;}
 .aside.alert-custom{border-color:#ddd; border-left-color:#6f5499;}
 .aside.alert-primary h3, .aside.alert-primary h4{color:#6f5499;}
+.navbar-inverse li.highlight a{color:#eee; background-color:#6f5499;}
+.navbar-default li.highlight a{color:#eee; background-color:#6f5499;}
+.navbar-inverse li.highlight a:hover, .navbar-inverse .navbar-nav > .highlight > a:hover{color:#eee; background-color:#563d7c; background:#563d7c;}
+.navbar-default li.highlight a:hover, .navbar-default .navbar-nav > .highlight > a:hover{color:#eee; background-color:#563d7c; background:#563d7c;}
 
 /* Primary: #337ab7 */
 .bg-primary {color: #fff;  background-color:#337ab7;}

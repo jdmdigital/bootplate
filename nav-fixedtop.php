@@ -30,7 +30,7 @@
 					)
 				);
 				?>
-				<li><a href="/search/"><span class="bp-search"></span><span class="hidden-sm-up"><?php _e('Site Search', 'bootplate'); ?></span></a></li>
+				<?php if( get_theme_mod( 'bootplate_enable_search' ) == 1) : ?><li><a href="<?php echo site_url('/search/'); ?>"><span class="bp-search"></span><span class="hidden-sm-up"><?php _e('Site Search', 'bootplate'); ?></span></a></li><?php endif; ?>
 			</ul>
 		</div><!-- /#primary-menu -->
 	</div><!--/.container-->

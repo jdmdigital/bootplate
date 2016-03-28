@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v0.5 Main Functions
+ * Bootplate v0.6 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 0.5);
+define('VERSION', 0.6);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -942,13 +942,13 @@ if(!function_exists('get_bootplate_nav_type')) {
 if(!function_exists('get_bootplate_nav_style')) {
 	function get_bootplate_nav_style() {
 		$navstyle = get_theme_mod( 'main_nav_style', '' );
-		if($navstyle == 'Navbar Light'){
+		if($navstyle == 'navbar-style-default'){
 			$navclasses = 'navbar-default '.$navstyle;
-		} elseif ($navstyle == 'Navbar Light w/ Logo') {
+		} elseif ($navstyle == 'navbar-style-light-logo') {
 			$navclasses = 'navbar-default navbar-img-logo '.$navstyle;
-		} elseif ($navstyle == 'Navbar Dark w/ Logo') {
+		} elseif ($navstyle == 'navbar-inverse-logo') {
 			$navclasses = 'navbar-dark bg-inverse navbar-inverse navbar-img-logo '.$navstyle;
-		} elseif ($navstyle == 'Navbar Dark') {
+		} elseif ($navstyle == 'navbar-inverse') {
 			$navclasses = 'navbar-dark bg-inverse navbar-inverse '.$navstyle;
 		} else {
 			// Default
