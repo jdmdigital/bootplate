@@ -11,6 +11,7 @@ v0.6
 @viewport           { width: device-width; }
 
 /* == UTILITIES == */
+.has-featured-image{background-image:none!important;}
 .nc{display:none;}
 .bold{font-weight:700;}
 .no-margin {margin: 0!important}
@@ -245,6 +246,7 @@ article h4, article .h4{font-size:24px;}
 	.gallery-columns-3 .gallery-item{width:33.33%; float:left;}
 	.gallery-columns-4 .gallery-item{width:25%; float:left;}
 	.gallery-item img{width:100%; height:auto;}
+	.has-featured-image{background-position:center; background-size:cover; background-repeat:no-repeat;}
 }
 
 /* == Medium Devices, Desktops == */

@@ -8,7 +8,7 @@ $total_results = $wp_query->found_posts;
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-<header class="jumbotron jumbotron-fluid bg-custom full-height text-center">
+<header class="<?php echo header_classes(); ?>"<?php the_header_bgimg(get_the_id(), 'full'); ?>>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">

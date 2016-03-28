@@ -6,7 +6,7 @@ global $wp_query;
 get_header(); ?>
 
 <?php if ( have_posts() ) : ?>
-<header class="jumbotron jumbotron-fluid bg-custom">
+<header class="<?php echo header_classes(); ?>">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-lg-8">

@@ -6,7 +6,7 @@
 get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-<header class="jumbotron jumbotron-fluid bg-custom">
+<header class="<?php echo header_classes(); ?>">
 	<div class="container">
 		<?php the_title( '<h1>', '</h1>' ); ?>
 		<?php if(have_bootplate_subtitle()) { bootplate_subtitle(); } ?>

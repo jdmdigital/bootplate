@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v0.6 Main Functions
+ * Bootplate v0.5 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 0.6);
+define('VERSION', 0.5);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -749,10 +749,72 @@ if(!function_exists('bootplate_subtitle')) {
 if(!function_exists('have_bootplate_btns')) {
 	function have_bootplate_btns() {
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if(is_plugin_active('jdm-cta-buttons/jdm-cta-buttons.php')) {
+		if(is_plugin_active('jdm-cta-buttons/jdm-cta-buttons.php') || is_plugin_active('bootplate-cta-buttons/bootplate-cta-buttons.php')) {
 			return true;
 		} else {
 			return false;
+		}
+	}
+}
+
+/* Featured Image Functions
+ * @since v0.6
+ */
+ 
+// Adds classes to <header>, usage: <header class="<php echo header_classes() endPHP >
+// Will add .has-featured-image to header if there's a featured image set.
+if(!function_exists('header_classes')) {
+	function header_classes() {
+		$id = get_the_id();
+		$headerclasses = 'jumbotron jumbotron-fluid bg-custom';
+		if(is_page_template('page-fullheight.php') || is_page_template('page-homepage.php') || is_page_template('page-search.php')) {
+			$headerclasses .= ' full-height text-center';
+		}
+		if ( has_post_thumbnail($id) ) {
+			$headerclasses .= ' has-featured-image';
+		}
+		return $headerclasses;
+	}
+}
+if(!function_exists('get_featured_image')) {
+	function get_featured_image($id = 0, $size = 'full') {
+		if($id == 0){
+			$id = get_the_id();
+		}
+		
+		if ( has_post_thumbnail($id) ) { 
+			// Has one. return the img src.
+			$imgsrc =  wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $size);
+			return $imgsrc[0]; 
+		}
+	}
+}
+if(!function_exists('the_featured_image')) {
+	function the_featured_image($id = 0, $size = 'full') {
+		if($id == 0){
+			$id = get_the_id();
+		}
+		
+		if ( has_post_thumbnail($id) ) {
+			$alt = get_the_title();
+			//$imgsrc = get_featured_image($id, $size);
+			$imgsrc = get_the_post_thumbnail_url($id, $size);
+			$featuredimg = '<p><img src="'.$imgsrc.'" class="featured-img img-responsive img-fluid" alt="'.$alt.'" /></p>';
+			
+			echo $featuredimg;
+		}
+	}
+}
+if(!function_exists('the_header_bgimg')) {
+	function the_header_bgimg($size = 'full') {
+		
+		$id = get_the_id();
+		
+		if ( has_post_thumbnail($id) ) { 
+			// Has one. return the img src.
+			$imgsrc =  wp_get_attachment_image_src(get_post_thumbnail_id($id), $size);
+			//echo ' style="background-image:url(\''.$imgsrc[0].'\'" '; 
+			echo ' style="background-image:url('.$imgsrc[0].');"';
 		}
 	}
 }

@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.5-trunk
-Version: 0.5
+Version: 0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, accessibility-ready, editor-style, featured-images, microformats, post-formats
@@ -66,6 +66,12 @@ Licensed under MIT <https://opensource.org/licenses/MIT>
 Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhunit-displaytable-flexbox-ie8compat-inputtypes-lastchild-nthchild-rgba-srcset-svgasimg-mq-setclasses
 
 == Changelog ==
+
+= 0.6 =
+* Numerous bug fixes
+* New customizer functions
+* Child Theme optimization
+* Plugin pre-integrations
 
 = 0.5 =
 * Released: March 11, 2016
