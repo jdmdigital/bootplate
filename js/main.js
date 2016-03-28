@@ -38,6 +38,23 @@ $( document ).ready(function() {
 		}
 	}
 	
+	// Fixed Navigation Padding - @since v0.6
+	if($('nav.navbar-fixed-top').length) {
+		var navheight = $('nav.navbar-fixed-top').height();
+		$('body').css('padding-top', navheight);
+	}
+	if($('nav.navbar-fixed-bottom').length) {
+		var navheight = $('nav.navbar-fixed-bottom').height();
+		$('body').css('padding-bottom', navheight);
+	}
+	
+	// Search Page Auto-Focus
+	if($('body.page-template-page-search').length){
+		setTimeout(function(){
+			$('#searchform input').focus();
+		}, 500);
+	}
+	
 	// Processing Buttons
 	$('.btn-process').click(function() {
 		"use strict";
