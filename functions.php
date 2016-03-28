@@ -333,13 +333,13 @@ if(!function_exists('bootplate_meta')) {
 			$metadescription = bootplate_get_meta_description();		
 			
 			echo '<meta name="description" content="'.$metadescription.'" />'."\r\n";
-			echo '	<meta name="author" content="'.get_bloginfo('name').'" />'."\r\n";
-			echo '	<meta itemprop="name" content="'.get_bloginfo('name').'" />'."\r\n";
+			echo '	<meta name="author" content="'.get_bootplate_formal_name().'" />'."\r\n";
+			echo '	<meta itemprop="name" content="'.esc_url(get_home_url()).'" />'."\r\n";
 			echo '	<meta itemprop="description" content="'.$metadescription.'" />'."\r\n";
 			echo '	<meta property="og:site_name" content="'.get_bloginfo('name').'" />'."\r\n";;
-			echo '	<meta property="og:title" content="'.get_bloginfo('name').'" />'."\r\n";
+			echo '	<meta property="og:title" content="'.esc_url(get_home_url()).'" />'."\r\n";
 			echo '	<meta property="og:description" content="'.$metadescription.'" />'."\r\n";
-			echo '	<meta property="og:url" content="'.get_bloginfo('url').'" />'."\r\n";
+			echo '	<meta property="og:url" content="'.get_home_url().'" />'."\r\n";
 			echo '	<meta name="robots" content="noodp"/>'."\r\n";
 		} else {
 			// Let the plugin do the work

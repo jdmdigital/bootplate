@@ -30,6 +30,7 @@ function bootplate_customize_register( $wp_customize ) {
 		'main_nav_type',
 		array(
 			'default' => 'default-scroll',
+			'sanitize_callback' => 'bootplate_sanitize_select',
 		)
 	);
 	
@@ -54,6 +55,7 @@ function bootplate_customize_register( $wp_customize ) {
 		'main_nav_style',
 		array(
 			'default' => 'navbar-inverse',
+			'sanitize_callback' => 'bootplate_sanitize_select',
 		)
 	);
 	
@@ -79,6 +81,7 @@ function bootplate_customize_register( $wp_customize ) {
 		'formal_name_textbox',
 		array(
 			'default' => 'Awesome, LLC',
+			'sanitize_callback' => 'bootplate_sanitize_text',
 		)
 	);
 	
@@ -95,7 +98,10 @@ function bootplate_customize_register( $wp_customize ) {
 	
 	// Add Bootplate Credit Setting
 	$wp_customize->add_setting(
-		'bootplate_credit'
+		'bootplate_credit',
+		array(
+			'sanitize_callback' => 'bootplate_sanitize_checkbox',
+		)
 	);
 	
 	// Add Bootplate Credit Setting Control
@@ -110,28 +116,38 @@ function bootplate_customize_register( $wp_customize ) {
 	);
 	
 	
-	// Add Copyright Setting
-	$wp_customize->add_setting(
-		'copyright_textbox',
-		array(
-			'default' => 'Default copyright text',
-		)
-	);
-	
-	// Add Copyright Setting Control
-	$wp_customize->add_control(
-		'copyright_textbox',
-		array(
-			'label' => 'Copyright text',
-			'description' => 'This isn\'t used yet. This is a description.',
-			'section' => 'example_section_one',
-			'type' => 'text',
-		)
-	);
-	
-	
 
 } // END bootplate_customize_register()
 add_action( 'customize_register', 'bootplate_customize_register' );
 
-
+//bootplate_sanitize_text
+function bootplate_sanitize_text( $input ) {
+    return wp_kses_post( force_balance_tags( $input ) );
+}
+//bootplate_sanitize_select
+// Needs to be updated as new options are avaliable
+function bootplate_sanitize_select( $input ) {
+    $valid = array(
+        'navbar-inverse' => 'Navbar Dark',
+		'navbar-inverse-logo' => 'Navbar Dark w/ Logo',
+		'navbar-style-default' => 'Navbar Light',
+		'navbar-style-light-logo' => 'Navbar Light w/ Logo',
+		'default-scroll' => 'Scroll (default)',
+		'navbar-fixed-top' => 'Fixed to Top',
+		'navbar-fixed-bottom' => 'Fixed to Bottom',
+    );
+	
+	if ( array_key_exists( $input, $valid ) ) {
+        return $input;
+    } else {
+        return '';
+    }
+}
+//bootplate_sanitize_checkbox
+function bootplate_sanitize_checkbox( $input ) {
+    if ( $input == 1 ) {
+        return 1;
+    } else {
+        return '';
+    }
+}
