@@ -50,6 +50,7 @@ $( document ).ready(function() {
 	
 	// Search Page Auto-Focus
 	if($('body.page-template-page-search').length){
+		"use strict";
 		setTimeout(function(){
 			$('#searchform input').focus();
 		}, 500);
@@ -61,7 +62,16 @@ $( document ).ready(function() {
 		$(this).addClass('processing');
 		setTimeout(function(){
 			$(this).removeClass('processing');
-		}, 1200);
+		}, 600);
+		
+	});
+	
+	$('.wpcf7-submit.btn-process').click(function() {
+		"use strict";
+		$('.wpcf7-submit').addClass('processing');
+		setTimeout(function(){
+			$('.wpcf7-submit').removeClass('processing');
+		}, 800);
 		
 	});
 	

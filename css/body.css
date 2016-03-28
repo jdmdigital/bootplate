@@ -145,6 +145,9 @@ footer .widget_recent_entries ul li a{}
 .widget_rss ul li a {font-size:1em;}
 .widget-title a:first-child{display:none;}
 .widget-title a{color:#333;}
+body .gist .gist-file{border-color: #ccc #ccc #aaa; margin-bottom:30px;}
+body .gist .blob-num{background-color:#f8f8f8;}
+body .gist .gist-meta{background-color:#f1f1f1; color:#666;}
 
 /* Form Styles */
 .checkbox label, .checkbox-inline, .radio label, .radio-inline{padding-left:1.8rem;}
@@ -157,6 +160,17 @@ footer .widget_recent_entries ul li a{}
 input[type="number"] {-moz-appearance:textfield;}
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {-webkit-appearance: none;    margin: 0;}
 .c-darker .c-indicator{background-color: #ccc;}
+/* CF7 */
+div.wpcf7 {margin: 0;padding: 0;}
+div.wpcf7-response-output {	border-radius: 4px;    margin-bottom: 20px; margin-top:15px;   padding: 15px;}
+div.wpcf7 .screen-reader-response {	position: absolute;	overflow: hidden;	clip: rect(1px, 1px, 1px, 1px);	height: 1px;	width: 1px;	margin: 0;	padding: 0;	border: 0;}
+.wpcf7-form-control-wrap {position: relative;}
+.use-floating-validation-tip span.wpcf7-not-valid-tip {position: absolute;top: 20%;left: 20%;z-index: 100;border: 1px solid #ff0000;background: #fff;padding: .2em .8em;}
+span.wpcf7-list-item {margin-left: 0.5em;}
+.wpcf7-display-none {display: none;}
+div.wpcf7 img.ajax-loader {border: none;vertical-align: middle;margin-left: 4px;}
+div.wpcf7 div.ajax-error {display: none;}
+div.wpcf7 .placeheld {color: #888;}
 /* CSS-only Arrows */
 .arrow-up {	width: 0;	height: 0; 	border-left: 15px solid transparent;	border-right: 15px solid transparent;	border-bottom: 15px solid #000;}
 .arrow-down {	width: 0; 	height: 0; 	border-left: 15px solid transparent;	border-right: 15px solid transparent;	border-top: 15px solid #000;}
@@ -258,6 +272,11 @@ a.tweetable {color: #444; background-color:#f8f8f8; padding:1px 2px 3px 7px; fon
 a.tweetable:hover, a.tweetable:focus, a.tweetable:active{background-color:#f4f4f4; color:#222; transition:all 0.2s; text-decoration:none;}
 a.tweetable::before{font-family:'bootplate'; content: '\e81e'; margin-right:7px; font-size:80%; line-height:1.2; color:#55ACEE; opacity:0.9; transition:all 0.2s;}
 a.tweetable:hover::before{opacity:1;}
+.gist table {margin-bottom: 0 !important;}
+.gist .line-numbers{width: 4em !important;}
+.gist .line,.gist .line-number{font-size: 12px !important;height: 18px !important;line-height: 18px !important;}
+.gist .line{white-space: pre !important;width: auto !important;word-wrap: normal !important;}
+.gist .line span{word-wrap: normal !important;}
 /* == Bootstrap Cards (v4) == */
 .card{position: relative;  margin-bottom: 30px;  border-radius: 6px; background-color:#F8F8F8; border: 1px solid #eee;}
 .bg-default .card{background-color:#fff; border: 1px solid #ccc;}
@@ -399,6 +418,9 @@ footer a:hover, footer a:focus, footer a:active{color:#fff;}
 	.comment-list .panel.arrow.right:after {right: -14px;top: 31px;border-left-color: #f5f5f5;border-width: 15px;}
 	#socket-footer .list-inline{text-align:right;}
 	#socket-footer p{text-align:left;}
+	a .img-thumbnail{border-color:#ddd; background-color:#f4f4f4;}
+	a:hover .img-thumbnail, a:focus .img-thumbnail{border-color:#ccc; background-color:#fff;}
+	a:active .img-thumbnail{border-color:#bbb; background-color:#fff;}
 }
 
 /* == Medium Devices, Desktops == */

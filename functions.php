@@ -245,11 +245,16 @@ add_action( 'wp_enqueue_scripts', 'bootplate_scripts' );
 
 // Get rid of bloated styles
 function bootplate_deregister_styles() {
-	//wp_deregister_style( 'contact-form-7' );
+	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style('shorty');
-	//wp_deregister_style('front-css-yuzo_related_post');
+	//wp_deregister_style('oembed-gist');
 }
 add_action( 'wp_print_styles', 'bootplate_deregister_styles', 100 );
+
+// Remove oEmbed Gist Action
+global $oe_gist;
+remove_action( 'wp_head', array( $oe_gist, 'wp_head' ), 100 );
+
 
 require get_template_directory() . '/inc/template-tags.php';
 
