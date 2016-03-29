@@ -59,10 +59,11 @@ $( document ).ready(function() {
 	// Processing Buttons
 	$('.btn-process').click(function() {
 		"use strict";
-		$(this).addClass('processing');
+		var button = $(this)
+		button.addClass('processing');
 		setTimeout(function(){
-			$(this).removeClass('processing');
-		}, 600);
+			button.removeClass('processing');
+		}, 800);
 		
 	});
 	
@@ -118,6 +119,13 @@ $( document ).ready(function() {
 		)
 	  )
 	  document.querySelector('head').appendChild(msViewportStyle)
+	}
+	
+	// JDM Frontend Admin Buttons
+	if($('#fab-admin-btns').length) {
+		$('#hide-admin-buttons').click(function() {
+			$('#fab-admin-btns').fadeOut();
+		});
 	}
 	
 	$("img.lazy").lazyload({effect : "fadeIn"});

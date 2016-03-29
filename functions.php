@@ -218,6 +218,8 @@ function bootplate_scripts() {
 	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), '' );
 	wp_style_add_data( 'bootplate-ie', 'conditional', 'lt IE 9' );
 	
+	wp_deregister_script( 'jdm-fab' );
+	
 	wp_deregister_script( 'html5shiv-maxcdn' );
 	wp_register_script( 'html5shiv-maxcdn', '//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js', '', '', false );
 	wp_enqueue_script( 'html5shiv-maxcdn' );
@@ -247,7 +249,7 @@ add_action( 'wp_enqueue_scripts', 'bootplate_scripts' );
 function bootplate_deregister_styles() {
 	wp_deregister_style( 'contact-form-7' );
 	wp_deregister_style('shorty');
-	//wp_deregister_style('oembed-gist');
+	wp_deregister_style('jdm-fab');
 }
 add_action( 'wp_print_styles', 'bootplate_deregister_styles', 100 );
 

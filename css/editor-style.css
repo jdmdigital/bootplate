@@ -5,7 +5,7 @@ body{color: #333; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font
 a{color: #6f5499;}
 a:hover, a:focus{color: #23527c;}
 h1,h2,h3,h4,h5,h6 {	clear: both;	font-weight: 600;	line-height: 1.1;	text-transform:none;}
-h1,h2,h3 {margin: 22px 0 11px;}
+h1,h2,h3 {margin: 30px 0 11px;}
 h4,h5,h6{margin: 22px 0 11px;}
 h1 {font-size: 4rem; letter-spacing: -1px;}
 h2 {font-size: 3rem;}
@@ -124,7 +124,7 @@ img {border: 0;	height: auto;	max-width: 100%;	vertical-align: middle;}
 .bp-skype:before { content: '\e820'; } 
 .bp-linkedin:before { content: '\e821'; } 
 .bp-github-circled:before { content: '\e822'; } 
-.bp-wordpress:before { content: '\e823'; } 
+.bp-WordPress:before { content: '\e823'; } 
 .bp-facebook:before { content: '\e824'; } 
 .bp-vimeo-1:before { content: '\e825'; } 
 .bp-instagram-filled:before { content: '\e826'; } 

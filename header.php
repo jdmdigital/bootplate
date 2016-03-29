@@ -23,6 +23,5 @@
 </head>
 
 <body <?php body_class(); ?>>
-<!-- <?php echo get_bootplate_nav_type(); ?> -->
 <?php get_template_part('nav', get_bootplate_nav_type()); ?>
 <a class="skip-link sr-only screen-reader-text" href="#content"><?php _e('Skip to content', 'bootplate'); ?></a>

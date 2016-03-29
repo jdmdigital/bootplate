@@ -11,7 +11,8 @@ v0.6
 @viewport           { width: device-width; }
 
 /* == UTILITIES == */
-.has-featured-image{background-image:none!important;}
+.jdm-fab{opacity:0; position:fixed; right:-115px;}
+.has-featured-image{background-position:center; background-size:cover; background-repeat:no-repeat;}
 .nc{display:none;}
 .bold{font-weight:700;}
 .no-margin {margin: 0!important}
@@ -136,7 +137,7 @@ section:first-of-type{padding-top:30px;}
 .h3, h3, .section_title{color:#666;}
 
 .sidebar .widget{margin-bottom:45px;}
-article.post{border-top:5px solid #222; padding-top:1px; padding-bottom:5px; padding-left:5px; padding-right:5px; margin-bottom:30px;}
+article.post{border-top:5px solid #222; min-height: 460px; padding-top:1px; padding-bottom:5px; padding-left:5px; padding-right:5px; margin-bottom:30px;}
 .post-content{border-bottom:5px solid #222; padding-bottom:20px;}
 .post h2{line-height:1;}
 .post h2 a {color:#222;}
@@ -160,7 +161,10 @@ h4.widget-title a{color:#444; font-size: 1em;}
 footer{opacity:0; background-color:#000; }
 footer small{font-size:0.6em;}
 article h4, article .h4{font-size:24px;}
-
+.gallery-columns-2 .gallery-item, .gallery-columns-3 .gallery-item, .gallery-columns-4 .gallery-item{width:100%; float:none;}
+.gallery-item img{width:100%; height:auto;}
+.gallery-item .gallery-caption{margin-bottom:0; padding:4px 8px; background-color:#eee; border-bottom:1px solid #ddd; font-size:0.8em;}
+.btn.btn-disabled{cursor:not-allowed; opacity:0.8; color:rgba(255,255,255,0.7);}
 /* == Custom, Mobile-First Media Queries == */
 /* Remember: 
 	Min-Width: Refers to everything greater than or equal to the amount given.
@@ -196,6 +200,8 @@ article h4, article .h4{font-size:24px;}
 	.jumbotron .display-3{font-size:300%;font-size: 4rem; }
 	.hidden-xs, .nav > li.hidden-xs{display:none;}
 	.serp p{display:block;}
+	.gallery-columns-2 .gallery-item, .gallery-columns-3 .gallery-item{width:100%; float:none;}
+	.gallery-columns-4 .gallery-item{width:50%; float:left;}
 }
 
 /* == Small Devices, Tablets == */
@@ -208,6 +214,7 @@ article h4, article .h4{font-size:24px;}
 	.display-3, .jumbotron .display-2{font-size:300%;font-size: 4rem; }
 	.jumbotron .display-3{font-size:400%;font-size: 5rem; }
 	.jumbotron .lead{font-size:1.8rem;}
+	.jumbotron .h2{font-size:45px;}
 	h4.card-title, .h4.card-title{font-size:28px;}
 	.card{position: relative;  margin-bottom: 30px;  border-radius: 6px; background-color:#F8F8F8; border: 1px solid #eee;}
 	.bg-default .card{background-color:#fff; border: 1px solid #ccc;}
@@ -240,20 +247,20 @@ article h4, article .h4{font-size:24px;}
 	.flexbox .full-height h1{margin-top:-85px;}
 	.flexbox .full-height{display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: center;	-webkit-align-items: center;	-webkit-box-align: center;	align-items: center;}
 	.the-excerpt{min-height:200px;}
-	article h2.h4{min-height:60px;}
+	article h2.h4{min-height:80px;}
 	article.serp h2.h4{min-height:10px;}
-	.gallery-columns-2 .gallery-item{width:50%; float:left;}
-	.gallery-columns-3 .gallery-item{width:33.33%; float:left;}
-	.gallery-columns-4 .gallery-item{width:25%; float:left;}
-	.gallery-item img{width:100%; height:auto;}
-	.has-featured-image{background-position:center; background-size:cover; background-repeat:no-repeat;}
+	.gallery-columns-2 .gallery-item{width:100%; float:none;}
+	.gallery-columns-3 .gallery-item, .gallery-columns-4 .gallery-item{width:50%; float:left;}
+	article.post{min-height: 480px;}
 }
 
 /* == Medium Devices, Desktops == */
 @media only screen and (min-width : 992px) {
 	.slick-slide blockquote p{font-size: 2rem;}
 	.nav-pills .nav-link{padding:0.5em 1em;}
+	.jumbotron {padding-top:50px; padding-bottom:50px;}
 	.jumbotron .display-3{font-size:400%;font-size: 6rem; }
+	.jumbotron .h2{font-size:50px;}
 	.flexbox .full-height h1{margin-top:-100px;}
 	.hidden-md-up, .nav > li.hidden-md-up{display:none;}{display:none;}
 	.hidden-sm{display:block;}
@@ -267,15 +274,22 @@ article h4, article .h4{font-size:24px;}
 	.full-height .container{margin-top:10vh;}
 	.no-cssvhunit .full-height .container{margin-top:80px;}
 	.the-excerpt{min-height:180px;}
+	article.post{min-height: 380px;}
+	.gallery-columns-2 .gallery-item{width:50%; float:left;}
+	.gallery-columns-3 .gallery-item{width:33.33%; float:left;}
+	.gallery-columns-4 .gallery-item{width:25%; float:left;}
 }
+
 
 /* == Extra Large Devices, Wide Screens == */
 @media only screen and (min-width : 1200px) {
 	.display-2{font-size:200%;font-size:4.5rem; }
 	.display-3, .jumbotron .display-2{font-size:300%;font-size: 5.5rem; }
+	.jumbotron {padding-top:55px; padding-bottom:55px;}
 	.jumbotron .display-3{font-size:400%;font-size: 6.5rem; }
 	.jumbotron .lead{font-size:2rem;}
 	.flexbox .full-height h1{margin-top:-120px;}
+	.jumbotron .h2{font-size:55px;}
 	.padding-top-30{padding-top:60px;}
 	.padding-bottom-30{padding-bottom:60px;}
 	.padding-top-60{padding-top:90px;}
@@ -287,7 +301,7 @@ article h4, article .h4{font-size:24px;}
 	.archive .sidebar-right{display:block;}
 	.sidebar-left{display:block;}
 	.the-excerpt{min-height:220px;}
-	
+	article.post{min-height: 460px;}
 }
 
 /* == Narrow Height Viewport Styles == */

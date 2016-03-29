@@ -123,10 +123,10 @@ Elements here should ONLY be used/viewable below the fold.
 .label-default[href]:hover,.label-default[href]:focus {  background-color: #5e5e5e;}
 .pagination {  display: inline-block;  padding-left: 0;  margin-top: 1rem;  margin-bottom: 1rem;  border-radius: .25rem;}
 .pagination > li {  display: inline;}
-.pagination > li > a,.pagination > li > span { position: relative;  float: left;  padding: .5rem .75rem;  margin-left: -1px;  line-height: 1.5;  color: #008bbb;  text-decoration: none;  background-color: #fff;  border: 1px solid #ddd;}
+.pagination > li > a,.pagination > li > span { position: relative;  float: left;  padding: .5rem .75rem;  margin-left: -1px;  line-height: 1.5;  text-decoration: none;  background-color: #fff;  border: 1px solid #ddd;}
 .pagination > li:first-child > a,.pagination > li:first-child > span {  margin-left: 0;  border-top-left-radius: .25rem;  border-bottom-left-radius: .25rem;}
 .pagination > li:last-child > a,.pagination > li:last-child > span {  border-top-right-radius: .25rem;  border-bottom-right-radius: .25rem;}
-.pagination > li > a:focus,.pagination > li > a:hover,.pagination > li > span:focus,.pagination > li > span:hover {  color: #014c8c;  background-color: #eceeef;  border-color: #ddd;}
+.pagination > li > a:focus,.pagination > li > a:hover,.pagination > li > span:focus,.pagination > li > span:hover {  background-color: #eceeef;  border-color: #ddd;}
 .pagination > .active > a,.pagination > .active > a:focus,.pagination > .active > a:hover,.pagination > .active > span,.pagination > .active > span:focus,.pagination > .active > span:hover {  z-index: 2;  color: #fff;  cursor: default;  background-color: #008bbb;  border-color: #008bbb;}
 .pagination > .disabled > span,.pagination > .disabled > span:focus,.pagination > .disabled > span:hover,.pagination > .disabled > a,.pagination > .disabled > a:focus,.pagination > .disabled > a:hover {  color: #818a91;  cursor: not-allowed;  background-color: #fff;  border-color: #ddd;}
 .sidebar ul.menu{opacity:1; transition:opacity ease-in 0.3s;}
@@ -391,6 +391,15 @@ footer a:hover, footer a:focus, footer a:active{color:#fff;}
 #bootplate-credit{margin-top:3rem;}
 .no-cssremunit #bootplate-credit{margin-top:40px;}
 #bootplate-credit p{color:rgba(255,255,255,0.3);}
+
+/* JDM FAB Styles */
+#fab-admin-btns{width:170px; position:fixed; top:60px; right:0; opacity:0.8;-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
+.home #fab-admin-btns{ top:100px;}
+#fab-admin-btns:hover{opacity:1;-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
+.admin-btns-wrapper .btn{margin-bottom:2px; margin-right:0; text-align:left; line-height:2;}
+.admin-btns-wrapper .btn span{margin-right:15px; margin-left:5px;}
+#fab-admin-btns{-moz-transform: translateX(115px);-webkit-transform: translateX(115px);-o-transform: translateX(115px);-ms-transform: translateX(115px);transform: translateX(115px);}
+#fab-admin-btns:hover, #admin-btns:focus, #admin-btns:active{-moz-transform: translateX(0);-webkit-transform: translateX(0);-o-transform: translateX(0);-ms-transform: translateX(0);transform: translateX(0);}
 
 /* DEMO-ONLY STUFF */
 .the-icons {font-size: 18px;line-height: 28px;vertical-align:central; min-height:45px; margin-bottom:8px;}
