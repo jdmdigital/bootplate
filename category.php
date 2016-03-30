@@ -16,6 +16,7 @@ get_header(); ?>
 <section>
 	<div class="container">
 		<div class="row margin-bottom category <?php echo get_post_format(); ?>">
+			<?php //bootplate_breadcrumbs(); ?>
 			<?php get_template_part( 'content', get_post_format() ); ?>
 		</div>
 	</div>

@@ -49,6 +49,7 @@ get_header(); ?>
 
 <section id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="container">
+		<?php bootplate_breadcrumbs(); //if Yoast SEO breadcrumbs are installed and enabled ?>
 		<?php the_content(); ?>
 	</div>
 </section>

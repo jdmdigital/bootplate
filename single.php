@@ -22,6 +22,7 @@ get_header(); ?>
 <section>
 	<div class="container">
 		<div class="row single-content">
+			<?php //bootplate_breadcrumbs(); ?>
 			<?php get_template_part( 'content', get_post_format() ); ?>
 		</div>
 		

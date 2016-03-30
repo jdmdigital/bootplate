@@ -56,6 +56,7 @@ get_header(); ?>
 			</div>
 			
 			<div class="col-lg-8 main-content">
+				<?php bootplate_breadcrumbs(); ?>
 				<?php the_content(); ?>
 			</div>
 			

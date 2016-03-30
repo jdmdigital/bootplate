@@ -44,6 +44,7 @@ get_header(); ?>
 		<div class="row">
 			
 			<div class="col-md-8 main-content">
+				<?php bootplate_breadcrumbs(); ?>
 				<?php the_content(); ?>
 			</div>
 			

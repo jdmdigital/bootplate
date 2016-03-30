@@ -342,10 +342,15 @@ if(!function_exists('bootplate_meta')) {
 			echo '	<meta property="og:title" content="'.esc_url(get_home_url()).'" />'."\r\n";
 			echo '	<meta property="og:description" content="'.$metadescription.'" />'."\r\n";
 			echo '	<meta property="og:url" content="'.get_home_url().'" />'."\r\n";
+			echo '	<meta name="apple-mobile-web-app-capable" content="yes">'."\r\n";
+			echo '	<meta name="apple-mobile-web-app-status-bar-style" content="black">'."\r\n";		
+			echo '	<meta name="apple-mobile-web-app-title" content="'.get_bloginfo('name').'">'."\r\n";
 			echo '	<meta name="robots" content="noodp"/>'."\r\n";
 		} else {
-			// Let the plugin do the work
-			echo '';
+			// Let the plugin do the work, but add the apple-mobile-web-app stuff
+			echo '<meta name="apple-mobile-web-app-capable" content="yes">'."\r\n";
+			echo '	<meta name="apple-mobile-web-app-status-bar-style" content="black">'."\r\n";		
+			echo '	<meta name="apple-mobile-web-app-title" content="'.get_bloginfo('name').'">'."\r\n";
 		}
 	}
 }
@@ -686,6 +691,44 @@ if(!function_exists('bootplate_paginate_links')) {
 		return $r;
 	} // end bootplate_paginate_links()
 }// end if !exists
+
+/**
+ * Yoast Breadcrumbs on Twitter Bootstrap v3.3 - BROKEN 
+ * 
+ * @author Justin Downey
+ * @license MIT License
+ * @param string $sep Your custom separator
+ */
+/*function downey_bootplate_breadcrumbs($sep = '|') {
+	if (!function_exists('yoast_breadcrumb')) {
+		return null;
+	}
+	$old_sep = '\&raquo\;';
+
+	$breadcrumbs = yoast_breadcrumb( '<ol class="breadcrumb"><li>', '</li></ol>', false );
+    
+	if(strpos($breadcrumbs, $old_sep) !== false) {
+		$output = str_replace( $old_sep, '</li><li>', $breadcrumbs );
+	} else {
+		$output = str_replace( $sep, '</li><li>', $breadcrumbs );
+	}
+	return $output;
+} */
+
+// Echo Breadcrumbs if Yoast SEO is installed
+if(!function_exists('bootplate_breadcrumbs') ) {
+	function bootplate_breadcrumbs() {
+		if ( function_exists('yoast_breadcrumb') && function_exists('downey_bootplate_breadcrumbs') ) {
+			echo downey_bootplate_breadcrumbs();
+			//
+		} elseif (function_exists('yoast_breadcrumb') && !function_exists('downey_bootplate_breadcrumbs')) {
+			yoast_breadcrumb('<p id="breadcrumbs" class="breadcrumb">','</p>');
+		} else {
+			echo '<!--No theme-generated breadcrumbs-->';
+		}
+	} // END function bootplate_breadcrumbs()
+}
+
 
 // Detect and USE functions from a few subtitle plugins
 /* Supports:
