@@ -201,9 +201,9 @@ function bootplate_scripts() {
 			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), '' );
 		}
 		if(file_exists(get_stylesheet_directory_uri() . '/style.min.css')) {
-			wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), '' );
+			//wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), '' );
 		} else {
-			wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), '' );
+			//wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), '' );
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
