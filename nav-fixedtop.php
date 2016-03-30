@@ -12,7 +12,7 @@
 				<span class="hamb-middle"></span>
 				<span class="hamb-bottom"></span>
 			</button>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home"><?php bloginfo( 'name' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand" rel="home"><?php echo bootplate_get_logo(); ?></a>
 		</div>
 		<div id="primary-menu" class="collapse navbar-collapse pull-sm-right navbar-toggleable-xs">
 			<ul class="nav navbar-nav navbar-right">

@@ -12,6 +12,8 @@
  * <?php echo get_theme_mod( 'formal_name_textbox', 'No formal name.' ); ?>
  * <?php if( get_theme_mod( 'bootplate_credit' ) == 1) { show it} ?>
  * <?php if( get_theme_mod( 'main-nav-type', 'Scroll (default)' ) == 'Scroll (default)') echo ''; ?>
+ * if( get_theme_mod( 'themeslug_logo' )) { echo esc_url( get_theme_mod( 'bootplate_logo' ) );}
+ * if(get_theme_mod( 'bootplate_enable_search', '') == 1) {}
  */
  
 function bootplate_customize_register( $wp_customize ) {
@@ -34,7 +36,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Control
+	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
 	$wp_customize->add_control(
 		'main_nav_type',
 		array(
@@ -59,23 +61,49 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Style Control
+	// Add Navigation Style Control - Don't forget to update the sanitize_select callback
 	$wp_customize->add_control(
 		'main_nav_style',
 		array(
 			'label' => 'Main Nav Style',
-			'description' => 'Select the STYLE of main (top) navigation you would like.',
+			'description' => 'Select the STYLE of main (top) navigation. If you select w/ Logo or w/ Logo Bug and Text, please be sure to upload a logo below.',
 			'section' => 'general_settings_section',
 			'type' => 'select',
 			'choices' => array(
-				'navbar-inverse' => 'Navbar Dark',
+				'navbar-inverse' => 'Navbar Dark (default)',
 				'navbar-inverse-logo' => 'Navbar Dark w/ Logo',
-				'navbar-style-default' => 'Navbar Light',
-				'navbar-style-light-logo' => 'Navbar Light w/ Logo',
+				'navbar-inverse-logo-bug' => 'Navbar Dark w/ Logo Bug and Text',
+				'navbar-light' => 'Navbar Light',
+				'navbar-light-logo' => 'Navbar Light w/ Logo',
+				'navbar-light-logo-bug' => 'Navbar Light w/ Logo Bug and Text'
 			),
 		)
 	);
 	
+	// Add Logo Bug Setting
+	$wp_customize->add_setting(
+		'bootplate_logo'
+	);
+	// Add Logo Bug Upload Control
+	$wp_customize->add_control( 
+		new WP_Customize_Image_Control( $wp_customize, 'bootplate_logo', 
+			array(
+				'label'    => 'Upload Logo',
+				'description' => 'Upload a full logo (218x48) or Logo Bug (48x48), depending on the Nav Style chosen above.',
+				'section'  => 'general_settings_section',
+				'settings' => 'bootplate_logo',
+			) 
+		) 
+	);
+	
+	// Add Formal Company Name Setting
+	$wp_customize->add_setting(
+		'formal_name_textbox',
+		array(
+			'default' => 'Awesome, LLC',
+			'sanitize_callback' => 'bootplate_sanitize_text',
+		)
+	);
 	// Add Formal Company Name Setting
 	$wp_customize->add_setting(
 		'formal_name_textbox',
@@ -147,10 +175,12 @@ function bootplate_sanitize_text( $input ) {
 // Needs to be updated as new options are avaliable
 function bootplate_sanitize_select( $input ) {
     $valid = array(
-        'navbar-inverse' => 'Navbar Dark',
+        'navbar-inverse' => 'Navbar Dark (default)',
 		'navbar-inverse-logo' => 'Navbar Dark w/ Logo',
-		'navbar-style-default' => 'Navbar Light',
-		'navbar-style-light-logo' => 'Navbar Light w/ Logo',
+		'navbar-inverse-logo-bug' => 'Navbar Dark w/ Logo Bug and Text',
+		'navbar-light' => 'Navbar Light',
+		'navbar-light-logo' => 'Navbar Light w/ Logo',
+		'navbar-light-logo-bug' => 'Navbar Light w/ Logo Bug and Text',
 		'default-scroll' => 'Scroll (default)',
 		'navbar-fixed-top' => 'Fixed to Top',
 		'navbar-fixed-bottom' => 'Fixed to Bottom',

@@ -408,9 +408,11 @@ if(!function_exists('bootplate_nice_search_redirect')) {
 			exit();
 		}
 	}
-	add_action( 'template_redirect', 'bootplate_nice_search_redirect' );
+	// Add_Action ONLY if the Enable Search is = 1
+	if(get_theme_mod( 'bootplate_enable_search', '') == 1) {
+		add_action( 'template_redirect', 'bootplate_nice_search_redirect' );
+	}
 }
-
 
 if ( ! function_exists( 'bootplate_comment_nav' ) ) :
 /**
@@ -990,35 +992,78 @@ if(!function_exists('get_bootplate_formal_name')) {
 
 if(!function_exists('get_bootplate_nav_type')) {
 	function get_bootplate_nav_type() {
-		$navtype = get_theme_mod( 'main_nav_type', 'default-scroll' );
-		if($navtype == 'navbar-fixed-top'){
-			$navpart = 'fixedtop';
-		} elseif($navtype == 'navbar-fixed-bottom'){
-			$navpart = 'fixedbottom';
+		$navtype = get_theme_mod( 'main_nav_type', false );
+		if($navtype){
+			if($navtype == 'navbar-fixed-top'){
+				// nav-fixedtop.php
+				$navpart = 'fixedtop';
+			} elseif($navtype == 'navbar-fixed-bottom'){
+				// nav-fixedbottom.php
+				$navpart = 'fixedbottom';
+			} elseif($navtype == 'default-scroll') {
+				// nav.php
+				$navpart = '';
+			} else {
+				// nav-{whatever}.php
+				$navpart = $navpart;
+			}
 		} else {
+			// defaults to nav.php
 			$navpart = '';
 		}
-
 		return $navpart;
 	}
 }
 
 if(!function_exists('get_bootplate_nav_style')) {
 	function get_bootplate_nav_style() {
-		$navstyle = get_theme_mod( 'main_nav_style', '' );
-		if($navstyle == 'navbar-style-default'){
-			$navclasses = 'navbar-default '.$navstyle;
-		} elseif ($navstyle == 'navbar-style-light-logo') {
-			$navclasses = 'navbar-default navbar-img-logo '.$navstyle;
+		$navstyle = get_theme_mod( 'main_nav_style', 'not-set' );
+		
+		if ($navstyle == 'navbar-inverse') {
+			$navclasses = 'navbar-dark bg-inverse navbar-inverse '.$navstyle;
+		
 		} elseif ($navstyle == 'navbar-inverse-logo') {
 			$navclasses = 'navbar-dark bg-inverse navbar-inverse navbar-img-logo '.$navstyle;
-		} elseif ($navstyle == 'navbar-inverse') {
-			$navclasses = 'navbar-dark bg-inverse navbar-inverse '.$navstyle;
+			
+		} elseif ($navstyle == 'navbar-inverse-logo-bug') {
+			$navclasses = 'navbar-dark bg-inverse navbar-inverse navbar-imgtext-logo '.$navstyle;
+		
+		} elseif($navstyle == 'navbar-light') {
+			$navclasses = 'navbar-default '.$navstyle;
+			
+		} elseif ($navstyle == 'navbar-light-logo') {
+			$navclasses = 'navbar-default navbar-img-logo '.$navstyle;
+			
+		} elseif ($navstyle == 'navbar-light-logo-bug') {
+			$navclasses = 'navbar-default navbar-imgtext-logo '.$navstyle;
+
 		} else {
 			// Default
-			$navclasses = 'navbar-dark bg-inverse navbar-inverse bootplate-default-nav-style '.$navstyle;
+			$navclasses = 'navbar-dark bg-inverse navbar-inverse bootplate-oops-nav-style '.$navstyle;
 		}
 		return $navclasses;
+	}
+}
+
+if(!function_exists('bootplate_get_logo')) {
+	function bootplate_get_logo(){
+		$navtype = get_theme_mod( 'main_nav_style', 'default-logo' );
+		if($navtype == 'navbar-inverse-logo' || $navtype == 'navbar-light-logo'){
+			if( get_theme_mod('bootplate_logo', false)) {
+				$logo = '<img src="'.esc_url(get_theme_mod('bootplate_logo')).'" alt="'.get_bloginfo( 'name' ).'" />';
+			} else {
+				$logo = '<img src="'.get_template_directory_uri().'/img/218x48.png" alt="'.get_bloginfo( 'name' ).'" />';
+			}
+		} elseif ($navtype == 'navbar-inverse-logo-bug' || $navtype == 'navbar-light-logo-bug') {
+			if( get_theme_mod('bootplate_logo', false) ) {
+				$logo = '<img src="'.esc_url(get_theme_mod('bootplate_logo')).'" alt="'.get_bloginfo( 'name' ).' Logo" />'.' '.get_bloginfo( 'name' );
+			} else {
+				$logo = '<img src="'.get_template_directory_uri().'/img/48x48.png" alt="'.get_bloginfo( 'name' ).'" />'.' '.get_bloginfo( 'name' );
+			}
+		} else {
+			$logo = get_bloginfo( 'name' );
+		}
+		return $logo;
 	}
 }
 
