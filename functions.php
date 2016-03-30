@@ -203,7 +203,7 @@ function bootplate_scripts() {
 		if(file_exists(get_stylesheet_directory_uri() . '/style.min.css')) {
 			wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), '' );
 		} else {
-			wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri(), array('bootstrap'), '' );
+			wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), '' );
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
