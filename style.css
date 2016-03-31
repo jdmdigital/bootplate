@@ -481,8 +481,8 @@ a.list-group-item-danger.active,button.list-group-item-danger.active,a.list-grou
 .btn-danger-outline:hover, .bg-custom a.btn-danger-outline:hover  {  color: #fff;  background-color: #d9534f;  border-color: #d9534f;}
 .btn-danger-outline.disabled:focus,.btn-danger-outline.disabled.focus,.btn-danger-outline:disabled:focus,.btn-danger-outline:disabled.focus,fieldset[disabled] .btn-danger-outline:focus,fieldset[disabled] .btn-danger-outline.focus {  border-color: #eba5a3;}
 .btn-danger-outline.disabled:hover,.btn-danger-outline:disabled:hover,fieldset[disabled] .btn-danger-outline:hover {  border-color: #eba5a3;}
-.aside.alert-danger{border-color:#ddd; border-left-color:#eba5a3; color:#333;}
-.aside.alert-danger h3, .aside.alert-danger h4{color:#eba5a3; margin-top:0;}
+.aside.alert-danger{border-color:#ddd; border-left-color:#C9302C; color:#333;}
+.aside.alert-danger h3, .aside.alert-danger h4 .aside.alert-danger b{color:#C9302C; margin-top:0;}
 
 /* Info: #31708f */
 .bg-info {  background-color: #31708f; color:rgba(255,255,255,0.7);}
