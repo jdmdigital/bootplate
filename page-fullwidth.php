@@ -41,9 +41,6 @@ get_header(); ?>
 				?>
 			</div>
 		</div><!--/row-->
-		<div class="jumboscroll hidden-sm hidden-xs">
-			<button type="button" class="btn btn-secondary-outline btn-circle btn-inverse"><span class="bp-down-open"></span></button>
-		</div>
 	</div><!--/.container-->
 </header>
 
