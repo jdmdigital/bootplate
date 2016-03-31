@@ -4,14 +4,15 @@
  *
  * @package WordPress
  * @subpackage Bootplate
- * @since Bootplate 0.6
+ * @since Bootplate 0.7
  */
 
 /* To retreive these settings:
- * <?php echo get_theme_mod( 'copyright_textbox', 'No copyright information has been saved yet.' ); ?>
- * <?php echo get_theme_mod( 'formal_name_textbox', 'No formal name.' ); ?>
- * <?php if( get_theme_mod( 'bootplate_credit' ) == 1) { show it} ?>
- * <?php if( get_theme_mod( 'main-nav-type', 'Scroll (default)' ) == 'Scroll (default)') echo ''; ?>
+ * get_theme_mod( 'copyright_textbox', 'No copyright information has been saved yet.' ); ?>
+ * get_theme_mod( 'formal_name_textbox', 'No formal name.' ); ?>
+ * if( get_theme_mod( 'bootplate_credit' ) == 1) { show it} ?>
+ * if( get_theme_mod( 'main-nav-type', 'nav-right' ) == 'nav-right')  ?>
+ * if( get_theme_mod( 'main-nav-position', 'default-scroll' ) == 'default-scroll') 
  * if( get_theme_mod( 'themeslug_logo' )) { echo esc_url( get_theme_mod( 'bootplate_logo' ) );}
  * if(get_theme_mod( 'bootplate_enable_search', '') == 1) {}
  */
@@ -48,6 +49,31 @@ function bootplate_customize_register( $wp_customize ) {
 				'default-scroll' => 'Scroll (default)',
 				'navbar-fixed-top' => 'Fixed to Top',
 				'navbar-fixed-bottom' => 'Fixed to Bottom',
+			),
+		)
+	);
+	
+	// Add Navigation Position Setting
+	$wp_customize->add_setting(
+		'main_nav_position',
+		array(
+			'default' => 'nav-right',
+			'sanitize_callback' => 'bootplate_sanitize_select',
+		)
+	);
+	
+	// Add Navigation Position Control  - Don't forget to update the sanitize_select callback
+	$wp_customize->add_control(
+		'main_nav_position',
+		array(
+			'label' => 'Main Nav Position',
+			'description' => 'Select the POSITION of main (top) navigation(s) you would like.',
+			'section' => 'general_settings_section',
+			'type' => 'select',
+			'choices' => array(
+				'nav-right' => 'Right Nav (default)',
+				'nav-left' => 'Left Nav',
+				'nav-split' => 'Split Nav (right and left navs)',
 			),
 		)
 	);
@@ -184,6 +210,9 @@ function bootplate_sanitize_select( $input ) {
 		'default-scroll' => 'Scroll (default)',
 		'navbar-fixed-top' => 'Fixed to Top',
 		'navbar-fixed-bottom' => 'Fixed to Bottom',
+		'nav-right' => 'Right Nav (default)',
+		'nav-left' => 'Left Nav',
+		'nav-split' => 'Split Nav (right and left navs)'
     );
 	
 	if ( array_key_exists( $input, $valid ) ) {

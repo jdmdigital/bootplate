@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.4.2
-Version: 0.6
+Version: 0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
@@ -23,7 +23,8 @@ For more information about Bootplate please go to http://bootplate.jdmdigital.co
 
 1. Download the latest release of Bootplate from GitHub: https://github.com/jdmdigital/bootplate
 2. In your admin panel, go to Appearance -> Themes and click 'Activate' on the Bootplate theme to use it right away.
-3. Go to http://bootplate.jdmdigital.co/setup/ for a guide on how to setup and customize this theme.
+3. Go to http://bootplate.jdmdigital.co/setup/get-started/ for a guide on how to setup and customize this theme, 
+4. Or use a Child Theme: http://bootplate.jdmdigital.co/setup/child-themes/
 
 == Copyright ==
 

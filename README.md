@@ -1,12 +1,12 @@
 # BootPlate
-**A super fast, mobile-first, Bootstrap v4 theme framework for building awesome WordPress websites.**
+**A wicked-fast, mobile-first, Bootstrap 4 theme framework for building awesome WordPress websites.**
 
 ![alt tag](https://jdmdigital.co/wp-content/uploads/2016/03/bootplate-screenshot-v06.jpg)
 
 ## Preview and Docs
 We've combined a working theme preview with a documentation site.  What you see at [bootplate.jdmdigital.co](http://bootplate.jdmdigital.co) is the "parent" theme.  It's pretty basic, and that's intentional.  It's designed to be [extened via plugins](http://bootplate.jdmdigital.co/plugins/) and [transformed using child themes](http://bootplate.jdmdigital.co/themes/)--just like [Bootstrap](http://getbootstrap.com) itself.
 
-*Check it out at: [http://bootplate.jdmdigital.co](http://bootplate.jdmdigital.co)*
+**Check it out at: [http://bootplate.jdmdigital.co](http://bootplate.jdmdigital.co)**
 
 You'll find we've actually combined classes and grid options from production-ready Bootstrap 3.3.6 and from Bootstrap 4-alpha 2.  Sprinkle on a little performance work and some WordPress best practices, and you'll find Bootplate should be your go-to for all Bootstrap-based WordPress theme design projects.
 

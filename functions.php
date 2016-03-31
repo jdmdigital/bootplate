@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v0.6 Main Functions
+ * Bootplate v0.7 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 0.6);
+define('VERSION', 0.7);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -73,10 +73,11 @@ if ( !function_exists('bootplate_setup') ) {
 		
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus( array(
-			'primary' => __( 'Primary Menu', 'bootplate' ),
-			'blogcats'  => __( 'Blog Categories Menu', 'bootplate' ),
-			'footer'  => __( 'Footer Links Menu', 'bootplate' ),
-			'social'  => __( 'Social Links Menu', 'bootplate' ),
+			'primary' 		=> __( 'Primary Menu', 'bootplate' ),
+			'primary-left'	=> __( 'Primary Menu (left)', 'bootplate' ),
+			'blogcats'  	=> __( 'Blog Categories Menu', 'bootplate' ),
+			'footer'  		=> __( 'Footer Links Menu', 'bootplate' ),
+			'social'  		=> __( 'Social Links Menu', 'bootplate' ),
 		) );
 		
 		// Include Bootstrap Nav Walker
@@ -1030,6 +1031,25 @@ if(!function_exists('get_bootplate_formal_name')) {
 			$companyname = get_bloginfo('name');
 		}
 		return $companyname;
+	}
+}
+
+/* BOOL - Returns TRUE if nav_position is the same as passed var accroding to Customizer option
+ * Defaults to 'nav-right'
+ * returns FALSE if it doesn't or if the passed nav position isn't an option
+ * @since Bootplate v0.7
+ *
+ * Usage: if(is_bootplate_nav_position('nav-right')) 
+ */
+if(!function_exists('is_bootplate_nav_position')) {
+	function is_bootplate_nav_position($pos = 'nav-right') {
+		$navtype = get_theme_mod( 'main_nav_position', 'nav-right' );
+		
+		if($navtype == $pos || $navtype == 'nav-split'){
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 
