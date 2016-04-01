@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.4.2
-Version: 0.7
+Version: 0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
@@ -69,6 +69,13 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 == Changelog ==
 
+= 0.8 =
+* Dynamic Support for Child themes
+* Added new customizer controls
+
+= 0.7 =
+* Numerous bug fixes
+
 = 0.6 =
 * Numerous bug fixes
 * New customizer functions
@@ -80,4 +87,7 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 = 0.1 =
 * Initial release
+
+== Upgrade Notice ==
+We've updated our GitHub version workflow a bit.  This upgrade includes the supporting edits to the core Bootplate theme framework.
 
