@@ -1,0 +1,21 @@
+# humanstxt.org
+# For those that love our work, here are all the humans and technologies that helped make it happen.   
+
+/* TEAM */
+	Lead Web Developer: Justin Downey
+	Creative Director: Jenee Oxley-Echard
+	Site: An (usual) WordPress starter theme built on Bootstrap 4 for speed and flexibility.
+	Twitter: jdmdigital
+	Location: Dallas, Texas, USA.
+
+/* SPECIAL THANKS */
+	HTML5 Boilerplate: https://html5boilerplate.com
+	Fontello: http://fontello.com/
+	WordPress: http://wordpress.org
+	Bootstrap: http://getbootstrap.com
+
+/* SITE */
+	Standards: HTML5, CSS3
+	Components: jQuery, Twitter Bootstrap, SVGeezy, Slick.js.
+	Software: WordPress, Apache, PHP, Dreamweaver, FileZilla, Firefox, mySQL
+	Lubrication: Macallan 18, Guinness, Red Bull

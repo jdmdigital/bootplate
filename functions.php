@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v0.7 Main Functions
+ * Bootplate v0.8 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 0.7);
+define('VERSION', 0.8);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -194,7 +194,15 @@ add_action( 'widgets_init', 'bootplate_widgets_init' );
 function bootplate_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.5' );
 	
-	if(is_child_theme()) {
+	// See Issue 49 - https://github.com/jdmdigital/bootplate/issues/49
+	$child_style 	= get_stylesheet();
+	if(!isset($child_style) || $child_style == '') {
+		$has_child_style	= false;
+	} else {
+		$has_child_style	= true;
+	}
+	
+	if(is_child_theme() && $has_child_style) {
 		// Load Parent.css instead of the full style.css file (or the minified version).
 		if(file_exists(get_template_directory_uri() . '/css/parent.min.css')) {
 			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), '' );
@@ -202,9 +210,9 @@ function bootplate_scripts() {
 			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), '' );
 		}
 		if(file_exists(get_stylesheet_directory_uri() . '/style.min.css')) {
-			//wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), '' );
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), '' );
 		} else {
-			//wp_enqueue_style( 'bootplate-child', get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), '' );
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), '' );
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
