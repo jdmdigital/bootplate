@@ -13,7 +13,7 @@ get_header(); ?>
 			<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 				<?php the_title( '<h1 class="h2">', '</h1>' ); ?>
 				<!--<?php if( get_the_excerpt() != '' ) : ?><p><?php the_excerpt(); ?></p><?php endif; ?>-->
-				<p class="post-meta">By <?php the_author_posts_link(); ?> last updated <a href="<?php echo get_month_link(the_date('Y'), the_date('m')); ?>"><?php the_modified_date(); ?></a> in <?php the_category(', '); ?></p>
+				<p class="post-meta">By <?php the_author_posts_link(); ?> last updated <?php the_modified_date(); ?> in <?php the_category(', '); ?></p>
 			</div><!--/col-->
 		</div><!--/row-->
 	</div><!--/.container-->

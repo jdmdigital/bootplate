@@ -19,7 +19,7 @@
 		<div class="the-excerpt">
 			<?php the_excerpt(); ?>
 		</div>
-		<p class="post-meta"><?php _e('By', 'bootplate'); ?> <?php the_author_posts_link(); ?> <?php _e('last updated', 'bootplate'); ?> <a href="<?php echo get_month_link(the_date('Y'), the_date('m')); ?>"><?php the_modified_date(); ?></a> <?php _e('in', 'bootplate'); ?> <?php the_category(', '); ?></p>
+		<p class="post-meta"><?php _e('By', 'bootplate'); ?> <?php the_author_posts_link(); ?> <?php _e('last updated', 'bootplate'); ?> <?php the_modified_date(); ?> <?php _e('in', 'bootplate'); ?> <?php the_category(', '); ?></p>
 	</article>
 </div>
 <?php endwhile; ?>

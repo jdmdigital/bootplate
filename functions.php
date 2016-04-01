@@ -41,6 +41,8 @@ if(!function_exists('bootplate_info')) {
 		
 		if($data == 'repo') {
 			return $repo;
+		} elseif($data == 'versionname') {
+			return str_replace($version, '-', '.');
 		} elseif($data == 'branch') {
 			if($branch != '') {
 				return $branch;
@@ -97,20 +99,17 @@ if ( !function_exists('bootplate_setup') ) {
 		
 		load_theme_textdomain( 'bootplate', get_template_directory().'/languages' );
 		
-		
-		//$color_scheme  = bootplate_get_color_scheme();
-		//$default_color = trim( $color_scheme[0], '#' );
-
-		// Setup the WordPress core custom background feature.
-		/*add_theme_support( 'custom-background', apply_filters( 'bootplate_custom_background_args', array(
-			'default-color'      => $default_color,
-			'default-attachment' => 'fixed',
-		) ) );*/
+		// Make translation ready
+		load_theme_textdomain('bootplate', get_template_directory(). '/languages');
+		$locale = get_locale();
+		$locale_file = get_template_directory() . "/languages/".$locale.".php";
+		if ( is_readable($locale_file) ) {
+	  		require_once($locale_file);
+		}
 		
 		
 		// Style the Editor to resemble the frontend
-		add_editor_style( array( 'css/editor-style.css' ) );
-		
+		add_editor_style( array( 'css/editor-style.css') );
 		
 	}// END setup function
 } // END function_exists( 'bootplate_setup' )
@@ -229,7 +228,9 @@ function bootplate_scripts() {
 	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), '' );
 	wp_style_add_data( 'bootplate-ie', 'conditional', 'lt IE 9' );
 	
-	wp_deregister_script( 'jdm-fab' );
+	if(function_exists('jdmfab_show_admin_buttons')) {
+		wp_deregister_script( 'jdm-fab' );
+	}
 	
 	wp_deregister_script( 'html5shiv-maxcdn' );
 	wp_register_script( 'html5shiv-maxcdn', '//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js', '', '', false );
