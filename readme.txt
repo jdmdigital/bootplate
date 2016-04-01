@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.4.2
-Version: 0.9
+Version: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats

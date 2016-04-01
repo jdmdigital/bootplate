@@ -260,8 +260,6 @@ button[type=submit].processing,input[type=submit].processing, button.processing,
 .form-control:-ms-input-placeholder {  color: #999;}
 .form-control::-webkit-input-placeholder {  color: #999;}
 .form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control {  background-color: #eee;  opacity: 1;}
-.alignleft {float: left;margin: 8px 20px 20px 0;}
-.alignright {float: right;margin: 8px 0 20px 20px;}
 .aligncenter {float:none;clear: both;display: block;margin: 20px 0;width:100%; height:auto;}
 .wp-caption {background:#f2f2f2;	border: none;	color: #555;	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;	margin: 0 0 20px 0;	max-width: 100%;	padding:8px 8px 3px;	text-align: inherit; line-height:2; font-size:0.8em;}
 .wp-caption.alignleft {	margin: 8px 20px 20px 0;}
@@ -430,6 +428,8 @@ footer a:hover, footer a:focus, footer a:active{color:#fff;}
 	a .img-thumbnail{border-color:#ddd; background-color:#f4f4f4;}
 	a:hover .img-thumbnail, a:focus .img-thumbnail{border-color:#ccc; background-color:#fff;}
 	a:active .img-thumbnail{border-color:#bbb; background-color:#fff;}
+	.alignleft {float: left;margin: 8px 20px 20px 0;}
+	.alignright {float: right;margin: 8px 0 20px 20px;}
 }
 
 /* == Medium Devices, Desktops == */
