@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Bootplate
- * @since Bootplate 0.7
+ * @since Bootplate 0.8
  */
 
 /* To retreive these settings:
@@ -106,10 +106,15 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Logo Bug Setting
+	// Add Logo Bug Setting with sanitize
 	$wp_customize->add_setting(
-		'bootplate_logo'
+		'bootplate_logo',
+		array ( 
+			'default' => '',
+    		'sanitize_callback' => 'esc_url_raw'
+    	)
 	);
+	
 	// Add Logo Bug Upload Control
 	$wp_customize->add_control( 
 		new WP_Customize_Image_Control( $wp_customize, 'bootplate_logo', 

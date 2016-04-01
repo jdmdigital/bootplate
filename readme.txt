@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.4.2
-Version: 0.8
+Version: 0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
@@ -67,7 +67,15 @@ Modernizr 3.2.0 (custom build), Copyright 2016 Modernizr
 Licensed under MIT <https://opensource.org/licenses/MIT>
 Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhunit-displaytable-flexbox-ie8compat-inputtypes-lastchild-nthchild-rgba-srcset-svgasimg-mq-setclasses
 
+== Upgrade Notice ==
+
+= 0.9 =
+Security patch in customizer function fixed.
+
 == Changelog ==
+
+= 0.9 =
+* Security patch
 
 = 0.8 =
 * Dynamic Support for Child themes
@@ -88,6 +96,5 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 = 0.1 =
 * Initial release
 
-== Upgrade Notice ==
-We've updated our GitHub version workflow a bit.  This upgrade includes the supporting edits to the core Bootplate theme framework.
+
 
