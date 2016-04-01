@@ -2,7 +2,7 @@
 Theme Name: 		Bootplate
 Theme URI: 			http://bootplate.jdmdigital.co
 Description: 		A wicked-fast, mobile-first, Bootstrap v4 theme framework for building awesome WordPress websites.
-Version: 			0.9
+Version: 			1.0
 License: 			GNU General Public License version 2.0
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 Author: 			JDM Digital
@@ -60,8 +60,8 @@ GitHub Branch:		master
 .sidebar #searchform .btn-fw, .sidebar .btn-fw{min-width:85px;}
 .btn-lg{padding: 16px 32px; padding: 1rem 2rem;}
 .btn-lg.btn-fw, input.submit{min-width:165px; margin-bottom:8px;}
-.alignleft{float:none; margin:15px 0;}
-.alignright{float:none; margin:15px 0;}
+.alignleft, img.alignleft{float:none; margin:20px 0;}
+.alignright, img.alignright{float:none; margin:20px 0;}
 .tbl-responsive-sm{display: block; overflow-x: auto; width: 100%;}
 img.img-responsive-lg, img.alignnone{width:100%; height:auto;}
 /*.img-fluid, .img-responsive{height:100%; width:auto;}*/

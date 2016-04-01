@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v0.9 Main Functions
+ * Bootplate v1.0 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 0.9);
+define('VERSION', 1.0);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -41,8 +41,6 @@ if(!function_exists('bootplate_info')) {
 		
 		if($data == 'repo') {
 			return $repo;
-		} elseif($data == 'versionname') {
-			return str_replace($version, '-', '.');
 		} elseif($data == 'branch') {
 			if($branch != '') {
 				return $branch;
