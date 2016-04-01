@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v0.8 Main Functions
+ * Bootplate v0.9 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 0.8);
+define('VERSION', 0.9);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -33,7 +33,7 @@ if(!function_exists('get_wpversion')){
 	}
 }
 
-if(!function_exists('bootplate_version')) {
+if(!function_exists('bootplate_info')) {
 	function bootplate_info($data = 'version') {
 		$version 	= VERSION;
 		$repo 		= REPO;
@@ -44,6 +44,8 @@ if(!function_exists('bootplate_version')) {
 		} elseif($data == 'branch') {
 			if($branch != '') {
 				return $branch;
+			} else {
+				return $repo;
 			}
 		} else {
 			return $version;
@@ -1021,7 +1023,7 @@ if(!function_exists('action_bootplate_credits')) {
 			echo '
 			<div id="bootplate-credit">
 				<div class="container text-center">
-					<p><small>'.__('Made with', 'bootplate').' <span class="sr-only screen-reader-text">'.__('love', 'bootplate').'</span><span class="bp-heart"></span> '.__('and', 'bootplate').' <a href="'.bootplate_info('repo').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a></small></p>
+					<p><small>'.__('Made with', 'bootplate').' <span class="sr-only screen-reader-text">'.__('love', 'bootplate').'</span><span class="bp-heart"></span> '.__('and', 'bootplate').' <a href="'.bootplate_info('branch').'" target="_blank" rel="nofollow" title="Bootplate v'.bootplate_info('version').' by JDM Digital">Bootplate v'.bootplate_info('version').'</a></small></p>
 				</div>
 			</div><!--/#bootplate-credit-->
 			';
