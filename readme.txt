@@ -8,7 +8,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
 
 == Description ==
-A super fast, mobile-first, Bootstrap v4 theme framework for building awesome WordPress websites.
+A wicked-fast, mobile-first, Bootstrap v4 theme framework for building awesome WordPress websites.
 
 * Mobile-first, Responsive Layout
 * Social Links
@@ -17,7 +17,7 @@ A super fast, mobile-first, Bootstrap v4 theme framework for building awesome Wo
 * Post Formats
 * The GPL v2.0 or later license. :) Use it to make something awesome.
 
-For more information about Bootplate please go to http://bootplate.jdmdigital.co.
+For more information visit: http://bootplate.jdmdigital.co.
 
 == Installation ==
 
