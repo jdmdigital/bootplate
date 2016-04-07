@@ -1,6 +1,6 @@
 /*
  Main JS functions and function settings
- v 0.5
+ v 1.1
 */
 
 // for .full-height when VH CSS until not understood.
@@ -18,7 +18,7 @@ $( document ).ready(function() {
 	
 	// Hamberger Cross
 	if($('nav.hamburger-cross').length) {
-		var trigger = $('.navbar-toggler'), isClosed = false;
+		var trigger = $('.hamburger-cross .navbar-toggler'), isClosed = false;
 		trigger.click(function () {
 			hamburger_cross();      
 		});

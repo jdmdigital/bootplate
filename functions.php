@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.0 Main Functions
+ * Bootplate v1.1 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.0);
+define('VERSION', 1.1);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -77,7 +77,7 @@ if ( !function_exists('bootplate_setup') ) {
 		register_nav_menus( array(
 			'primary' 		=> __( 'Primary Menu', 'bootplate' ),
 			'primary-left'	=> __( 'Primary Menu (left)', 'bootplate' ),
-			'blogcats'  	=> __( 'Blog Categories Menu', 'bootplate' ),
+			//'blogcats'  	=> __( 'Blog Categories Menu', 'bootplate' ), - Not using this since v1.1
 			'footer'  		=> __( 'Footer Links Menu', 'bootplate' ),
 			'social'  		=> __( 'Social Links Menu', 'bootplate' ),
 		) );
