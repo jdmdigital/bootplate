@@ -2,7 +2,10 @@
 <article class="post-content col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 <?php echo get_post_format(); ?>">
 	<?php the_featured_image(); ?>
 	<?php the_content(); ?>
-	<div class="row margint-top">
+				
+	<?php echo get_bootplate_share(); ?>
+	
+	<div class="row margin-top">
 		<div class="col-lg-12">
 			<ul class="pager">
 				<li class="pager-prev"><?php previous_post_link	( '%link', __('Previous Article', 'bootplate'), $in_same_term = true, '', $taxonomy = 'category' ); ?></li>

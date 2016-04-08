@@ -1164,6 +1164,27 @@ if(!function_exists('bootplate_get_logo')) {
 	}
 }
 
+if(!function_exists('get_bootplate_share')) {
+	function get_bootplate_share() {
+		if(get_theme_mod( 'bootplate_enable_social_share', '') == 1) {
+			$url = get_permalink() ;
+			$text = get_the_title();
+			if(get_the_author_meta('twitter')) {$twitterhandle = '&via='.htmlentities(get_the_author_meta('twitter'));} else {$twitterhandle = '';}
+			
+			$html = '<div class="social-share margin-top">'."\r\n";
+			$html .= '	<div class="btn-group btn-group-justified" role="group" aria-label="Share this post">'."\r\n";			
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="https://twitter.com/share?text='.htmlentities($text).'&url='.urlencode($url).htmlentities($twitterhandle).'" title="Twitter" role="button"><span class="bp-twitter"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="http://www.facebook.com/share.php?u='.$url.'" title="Facebook" role="button"><span class="bp-facebook"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="http://www.linkedin.com/shareArticle?mini=true&url='.urlencode($url).'&title='.htmlentities($text).'" title="LinkedIn" role="button"><span class="bp-linkedin"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="https://plus.google.com/share?url='.urlencode($url).'" title="Google Plus" role="button"><span class="bp-gplus"></span></a>'."\r\n";
+			$html .= '	</div>'."\r\n";
+			$html .= '</div>'."\r\n";
+			
+			return $html;
+		} // Does nothing if not enabled in customizer
+	}
+}
+
 remove_action('wp_head', 'wp_generator');
 
 

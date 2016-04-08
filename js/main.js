@@ -319,6 +319,11 @@ $( document ).ready(function() {
 	  slidesToScroll: 1
 	});
 	
+	/* enable tooltips only on wide or non-touch devices */
+	if (Modernizr.mq('(min-width : 992px)')) {
+		$('.social-share .btn-group a').tooltip({container: 'body', placement: 'bottom'});
+	}
+	
 	/* DEMO-ONLY */
 	function toggleCodes(on) {
 		var obj = document.getElementById('icondemo');

@@ -155,6 +155,25 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
+	// Bootplate Social Sharing Enable
+	$wp_customize->add_setting(
+		'bootplate_enable_social_share',
+		array(
+			'sanitize_callback' => 'bootplate_sanitize_checkbox',
+		)
+	);
+	
+	// Bootplate Social Sharing Enable Control
+	$wp_customize->add_control(
+		'bootplate_enable_social_share',
+		array(
+			'label' => 'Enable Social Share:',
+			'description' => 'Enable Social Sharing on Single Posts? Check to enable.',
+			'section' => 'general_settings_section',
+			'type' => 'checkbox',
+		)
+	);
+	
 	// Add Bootplate Search Icon Enable
 	$wp_customize->add_setting(
 		'bootplate_enable_search',
@@ -168,7 +187,7 @@ function bootplate_customize_register( $wp_customize ) {
 		'bootplate_enable_search',
 		array(
 			'label' => 'Enable Search Icon',
-			'description' => 'Show the search icon in the navigation?',
+			'description' => 'Show the search icon in the navigation?  Check to enable.',
 			'section' => 'general_settings_section',
 			'type' => 'checkbox',
 		)
@@ -187,7 +206,7 @@ function bootplate_customize_register( $wp_customize ) {
 		'bootplate_credit',
 		array(
 			'label' => 'Display Bootplate Credit Link',
-			'description' => 'Show &quot;Built with love and Bootplate&quot; at the very bottom.',
+			'description' => 'Show &quot;Built with love and Bootplate&quot; at the very bottom.  Check to enable.',
 			'section' => 'general_settings_section',
 			'type' => 'checkbox',
 		)
