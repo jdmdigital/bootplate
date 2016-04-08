@@ -80,7 +80,5 @@
 
 <?php wp_footer(); ?>
 
-<!--ANALYTICS HERE-->
-
 </body>
 </html>

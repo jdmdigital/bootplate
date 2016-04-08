@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Bootplate
- * @since Bootplate 0.8
+ * @since Bootplate 1.2
  */
 
 /* To retreive these settings:
@@ -18,7 +18,7 @@
  */
  
 function bootplate_customize_register( $wp_customize ) {
-	// Add Settings Section
+	// ==Add General Settings Section
 	$wp_customize->add_section(
 		'general_settings_section',
 		array(
@@ -193,7 +193,111 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
+	// ==Add Performance Section
+	$wp_customize->add_section(
+		'performance_settings_section',
+		array(
+			'title' => 'Performance',
+			'description' => 'Boost loading speed performance.  <b>NOTE:</b> You shouldn\'t see any obvious changes in the preview.',
+			'priority' => 36,
+		)
+	);
 	
+	// Add Navigation Type Setting
+	$wp_customize->add_setting(
+		'minify_bootplate_css',
+		array(
+			'default' => 'unmin-bootplate-css',
+			'sanitize_callback' => 'bootplate_sanitize_select',
+		)
+	);
+	
+	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	$wp_customize->add_control(
+		'minify_bootplate_css',
+		array(
+			'label' => 'Minify Bootplate CSS',
+			'description' => 'Use the minified style.min.css file (9KB smaller)?',
+			'section' => 'performance_settings_section',
+			'type' => 'select',
+			'choices' => array(
+				'unmin-bootplate-css' => 'Unminify Style.css (59KB)',
+				'min-bootplate-css' => 'Minify Style.min.css (50KB)',
+			),
+		)
+	);
+	
+	// Add Navigation Type Setting
+	$wp_customize->add_setting(
+		'minify_bootplate_js',
+		array(
+			'default' => 'unmin-bootplate-js',
+			'sanitize_callback' => 'bootplate_sanitize_select',
+		)
+	);
+	
+	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	$wp_customize->add_control(
+		'minify_bootplate_js',
+		array(
+			'label' => 'Minify Bootplate JS',
+			'description' => 'Use the minified Javascript files (26KB smaller)?',
+			'section' => 'performance_settings_section',
+			'type' => 'select',
+			'choices' => array(
+				'unmin-bootplate-js' => 'Unminify JS Files (82KB total)',
+				'min-bootplate-js' => 'Minify JS Files (56KB total)',
+			),
+		)
+	);
+	
+	// Add Navigation Type Setting
+	$wp_customize->add_setting(
+		'cdn_jquery',
+		array(
+			'default' => 'jquery_cdn',
+			'sanitize_callback' => 'bootplate_sanitize_select',
+		)
+	);
+	
+	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	$wp_customize->add_control(
+		'cdn_jquery',
+		array(
+			'label' => 'Use jQuery CDN?',
+			'description' => 'Load jQuery from Google\'s CDN or local version?',
+			'section' => 'performance_settings_section',
+			'type' => 'select',
+			'choices' => array(
+				'no_jquery_cdn' => 'Local jQuery',
+				'jquery_cdn' => 'jQuery CDN',
+			),
+		)
+	);
+	
+	// Add Navigation Type Setting
+	$wp_customize->add_setting(
+		'enable_browser_cache',
+		array(
+			'default' => 'no_browser_cache',
+			'sanitize_callback' => 'bootplate_sanitize_select',
+		)
+	);
+	
+	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	$wp_customize->add_control(
+		'enable_browser_cache',
+		array(
+			'label' => 'Enable Browser Cache?',
+			'description' => 'Setting removes all the version query strings from resources so browsers can cache them (faster).',
+			'section' => 'performance_settings_section',
+			'type' => 'select',
+			'choices' => array(
+				'no_browser_cache' => 'Disabled (No Cache)',
+				'browser_cache' => 'Enable (Cache; Faster)',
+			),
+		)
+	);
 
 } // END bootplate_customize_register()
 add_action( 'customize_register', 'bootplate_customize_register' );
@@ -217,7 +321,15 @@ function bootplate_sanitize_select( $input ) {
 		'navbar-fixed-bottom' => 'Fixed to Bottom',
 		'nav-right' => 'Right Nav (default)',
 		'nav-left' => 'Left Nav',
-		'nav-split' => 'Split Nav (right and left navs)'
+		'nav-split' => 'Split Nav (right and left navs)',
+		'unmin-bootplate-css' => 'Unminify Style.css (59KB)',
+		'min-bootplate-css' => 'Minify Style.min.css (50KB)',
+		'unmin-bootplate-js' => 'Unminify JS Files (77KB total)',
+		'min-bootplate-js' => 'Minify JS Files (54KB total)',
+		'no_jquery_cdn' => 'Local jQuery',
+		'jquery_cdn' => 'jQuery CDN',
+		'no_browser_cache' => 'Disabled (No Cache)',
+		'browser_cache' => 'Enable (Cache, Faster)'
     );
 	
 	if ( array_key_exists( $input, $valid ) ) {

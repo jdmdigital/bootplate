@@ -74,7 +74,7 @@ img.border{border:1px solid #222;}
 .jumbotron-fluid { padding-right: 0;  padding-left: 0;  border-radius: 0;}
 .has-featured-image h1{text-shadow:1px 1px 2px rgba(0,0,0,0.4);}
 .jumbotron .lead{font-size:1.2rem;}
-.jumbotron .btn{margin-bottom:15px;}
+.jumbotron .btn{margin-bottom:30px;}
 .center-block{display: block;  margin-left: auto;  margin-right: auto;}
 .invisible{visibility: hidden;}
 .navbar.navbar-full{border-radius:0;margin-bottom:0;}

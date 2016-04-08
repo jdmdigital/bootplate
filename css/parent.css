@@ -1,7 +1,7 @@
 /*
 Bootplate Parent CSS is just the basics
 This (simplified) stylesheet is only loaded when a child theme is in use.
-v1.2
+v1.1
 */
 
 @-webkit-viewport   { width: device-width; }
@@ -65,7 +65,7 @@ img.border{border:1px solid #222;}
 .jumbotron-fluid { padding-right: 0;  padding-left: 0;  border-radius: 0;}
 .jumbotron h1{color:#fff;}
 .jumbotron .lead{font-size:1.2rem;}
-.jumbotron .btn{margin-bottom:15px;}
+.jumbotron .btn{margin-bottom: 30px;}
 .center-block{display: block;  margin-left: auto;  margin-right: auto;}
 .invisible{visibility: hidden;}
 .navbar.navbar-full{border-radius:0;margin-bottom:0;}
