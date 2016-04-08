@@ -80,7 +80,7 @@ img.border{border:1px solid #222;}
 .navbar.navbar-full{border-radius:0;margin-bottom:0;}
 .hidden-xs-up{display:none;}
 .jumbotron .jumboscroll{position:absolute; bottom:30px; left:0; right:0; margin: 0 auto;}
-p, ul, ol{margin-bottom:30px;}
+p, ul, ol, .embed-responsive{margin-bottom:30px;}
 h1, .h1, h2, .h2, h3, .h3{margin-top:30px;}
 .jumbotron h1, .jumbotron .h2{color:#fff;margin-top:11px;}
 .jumbotron p{margin-bottom:11px;}

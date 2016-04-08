@@ -946,21 +946,16 @@ if(!function_exists('bootplate_result_type')) {
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/custom_subtitles.php';
 
-// add a favicon to front-end head 
-/*function site_favicons() {
-	echo '
-	<link rel="Shortcut Icon" type="image/x-icon" href="'.get_template_directory_uri().'/img/favicon.ico" />
-	';
-}
-add_action('wp_head', 'site_favicons');*/
 
-// add a different favicon for the admin site
-/*function admin_favicon() {
-	echo '
-	<!-- favicons here-->
-	';
+if(!function_exists('bootplate_oembed_filter')) {
+	function bootplate_oembed_filter($html, $url, $attr, $post_ID) {
+		$return = '<div class="embed-responsive embed-responsive-16by9">'.$html.'</div>';
+		return $return;
+	}
+	add_filter( 'embed_oembed_html', 'bootplate_oembed_filter', 90, 4 ) ;
+	add_filter( 'video_embed_html', 'bootplate_remove_wp_admin_links' ); // Jetpack
 }
-add_action('admin_head', 'admin_favicons');*/
+
 
 // Remove WP Links in Admin
 if(!function_exists('bootplate_remove_wp_admin_links')){
@@ -974,6 +969,7 @@ if(!function_exists('bootplate_remove_wp_admin_links')){
 		//$wp_admin_bar->remove_menu('view-site');
 	}
 	add_action( 'wp_before_admin_bar_render', 'bootplate_remove_wp_admin_links' );
+	
 }
 
 // Remove WP Icon from Admin Bar
