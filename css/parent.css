@@ -1,7 +1,7 @@
 /*
 Bootplate Parent CSS is just the basics
 This (simplified) stylesheet is only loaded when a child theme is in use.
-v1.1
+v1.2
 */
 
 @-webkit-viewport   { width: device-width; }
@@ -317,7 +317,7 @@ article h4, article .h4{font-size:24px;}
 	.archive .sidebar-right{display:block;}
 	.sidebar-left{display:block;}
 	.the-excerpt{min-height:220px;}
-	article.post{min-height: 460px;}
+	article.post{min-height: 480px;}
 }
 
 /* == Narrow Height Viewport Styles == */
