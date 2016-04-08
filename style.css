@@ -2,7 +2,7 @@
 Theme Name: 		Bootplate
 Theme URI: 			http://bootplate.jdmdigital.co
 Description: 		A wicked-fast, mobile-first, Bootstrap v4 theme framework for building awesome WordPress websites.
-Version: 			1.1
+Version: 			1.2
 License: 			GNU General Public License version 2.0
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 Author: 			JDM Digital
@@ -74,13 +74,13 @@ img.border{border:1px solid #222;}
 .jumbotron-fluid { padding-right: 0;  padding-left: 0;  border-radius: 0;}
 .has-featured-image h1{text-shadow:1px 1px 2px rgba(0,0,0,0.4);}
 .jumbotron .lead{font-size:1.2rem;}
-.jumbotron .btn{margin-bottom:15px;}
+.jumbotron .btn{margin-bottom:30px;}
 .center-block{display: block;  margin-left: auto;  margin-right: auto;}
 .invisible{visibility: hidden;}
 .navbar.navbar-full{border-radius:0;margin-bottom:0;}
 .hidden-xs-up{display:none;}
 .jumbotron .jumboscroll{position:absolute; bottom:30px; left:0; right:0; margin: 0 auto;}
-p, ul, ol{margin-bottom:30px;}
+p, ul, ol, .embed-responsive{margin-bottom:30px;}
 h1, .h1, h2, .h2, h3, .h3{margin-top:30px;}
 .jumbotron h1, .jumbotron .h2{color:#fff;margin-top:11px;}
 .jumbotron p{margin-bottom:11px;}
@@ -698,7 +698,7 @@ article h4, article .h4{font-size:24px;}
 	.archive .sidebar-right{display:block;}
 	.sidebar-left{display:block;}
 	.the-excerpt{min-height:220px;}
-	article.post{min-height: 460px;}
+	article.post{min-height: 480px;}
 }
 
 /* == Narrow Height Viewport Styles == */

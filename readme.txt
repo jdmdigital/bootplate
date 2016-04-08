@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.4.2
-Version: 1.1
+Version: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
@@ -69,10 +69,15 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 == Upgrade Notice ==
 
-= 1.1 =
-Small syntax fixes
+= 1.2 =
+Small but fixes and performance improvements.
 
 == Changelog ==
+
+= 1.2 =
+* Small but fixes
+* Remove version numbers from resources
+* New Performance control setting added to customizer
 
 = 1.1 =
 * syntax fixes in style.css and parent.css

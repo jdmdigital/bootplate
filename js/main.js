@@ -1,6 +1,6 @@
 /*
  Main JS functions and function settings
- v 1.1
+ v 1.2
 */
 
 // for .full-height when VH CSS until not understood.
@@ -318,6 +318,11 @@ $( document ).ready(function() {
 	  slidesToShow: 1,
 	  slidesToScroll: 1
 	});
+	
+	/* enable tooltips only on wide or non-touch devices */
+	if (Modernizr.mq('(min-width : 992px)')) {
+		$('.social-share .btn-group a').tooltip({container: 'body', placement: 'bottom'});
+	}
 	
 	/* DEMO-ONLY */
 	function toggleCodes(on) {

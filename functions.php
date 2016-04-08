@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.1 Main Functions
+ * Bootplate v1.2 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.1);
+define('VERSION', 1.2);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -191,7 +191,7 @@ add_action( 'widgets_init', 'bootplate_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bootplate_scripts() {
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.5' );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), null, 'all' );
 	
 	// See Issue 49 - https://github.com/jdmdigital/bootplate/issues/49
 	$child_style 	= get_stylesheet();
@@ -201,29 +201,32 @@ function bootplate_scripts() {
 		$has_child_style	= true;
 	}
 	
+	if( get_theme_mod( 'minify_bootplate_css', 'unmin-bootplate-css' ) == 'min-bootplate-css') {$mincss = true;} else { $mincss = false; }
+	if( get_theme_mod( 'minify_bootplate_js', 'unmin-bootplate-js' ) == 'min-bootplate-js') {$minjs = true;} else { $minjs = false; }
+	
 	if(is_child_theme() && $has_child_style) {
 		// Load Parent.css instead of the full style.css file (or the minified version).
-		if(file_exists(get_template_directory_uri() . '/css/parent.min.css')) {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), '' );
+		if($mincss) {
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), null );
 		} else {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), '' );
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), null );
 		}
-		if(file_exists(get_stylesheet_directory_uri() . '/style.min.css')) {
-			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), '' );
+		if($mincss) {
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), null );
 		} else {
-			wp_enqueue_style( $child_style, get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), '' );
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), null );
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
-		if(file_exists(get_template_directory_uri() . '/style.min.css')) {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), '' );
+		if($mincss) {
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), null );
 		} else {
-			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), '' );
+			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), null );
 		}
 	}
 	
 	// Load the IE-specific stylesheet.
-	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), '' );
+	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), null );
 	wp_style_add_data( 'bootplate-ie', 'conditional', 'lt IE 9' );
 	
 	if(function_exists('jdmfab_show_admin_buttons')) {
@@ -231,23 +234,37 @@ function bootplate_scripts() {
 	}
 	
 	wp_deregister_script( 'html5shiv-maxcdn' );
-	wp_register_script( 'html5shiv-maxcdn', '//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js', '', '', false );
+	wp_register_script( 'html5shiv-maxcdn', '//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js', '', null, false );
 	wp_enqueue_script( 'html5shiv-maxcdn' );
 	wp_script_add_data( 'html5shiv-maxcdn', 'conditional', 'lt IE 9' );
 	
 	wp_deregister_script( 'respond-js' );
-	wp_register_script( 'respond-js', '//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js', '', '', false );
+	wp_register_script( 'respond-js', '//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js', '', null, false );
 	wp_enqueue_script( 'respond-js' );
 	wp_script_add_data( 'respond-js', 'conditional', 'lt IE 9' );
 
-	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '', '', true );
-	wp_enqueue_script( 'jquery' );
+	if( get_theme_mod( 'cdn_jquery', 'jquery_cdn' ) == 'jquery_cdn') {
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '', null, true );
+		wp_enqueue_script( 'jquery' );
+		
+		if(function_exists('wpcf7_plugin_path')) {
+			wp_deregister_script( 'jquery-form' );
+			wp_register_script( 'jquery-form', '//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js', array('jquery'), null, true );
+			wp_enqueue_script( 'jquery-form' );
+		}
+	}
 	
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '', true );
-	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr-custom.js', array('jquery'), '', true );
-	wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), '', true );
-	wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_info('version'), true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), null, true );
+	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr-custom.js', array('jquery'), null, true );
+	
+	if($minjs) {
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.min.js', array('jquery', 'modernizr'), null, true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+	} else {
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), null, true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -258,10 +275,21 @@ add_action( 'wp_enqueue_scripts', 'bootplate_scripts' );
 // Get rid of bloated styles
 function bootplate_deregister_styles() {
 	wp_deregister_style( 'contact-form-7' );
-	wp_deregister_style('shorty');
 	wp_deregister_style('jdm-fab');
 }
 add_action( 'wp_print_styles', 'bootplate_deregister_styles', 100 );
+
+if(!function_exists('bootplate_remove_ver_css_js')) {
+	function bootplate_remove_ver_css_js( $src ) {
+		if ( strpos( $src, 'ver=' ) )
+			$src = remove_query_arg( 'ver', $src );
+		return $src;
+	}
+}
+if( get_theme_mod( 'enable_browser_cache', 'no_browser_cache' ) == 'browser_cache') {
+	add_filter( 'style_loader_src', 'bootplate_remove_ver_css_js', 9999 );
+	add_filter( 'script_loader_src', 'bootplate_remove_ver_css_js', 9999 );
+}
 
 // Remove oEmbed Gist Action
 global $oe_gist;
@@ -275,16 +303,13 @@ if(!function_exists('bootplate_async_css')) {
 	function bootplate_async_css() {
 		$tempdir = get_template_directory_uri();
 		
-		if(file_exists($tempdir.'/css/body.min.css')) {
-			$bodycss = 'body.min.css';
-		} else {
-			$bodycss = 'body.css';
-		}
+		if(get_theme_mod( 'minify_bootplate_css', 'unmin-bootplate-css' ) == 'min-bootplate-css') {$bodycss = 'body.min.css';} else {$bodycss = 'body.css';}
+		if(get_theme_mod( 'minify_bootplate_js', 'unmin-bootplate-js' ) == 'min-bootplate-js') {$loadcss = 'loadcss.min.js';} else {$loadcss = 'loadcss.js';}
 		
 		echo '
 		<link rel="preload" href="'.$tempdir.'/css/'.$bodycss.'" as="style" onload="this.rel=\'stylesheet\'" type="text/css" />
 		<noscript><link rel="stylesheet" href="'.$tempdir.'/css/'.$bodycss.'" type="text/css" /></noscript>
-		<script src="'.$tempdir.'/js/loadcss.js" type="text/javascript"></script>
+		<script src="'.$tempdir.'/js/'.$loadcss.'" type="text/javascript"></script>
 		';
 	}
 }
@@ -921,21 +946,16 @@ if(!function_exists('bootplate_result_type')) {
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/custom_subtitles.php';
 
-// add a favicon to front-end head 
-/*function site_favicons() {
-	echo '
-	<link rel="Shortcut Icon" type="image/x-icon" href="'.get_template_directory_uri().'/img/favicon.ico" />
-	';
-}
-add_action('wp_head', 'site_favicons');*/
 
-// add a different favicon for the admin site
-/*function admin_favicon() {
-	echo '
-	<!-- favicons here-->
-	';
+if(!function_exists('bootplate_oembed_filter')) {
+	function bootplate_oembed_filter($html, $url, $attr, $post_ID) {
+		$return = '<div class="embed-responsive embed-responsive-16by9">'.$html.'</div>';
+		return $return;
+	}
+	add_filter( 'embed_oembed_html', 'bootplate_oembed_filter', 90, 4 ) ;
+	add_filter( 'video_embed_html', 'bootplate_remove_wp_admin_links' ); // Jetpack
 }
-add_action('admin_head', 'admin_favicons');*/
+
 
 // Remove WP Links in Admin
 if(!function_exists('bootplate_remove_wp_admin_links')){
@@ -949,6 +969,7 @@ if(!function_exists('bootplate_remove_wp_admin_links')){
 		//$wp_admin_bar->remove_menu('view-site');
 	}
 	add_action( 'wp_before_admin_bar_render', 'bootplate_remove_wp_admin_links' );
+	
 }
 
 // Remove WP Icon from Admin Bar
@@ -1136,6 +1157,27 @@ if(!function_exists('bootplate_get_logo')) {
 			$logo = get_bloginfo( 'name' );
 		}
 		return $logo;
+	}
+}
+
+if(!function_exists('get_bootplate_share')) {
+	function get_bootplate_share() {
+		if(get_theme_mod( 'bootplate_enable_social_share', '') == 1) {
+			$url = get_permalink() ;
+			$text = get_the_title();
+			if(get_the_author_meta('twitter')) {$twitterhandle = '&via='.htmlentities(get_the_author_meta('twitter'));} else {$twitterhandle = '';}
+			
+			$html = '<div class="social-share margin-top">'."\r\n";
+			$html .= '	<div class="btn-group btn-group-justified" role="group" aria-label="Share this post">'."\r\n";			
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="https://twitter.com/share?text='.htmlentities($text).'&url='.urlencode($url).htmlentities($twitterhandle).'" title="Twitter" role="button"><span class="bp-twitter"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="http://www.facebook.com/share.php?u='.$url.'" title="Facebook" role="button"><span class="bp-facebook"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="http://www.linkedin.com/shareArticle?mini=true&url='.urlencode($url).'&title='.htmlentities($text).'" title="LinkedIn" role="button"><span class="bp-linkedin"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="https://plus.google.com/share?url='.urlencode($url).'" title="Google Plus" role="button"><span class="bp-gplus"></span></a>'."\r\n";
+			$html .= '	</div>'."\r\n";
+			$html .= '</div>'."\r\n";
+			
+			return $html;
+		} // Does nothing if not enabled in customizer
 	}
 }
 
