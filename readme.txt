@@ -77,6 +77,7 @@ Small but fixes and performance improvements.
 = 1.2 =
 * Small but fixes
 * Remove version numbers from resources
+* New Performance control setting added to customizer
 
 = 1.1 =
 * syntax fixes in style.css and parent.css

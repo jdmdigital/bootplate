@@ -201,21 +201,24 @@ function bootplate_scripts() {
 		$has_child_style	= true;
 	}
 	
+	if( get_theme_mod( 'minify_bootplate_css', 'unmin-bootplate-css' ) == 'min-bootplate-css') {$mincss = true;} else { $mincss = false; }
+	if( get_theme_mod( 'minify_bootplate_js', 'unmin-bootplate-js' ) == 'min-bootplate-js') {$minjs = true;} else { $minjs = false; }
+	
 	if(is_child_theme() && $has_child_style) {
 		// Load Parent.css instead of the full style.css file (or the minified version).
-		if(file_exists(get_template_directory_uri() . '/css/parent.min.css')) {
+		if($mincss) {
 			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), null );
 		} else {
 			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), null );
 		}
-		if(file_exists(get_stylesheet_directory_uri() . '/style.min.css')) {
+		if($mincss) {
 			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), null );
 		} else {
 			wp_enqueue_style( $child_style, get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), null );
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
-		if(file_exists(get_template_directory_uri() . '/style.min.css')) {
+		if($mincss) {
 			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), null );
 		} else {
 			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), null );
@@ -240,14 +243,28 @@ function bootplate_scripts() {
 	wp_enqueue_script( 'respond-js' );
 	wp_script_add_data( 'respond-js', 'conditional', 'lt IE 9' );
 
-	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '', null, true );
-	wp_enqueue_script( 'jquery' );
+	if( get_theme_mod( 'cdn_jquery', 'jquery_cdn' ) == 'jquery_cdn') {
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '', null, true );
+		wp_enqueue_script( 'jquery' );
+		
+		if(function_exists('wpcf7_plugin_path')) {
+			wp_deregister_script( 'jquery-form' );
+			wp_register_script( 'jquery-form', '//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js', array('jquery'), null, true );
+			wp_enqueue_script( 'jquery-form' );
+		}
+	}
 	
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), null, true );
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr-custom.js', array('jquery'), null, true );
-	wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), null, true );
-	wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+	
+	if($minjs) {
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.min.js', array('jquery', 'modernizr'), null, true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+	} else {
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), null, true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -258,10 +275,21 @@ add_action( 'wp_enqueue_scripts', 'bootplate_scripts' );
 // Get rid of bloated styles
 function bootplate_deregister_styles() {
 	wp_deregister_style( 'contact-form-7' );
-	wp_deregister_style('shorty');
 	wp_deregister_style('jdm-fab');
 }
 add_action( 'wp_print_styles', 'bootplate_deregister_styles', 100 );
+
+if(!function_exists('bootplate_remove_ver_css_js')) {
+	function bootplate_remove_ver_css_js( $src ) {
+		if ( strpos( $src, 'ver=' ) )
+			$src = remove_query_arg( 'ver', $src );
+		return $src;
+	}
+}
+if( get_theme_mod( 'enable_browser_cache', 'no_browser_cache' ) == 'browser_cache') {
+	add_filter( 'style_loader_src', 'bootplate_remove_ver_css_js', 9999 );
+	add_filter( 'script_loader_src', 'bootplate_remove_ver_css_js', 9999 );
+}
 
 // Remove oEmbed Gist Action
 global $oe_gist;
@@ -275,16 +303,13 @@ if(!function_exists('bootplate_async_css')) {
 	function bootplate_async_css() {
 		$tempdir = get_template_directory_uri();
 		
-		if(file_exists($tempdir.'/css/body.min.css')) {
-			$bodycss = 'body.min.css';
-		} else {
-			$bodycss = 'body.css';
-		}
+		if(get_theme_mod( 'minify_bootplate_css', 'unmin-bootplate-css' ) == 'min-bootplate-css') {$bodycss = 'body.min.css';} else {$bodycss = 'body.css';}
+		if(get_theme_mod( 'minify_bootplate_js', 'unmin-bootplate-js' ) == 'min-bootplate-js') {$loadcss = 'loadcss.min.js';} else {$loadcss = 'loadcss.js';}
 		
 		echo '
 		<link rel="preload" href="'.$tempdir.'/css/'.$bodycss.'" as="style" onload="this.rel=\'stylesheet\'" type="text/css" />
 		<noscript><link rel="stylesheet" href="'.$tempdir.'/css/'.$bodycss.'" type="text/css" /></noscript>
-		<script src="'.$tempdir.'/js/loadcss.js" type="text/javascript"></script>
+		<script src="'.$tempdir.'/js/'.$loadcss.'" type="text/javascript"></script>
 		';
 	}
 }
