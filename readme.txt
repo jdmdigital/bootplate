@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.4.2
-Version: 1.2
+Version: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
@@ -69,10 +69,16 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 == Upgrade Notice ==
 
-= 1.2 =
-Small but fixes and performance improvements.
+= 1.3 =
+A few small fixes and updates included in v1.3.
 
 == Changelog ==
+
+= 1.3 =
+* Small style edits
+* Add sidebar to serps
+* Change Yoast search json url if active and enabled
+* Fix twitter and linkedin URL encoding issue
 
 = 1.2 =
 * Small but fixes
