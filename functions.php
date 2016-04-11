@@ -47,6 +47,8 @@ if(!function_exists('bootplate_info')) {
 			} else {
 				return $repo;
 			}
+		} elseif ($data == 'stringver') {
+			return sprintf('%1', $version);
 		} else {
 			return $version;
 		}
@@ -207,23 +209,26 @@ function bootplate_scripts() {
 	if(is_child_theme() && $has_child_style) {
 		// Load Parent.css instead of the full style.css file (or the minified version).
 		if($mincss) {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), bootplate_resource_version() );
 		} else {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), bootplate_resource_version() );
 		}
 		if($mincss) {
-			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), null );
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array( 'bootstrap' ), bootplate_resource_version() );
 		} else {
-			wp_enqueue_style( $child_style, get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), null );
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.css', array( 'bootstrap' ), bootplate_resource_version() );
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
 		if($mincss) {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), bootplate_resource_version() );
 		} else {
-			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), bootplate_resource_version() );
 		}
+
 	}
+	
+	
 	
 	// Load the IE-specific stylesheet.
 	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), null );
@@ -259,11 +264,11 @@ function bootplate_scripts() {
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr-custom.js', array('jquery'), null, true );
 	
 	if($minjs) {
-		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.min.js', array('jquery', 'modernizr'), null, true );
-		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.min.js', array('jquery', 'modernizr'), bootplate_resource_version(), true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
 	} else {
-		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), null, true );
-		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), bootplate_resource_version(), true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -279,6 +284,8 @@ function bootplate_deregister_styles() {
 }
 add_action( 'wp_print_styles', 'bootplate_deregister_styles', 100 );
 
+
+// Remove Version Query String
 if(!function_exists('bootplate_remove_ver_css_js')) {
 	function bootplate_remove_ver_css_js( $src ) {
 		if ( strpos( $src, 'ver=' ) )
@@ -289,6 +296,17 @@ if(!function_exists('bootplate_remove_ver_css_js')) {
 if( get_theme_mod( 'enable_browser_cache', 'no_browser_cache' ) == 'browser_cache') {
 	add_filter( 'style_loader_src', 'bootplate_remove_ver_css_js', 9999 );
 	add_filter( 'script_loader_src', 'bootplate_remove_ver_css_js', 9999 );
+}
+
+if(!function_exists('bootplate_resource_version')) {
+	function bootplate_resource_version() {
+		if( get_theme_mod( 'enable_browser_cache', 'no_browser_cache' ) == 'browser_cache') {
+			return null;
+		} else {
+			//return bootplate_info('stringver');
+			return '1.3';
+		}
+	}
 }
 
 // Remove oEmbed Gist Action
