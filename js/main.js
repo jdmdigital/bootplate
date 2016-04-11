@@ -158,15 +158,7 @@ $( document ).ready(function() {
 		repeat: true
 	});
 	
-	// Back To Top Function
-	/*$('a.back-to-top').click(function() {
-		"use strict";
-		$('body, html').animate({
-			scrollTop: 0
-		}, 750);
-		return false;
-	});*/
-	
+
 	// For Back-top-top (#pageup) 
 	$.fn.pageup = function(options) {
 		var options = $.extend({}, $.fn.pageup.defaults, options);
@@ -181,7 +173,6 @@ $( document ).ready(function() {
 					} else {
 						$this.removeClass('lighter');
 					}
-					
 				} else {
 					//$this.fadeOut(options.fadeDelay);
 					$this.fadeOut("fast").removeClass('lighter');
@@ -189,6 +180,7 @@ $( document ).ready(function() {
 			});
 			$this.click(function(){
 				$('html, body').animate({scrollTop : 0}, options.scrollDuration);
+				$this.fadeOut("fast");
 				return false;
 			});
 		});
@@ -198,7 +190,7 @@ $( document ).ready(function() {
 	$.fn.pageup.defaults = {
 		offset: 500,
 		//fadeDelay: 250,
-		scrollDuration: 550
+		scrollDuration: 750
 	};
 	
 	if($('#pageup').length) {
