@@ -836,7 +836,7 @@ if(!function_exists('have_bootplate_btns')) {
 /* Featured Image Functions
  * @since v0.6
  */
- 
+
 // Adds classes to <header>, usage: <header class="<php echo header_classes() endPHP >
 // Will add .has-featured-image to header if there's a featured image set.
 if(!function_exists('header_classes')) {
@@ -998,6 +998,16 @@ if(!function_exists('bootplate_no_wp_howdy')) {
 		}
 	}
 	add_action( 'admin_bar_menu', 'bootplate_no_wp_howdy', 11 );
+}
+
+// @since v1.3
+if(get_theme_mod( 'bootplate_enable_totop', '') == 1) {
+	if(!function_exists('bootplate_totop_link')) {
+		function bootplate_totop_link() {
+			echo '<a id="pageup" class="back-to-top"><span class="bp-up-open glyphicon glyphicon-chevron-up"></span></a>';
+		}
+		add_action( 'wp_footer', 'bootplate_totop_link', 6 );
+	}
 }
 
 /**
