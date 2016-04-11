@@ -24,7 +24,7 @@
  
 define('VERSION', 1.3);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
-define("BRANCH", 'https://github.com/jdmdigital/bootplate/tree/development');
+define("BRANCH", '');
  
 // get_wpversion()
 if(!function_exists('get_wpversion')){

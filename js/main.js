@@ -53,7 +53,7 @@ $( document ).ready(function() {
 		"use strict";
 		setTimeout(function(){
 			$('#searchform input').focus();
-		}, 500);
+		}, 550);
 	}
 	
 	// Processing Buttons
