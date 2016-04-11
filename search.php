@@ -26,12 +26,21 @@ get_header(); ?>
 		<div class="row">
 			<div class="col-md-10 col-lg-8">
 				<?php 
-				while ( have_posts() ) : the_post(); 
-				
+				while ( have_posts() ) : the_post(); 	
 					get_template_part( 'content', 'search' );
-		
 				endwhile;
 				?>
+			</div>
+			<div class="col-md-2 col-lg-4 sidebar sidebar-right hidden-sm hidden-xs">
+				<?php if(is_active_sidebar('blog-sidebar')) : ?>
+					<?php dynamic_sidebar('blog-sidebar'); ?>
+				<?php else : ?>
+					<div class="widget">
+						<h4 class="widget-title">No Widgets</h4>
+						<p>There don't appear to be any widgets used in the <b>Blog Sidebar</b> widget area.</p>
+						<p>You should probably add some.</p>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 		<?php if($wp_query->found_posts > get_option('posts_per_page')): ?>
