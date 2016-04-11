@@ -79,6 +79,7 @@ A few small fixes and updates included in v1.3.
 * Add sidebar to serps
 * Change Yoast search json url if active and enabled
 * Fix twitter and linkedin URL encoding issue
+* Add Back-To-Top theme option and function
 
 = 1.2 =
 * Small but fixes
