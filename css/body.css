@@ -434,6 +434,8 @@ footer a:hover, footer a:focus, footer a:active{color:#fff;}
 
 /* == Medium Devices, Desktops == */
 @media only screen and (min-width : 992px) {
+	body .bootplate-card{min-height:100px}
+	body .bootplate-card .card-text{min-height:125px}
 	/* Slick Arrows */
 	.slick-prev,.slick-next{    font-size: 0;    line-height: 0;    position: absolute;    top: 50%;    display: block;    width: 30px;    height: 30px;    margin-top: -15px;    padding: 0;    cursor: pointer;    color: transparent;    border: none;    outline: none;    background: transparent;}
 	.slick-prev:hover,.slick-prev:focus,.slick-next:hover,.slick-next:focus{    color: transparent;    outline: none;    background: transparent;}

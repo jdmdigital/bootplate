@@ -2,7 +2,7 @@
 Theme Name: 		Bootplate
 Theme URI: 			http://bootplate.jdmdigital.co
 Description: 		A wicked-fast, mobile-first, Bootstrap v4 theme framework for building awesome WordPress websites.
-Version: 			1.2
+Version: 			1.3
 License: 			GNU General Public License version 2.0
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 Author: 			JDM Digital
@@ -46,7 +46,7 @@ GitHub Branch:		master
 .15vh{margin-top:18vh;}
 .no-cssvhunit .15vh{margin-top:30%;}
 .full-height{height:100vh; text-align:center;}
-.full-height .container{margin-top:12vh;}
+.full-height .container{margin-top:8vh;}
 .list-inline > li {display: inline-block; padding-left: 5px; padding-right: 5px;}
 .csscolumns .card-columns{-webkit-column-count: 1; -moz-column-count: 1; column-count: 1; -webkit-column-gap: 1.25rem; -moz-column-gap: 1.25rem; column-gap: 1.25rem;}
 .text-right{text-align:right;}
@@ -238,8 +238,8 @@ button:disabled:hover{background-color:#333; border-color:#333; color:#777;}
 .breadcrumb > li + li:before {color: #ccc;}
 .breadcrumb > .active {color: #777;}
 
-.serp{background-color:transparent; border-radius:6px; padding:10px 15px 20px; border:1px solid #F8F8F8; margin-bottom:20px; min-height:100px;}
-.serp:hover, .serp:focus{background-color:rgba(255,255,255,0.8); border:1px solid #ddd;}
+.serp{background-color:transparent; border-radius:6px; padding:10px 15px 20px; border:1px solid #F8F8F8; margin-bottom:20px; min-height:100px;-webkit-transition: all 250ms ease;-moz-transition: all 250ms ease;-ms-transition: all 250ms ease;-o-transition: all 250ms ease;transition: all 250ms ease;}
+.serp:hover, .serp:focus{background-color:rgba(255,255,255,0.8); border:1px solid #ddd;-webkit-transition: all 250ms ease;-moz-transition: all 250ms ease;-ms-transition: all 250ms ease;-o-transition: all 250ms ease;transition: all 250ms ease;}
 .serp p{margin-bottom:0; display:none;}
 /* Custom: #6f5499 */
 .bg-custom, header.bg-custom{background-color: #6f5499; background-image: linear-gradient(to bottom, #563d7c 0px, #6f5499 100%); background-repeat: repeat-x; color: #cdbfe3; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);}
@@ -555,6 +555,7 @@ h4.widget-title a{color:#444; font-size: 1em;}
 .widget_recent_entries ul, .widget_rss ul{list-style:none; padding-left:0;}
 .widget_rss ul{opacity:1; transition:opacity 0.3s ease-in;}
 .widget_rss ul a, .widget_rss span, .widget_rss cite{display:block;}
+.widget_categories ul, .widget_archive ul{list-style:none; padding-left:0;}
 footer{opacity:0; background-color:#000; }
 footer small{font-size:0.6em;}
 article h4, article .h4{font-size:24px;}
