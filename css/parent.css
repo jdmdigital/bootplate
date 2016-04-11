@@ -1,7 +1,7 @@
 /*
 Bootplate Parent CSS is just the basics
 This (simplified) stylesheet is only loaded when a child theme is in use.
-v1.1
+v1.3
 */
 
 @-webkit-viewport   { width: device-width; }
@@ -174,6 +174,7 @@ h4.widget-title a{color:#444; font-size: 1em;}
 .widget_recent_entries ul, .widget_rss ul{list-style:none; padding-left:0;}
 .widget_rss ul{opacity:1; transition:opacity 0.3s ease-in;}
 .widget_rss ul a, .widget_rss span, .widget_rss cite{display:block;}
+.widget_categories ul, .widget_archive ul{list-style:none; padding-left:0;}
 footer{opacity:0; background-color:#000; }
 footer small{font-size:0.6em;}
 article h4, article .h4{font-size:24px;}
@@ -181,6 +182,14 @@ article h4, article .h4{font-size:24px;}
 .gallery-item img{width:100%; height:auto;}
 .gallery-item .gallery-caption{margin-bottom:0; padding:4px 8px; background-color:#eee; border-bottom:1px solid #ddd; font-size:0.8em;}
 .btn.btn-disabled{cursor:not-allowed; opacity:0.8; color:rgba(255,255,255,0.7);}
+
+a.back-to-top{display:none; position:fixed;	border: 4px solid #666;    bottom: 30px;    opacity: 0.4;    right: 30px; height:55px; width:55px; border-radius:4px;-webkit-transition: all 250ms ease; -moz-transition: all 250ms ease;-ms-transition: all 250ms ease;-o-transition: all 250ms ease;transition: all 250ms ease;}
+a.back-to-top:hover, a.back-to-top:focus{opacity:0.9; cursor:pointer; text-decoration:none;}
+a.back-to-top.lighter{opacity: 0.7;-webkit-transition: all 250ms ease; -moz-transition: all 250ms ease;-ms-transition: all 250ms ease;-o-transition: all 250ms ease;transition: all 250ms ease;}
+a.back-to-top span {color: #666;    font-size: 1.4em;    padding:4px 8px;    position: absolute;    text-align: center; top:1px; right:3px; text-decoration:none;}
+a.back-to-top span:hover, a.back-to-top span:focus{text-decoration:none;}
+a.back-to-top span:before{display:inline-block; line-height:1; top:1px; margin-left:0; margin-right:0;}
+
 /* == Custom, Mobile-First Media Queries == */
 /* Remember: 
 	Min-Width: Refers to everything greater than or equal to the amount given.
