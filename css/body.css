@@ -389,6 +389,12 @@ footer a:hover, footer a:focus, footer a:active{color:#fff;}
 #bootplate-credit{margin-top:3rem;}
 .no-cssremunit #bootplate-credit{margin-top:40px;}
 #bootplate-credit p{color:rgba(255,255,255,0.3);}
+a.back-to-top{display:none; position:fixed;	border: 4px solid #666;    bottom: 30px;    opacity: 0.4;    right: 30px; height:55px; width:55px; border-radius:4px;-webkit-transition: all 250ms ease; -moz-transition: all 250ms ease;-ms-transition: all 250ms ease;-o-transition: all 250ms ease;transition: all 250ms ease;}
+a.back-to-top:hover, a.back-to-top:focus{opacity:0.9; cursor:pointer; text-decoration:none;}
+a.back-to-top.lighter{opacity: 0.7;-webkit-transition: all 250ms ease; -moz-transition: all 250ms ease;-ms-transition: all 250ms ease;-o-transition: all 250ms ease;transition: all 250ms ease;}
+a.back-to-top span {color: #666;    font-size: 1.4em;    padding:4px 8px;    position: absolute;    text-align: center; top:1px; right:3px; text-decoration:none;}
+a.back-to-top span:hover, a.back-to-top span:focus{text-decoration:none;}
+a.back-to-top span:before{display:inline-block; line-height:1; top:1px; margin-left:0; margin-right:0;}
 
 /* JDM FAB Styles */
 #fab-admin-btns{width:170px; position:fixed; top:60px; right:0; opacity:0.8;-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
@@ -434,6 +440,8 @@ footer a:hover, footer a:focus, footer a:active{color:#fff;}
 
 /* == Medium Devices, Desktops == */
 @media only screen and (min-width : 992px) {
+	body .bootplate-card{min-height:100px}
+	body .bootplate-card .card-text{min-height:128px}
 	/* Slick Arrows */
 	.slick-prev,.slick-next{    font-size: 0;    line-height: 0;    position: absolute;    top: 50%;    display: block;    width: 30px;    height: 30px;    margin-top: -15px;    padding: 0;    cursor: pointer;    color: transparent;    border: none;    outline: none;    background: transparent;}
 	.slick-prev:hover,.slick-prev:focus,.slick-next:hover,.slick-next:focus{    color: transparent;    outline: none;    background: transparent;}

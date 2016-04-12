@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.2 Main Functions
+ * Bootplate v1.3 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.2);
+define('VERSION', 1.3);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -47,6 +47,8 @@ if(!function_exists('bootplate_info')) {
 			} else {
 				return $repo;
 			}
+		} elseif ($data == 'stringver') {
+			return sprintf('%1', $version);
 		} else {
 			return $version;
 		}
@@ -207,23 +209,26 @@ function bootplate_scripts() {
 	if(is_child_theme() && $has_child_style) {
 		// Load Parent.css instead of the full style.css file (or the minified version).
 		if($mincss) {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.min.css', array('bootstrap'), bootplate_resource_version() );
 		} else {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/css/parent.css', array('bootstrap'), bootplate_resource_version() );
 		}
 		if($mincss) {
-			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array('bootstrap'), null );
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.min.css', array( 'bootstrap' ), bootplate_resource_version() );
 		} else {
-			wp_enqueue_style( $child_style, get_stylesheet_directory_uri(). '/style.css', array('bootstrap'), null );
+			wp_enqueue_style( $child_style, get_stylesheet_directory_uri() . '/style.css', array( 'bootstrap' ), bootplate_resource_version() );
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
 		if($mincss) {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), bootplate_resource_version() );
 		} else {
-			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), null );
+			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), bootplate_resource_version() );
 		}
+
 	}
+	
+	
 	
 	// Load the IE-specific stylesheet.
 	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), null );
@@ -259,11 +264,11 @@ function bootplate_scripts() {
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr-custom.js', array('jquery'), null, true );
 	
 	if($minjs) {
-		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.min.js', array('jquery', 'modernizr'), null, true );
-		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.min.js', array('jquery', 'modernizr'), bootplate_resource_version(), true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
 	} else {
-		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), null, true );
-		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), null, true );
+		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), bootplate_resource_version(), true );
+		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -279,6 +284,8 @@ function bootplate_deregister_styles() {
 }
 add_action( 'wp_print_styles', 'bootplate_deregister_styles', 100 );
 
+
+// Remove Version Query String
 if(!function_exists('bootplate_remove_ver_css_js')) {
 	function bootplate_remove_ver_css_js( $src ) {
 		if ( strpos( $src, 'ver=' ) )
@@ -289,6 +296,17 @@ if(!function_exists('bootplate_remove_ver_css_js')) {
 if( get_theme_mod( 'enable_browser_cache', 'no_browser_cache' ) == 'browser_cache') {
 	add_filter( 'style_loader_src', 'bootplate_remove_ver_css_js', 9999 );
 	add_filter( 'script_loader_src', 'bootplate_remove_ver_css_js', 9999 );
+}
+
+if(!function_exists('bootplate_resource_version')) {
+	function bootplate_resource_version() {
+		if( get_theme_mod( 'enable_browser_cache', 'no_browser_cache' ) == 'browser_cache') {
+			return null;
+		} else {
+			//return bootplate_info('stringver');
+			return '1.3';
+		}
+	}
 }
 
 // Remove oEmbed Gist Action
@@ -436,23 +454,40 @@ if(!function_exists('bootplate_amp_css')) {
 }
 
 // Nicer Search - Creates a specific /search/ page instead of index.php?s=, which confuses google.
-if(!function_exists('bootplate_nice_search_redirect')) {
+if(!function_exists('bootplate_nice_search_redirect') && !function_exists('bootplate_change_ssb_search')) {
 	function bootplate_nice_search_redirect() {
 		global $wp_rewrite;
 		if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() )
 			return;
-	
 		$search_base = $wp_rewrite->search_base;
 		if ( is_search() && !is_admin() && strpos( $_SERVER['REQUEST_URI'], "/{$search_base}/" ) === false ) {
 			wp_redirect( home_url( "/{$search_base}/" . urlencode( get_query_var( 's' ) ) ) );
 			exit();
 		}
 	}
+	
+	// For Yoast SEO URL Fix: https://github.com/jdmdigital/bootplate/issues/31
+	// The returned string must always include {search_term} to indicate where the search term should be used.
+	// @returns string new searchURL
+	function bootplate_change_ssb_search() {
+		global $wp_rewrite;
+		if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() )
+			return;
+		$search_base = $wp_rewrite->search_base;
+		return home_url("/{$search_base}/").'{search_term}';
+		//return 'http://mysite.com/?search={search_term}';
+ 	}
+	
 	// Add_Action ONLY if the Enable Search is = 1
 	if(get_theme_mod( 'bootplate_enable_search', '') == 1) {
+		if(function_exists('wpseo_init')) {
+			// For Yoast SEO URL Fix: https://github.com/jdmdigital/bootplate/issues/31
+			add_filter('wpseo_json_ld_search_url', 'bootplate_change_ssb_search' ); 
+		}
 		add_action( 'template_redirect', 'bootplate_nice_search_redirect' );
 	}
 }
+
 
 if ( ! function_exists( 'bootplate_comment_nav' ) ) :
 /**
@@ -727,29 +762,6 @@ if(!function_exists('bootplate_paginate_links')) {
 	} // end bootplate_paginate_links()
 }// end if !exists
 
-/**
- * Yoast Breadcrumbs on Twitter Bootstrap v3.3 - BROKEN 
- * 
- * @author Justin Downey
- * @license MIT License
- * @param string $sep Your custom separator
- */
-/*function downey_bootplate_breadcrumbs($sep = '|') {
-	if (!function_exists('yoast_breadcrumb')) {
-		return null;
-	}
-	$old_sep = '\&raquo\;';
-
-	$breadcrumbs = yoast_breadcrumb( '<ol class="breadcrumb"><li>', '</li></ol>', false );
-    
-	if(strpos($breadcrumbs, $old_sep) !== false) {
-		$output = str_replace( $old_sep, '</li><li>', $breadcrumbs );
-	} else {
-		$output = str_replace( $sep, '</li><li>', $breadcrumbs );
-	}
-	return $output;
-} */
-
 // Echo Breadcrumbs if Yoast SEO is installed
 if(!function_exists('bootplate_breadcrumbs') ) {
 	function bootplate_breadcrumbs() {
@@ -842,7 +854,7 @@ if(!function_exists('have_bootplate_btns')) {
 /* Featured Image Functions
  * @since v0.6
  */
- 
+
 // Adds classes to <header>, usage: <header class="<php echo header_classes() endPHP >
 // Will add .has-featured-image to header if there's a featured image set.
 if(!function_exists('header_classes')) {
@@ -939,14 +951,11 @@ if(!function_exists('bootplate_result_type')) {
 	}
 }
 
-//require get_template_directory() . '/inc/customizer.php';
-
-//require get_template_directory() . '/inc/shortcodes.php';
-
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/custom_subtitles.php';
 
 
+// Wraps oembed videos in Bootstrap responsive embed class
 if(!function_exists('bootplate_oembed_filter')) {
 	function bootplate_oembed_filter($html, $url, $attr, $post_ID) {
 		$return = '<div class="embed-responsive embed-responsive-16by9">'.$html.'</div>';
@@ -1007,6 +1016,16 @@ if(!function_exists('bootplate_no_wp_howdy')) {
 		}
 	}
 	add_action( 'admin_bar_menu', 'bootplate_no_wp_howdy', 11 );
+}
+
+// @since v1.3
+if(get_theme_mod( 'bootplate_enable_totop', '') == 1) {
+	if(!function_exists('bootplate_totop_link')) {
+		function bootplate_totop_link() {
+			echo '<a id="pageup" class="back-to-top"><span class="bp-up-open glyphicon glyphicon-chevron-up"></span></a>';
+		}
+		add_action( 'wp_footer', 'bootplate_totop_link', 6 );
+	}
 }
 
 /**
@@ -1169,15 +1188,16 @@ if(!function_exists('get_bootplate_share')) {
 			
 			$html = '<div class="social-share margin-top">'."\r\n";
 			$html .= '	<div class="btn-group btn-group-justified" role="group" aria-label="Share this post">'."\r\n";			
-			$html .= '		<a class="mini btn btn-default btn-secondary" href="https://twitter.com/share?text='.htmlentities($text).'&url='.urlencode($url).htmlentities($twitterhandle).'" title="Twitter" role="button"><span class="bp-twitter"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="https://twitter.com/share?text='.urlencode(html_entity_decode($text, ENT_COMPAT, 'UTF-8')).'&url='.urlencode($url).htmlentities($twitterhandle).'" title="Twitter" role="button"><span class="bp-twitter"></span></a>'."\r\n";
 			$html .= '		<a class="mini btn btn-default btn-secondary" href="http://www.facebook.com/share.php?u='.$url.'" title="Facebook" role="button"><span class="bp-facebook"></span></a>'."\r\n";
-			$html .= '		<a class="mini btn btn-default btn-secondary" href="http://www.linkedin.com/shareArticle?mini=true&url='.urlencode($url).'&title='.htmlentities($text).'" title="LinkedIn" role="button"><span class="bp-linkedin"></span></a>'."\r\n";
+			$html .= '		<a class="mini btn btn-default btn-secondary" href="http://www.linkedin.com/shareArticle?mini=true&url='.urlencode($url).'&title='.urlencode(html_entity_decode($text, ENT_COMPAT, 'UTF-8')).'" title="LinkedIn" role="button"><span class="bp-linkedin"></span></a>'."\r\n";
 			$html .= '		<a class="mini btn btn-default btn-secondary" href="https://plus.google.com/share?url='.urlencode($url).'" title="Google Plus" role="button"><span class="bp-gplus"></span></a>'."\r\n";
 			$html .= '	</div>'."\r\n";
 			$html .= '</div>'."\r\n";
 			
 			return $html;
-		} // Does nothing if not enabled in customizer
+		} // Returns nothing if not enabled in customizer (they might be using something else)
+			return '';
 	}
 }
 

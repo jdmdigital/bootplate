@@ -1,6 +1,6 @@
 /*
  Main JS functions and function settings
- v 1.2
+ v 1.3
 */
 
 // for .full-height when VH CSS until not understood.
@@ -53,7 +53,7 @@ $( document ).ready(function() {
 		"use strict";
 		setTimeout(function(){
 			$('#searchform input').focus();
-		}, 500);
+		}, 550);
 	}
 	
 	// Processing Buttons
@@ -158,14 +158,46 @@ $( document ).ready(function() {
 		repeat: true
 	});
 	
-	// Back To Top Function
-	$('a.back-to-top').click(function() {
-		"use strict";
-		$('body, html').animate({
-			scrollTop: 0
-		}, 750);
-		return false;
-	});
+
+	// For Back-top-top (#pageup) 
+	$.fn.pageup = function(options) {
+		var options = $.extend({}, $.fn.pageup.defaults, options);
+		return this.each(function() {
+			var $this = $(this);
+			$(document).scroll(function(){
+				if ($(this).scrollTop() > options.offset) {
+					//$this.fadeIn(options.fadeDelay);
+					$this.fadeIn("slow");
+					if($('footer .container').hasClass('full-visible')) {
+						$this.addClass('lighter');
+					} else {
+						$this.removeClass('lighter');
+					}
+				} else {
+					//$this.fadeOut(options.fadeDelay);
+					$this.fadeOut("fast").removeClass('lighter');
+				}
+			});
+			$this.click(function(){
+				$('html, body').animate({scrollTop : 0}, options.scrollDuration);
+				$this.fadeOut("fast");
+				return false;
+			});
+		});
+		return $this;
+	};
+	
+	$.fn.pageup.defaults = {
+		offset: 500,
+		//fadeDelay: 250,
+		scrollDuration: 750
+	};
+	
+	if($('#pageup').length) {
+		$("#pageup").pageup();
+	}
+	
+	
 	
 	// 4-Column slick
 	$('.slick-col-3').slick({

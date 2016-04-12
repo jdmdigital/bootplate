@@ -174,6 +174,25 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
+	// Add Bootplate Back-to-Top Enable
+	$wp_customize->add_setting(
+		'bootplate_enable_totop',
+		array(
+			'sanitize_callback' => 'bootplate_sanitize_checkbox',
+		)
+	);
+	
+	// Add Bootplate Back-to-Top Enable Control
+	$wp_customize->add_control(
+		'bootplate_enable_totop',
+		array(
+			'label' => 'Enable Back-to-Top',
+			'description' => 'Show a back-to-top link after 500px scrolled?',
+			'section' => 'general_settings_section',
+			'type' => 'checkbox',
+		)
+	);
+	
 	// Add Bootplate Search Icon Enable
 	$wp_customize->add_setting(
 		'bootplate_enable_search',
