@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Bootplate\n"
-"POT-Creation-Date: 2016-04-01 13:57-0600\n"
-"PO-Revision-Date: 2016-04-01 13:59-0600\n"
+"POT-Creation-Date: 2016-04-12 09:04-0600\n"
+"PO-Revision-Date: 2016-04-12 09:05-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -13,8 +13,8 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
@@ -51,15 +51,15 @@ msgstr ""
 msgid "Comment"
 msgstr "Comment"
 
-#: content-link.php:7 content.php:8
+#: content-link.php:7 content.php:11
 msgid "Previous Article"
 msgstr "Previous Article"
 
-#: content-link.php:8 content.php:9
+#: content-link.php:8 content.php:12
 msgid "Next Article"
 msgstr "Next Article"
 
-#: content-link.php:22 content.php:23
+#: content-link.php:22 content.php:26
 msgid "By"
 msgstr "By"
 
@@ -67,7 +67,7 @@ msgstr "By"
 msgid "last updated"
 msgstr "last updated"
 
-#: content-link.php:22 content.php:23
+#: content-link.php:22 content.php:26
 msgid "in"
 msgstr "in"
 
@@ -75,7 +75,7 @@ msgstr "in"
 msgid "Pages:"
 msgstr "Pages:"
 
-#: content-link.php:36 content.php:44 functions.php:904 search.php:53
+#: content-link.php:36 content.php:47 functions.php:940 search.php:68
 msgid "Page"
 msgstr "Page"
 
@@ -87,201 +87,155 @@ msgstr "Dang Nabbit!"
 msgid "We&rsquo;re sorry, but that didn&rsquo;t work. Details below."
 msgstr "We&rsquo;re sorry, but that didn&rsquo;t work. Details below."
 
-#: content.php:23
+#: content.php:26
 msgid "posted"
 msgstr "posted"
 
-#: content.php:40 search.php:49
+#: content.php:43 search.php:64
 msgid "<span class=\"bp-left-open\"></span>"
 msgstr ""
 
-#: content.php:41 search.php:50
+#: content.php:44 search.php:65
 msgid "<span class=\"bp-right-open\"></span>"
 msgstr ""
 
-#: functions.php:78
+#: functions.php:80
 msgid "Primary Menu"
 msgstr "Primary Menu"
 
-#: functions.php:79
+#: functions.php:81
 msgid "Primary Menu (left)"
 msgstr "Primary Menu (left)"
 
-#: functions.php:80
-msgid "Blog Categories Menu"
-msgstr "Blog Categories Menu"
-
-#: functions.php:81
+#: functions.php:83
 msgid "Footer Links Menu"
 msgstr "Footer Links Menu"
 
-#: functions.php:82
+#: functions.php:84
 msgid "Social Links Menu"
 msgstr "Social Links Menu"
 
-#: functions.php:124
+#: functions.php:123
 msgid "Footer Widget 1"
 msgstr "Footer Widget 1"
 
-#: functions.php:126
+#: functions.php:125
 msgid "The first footer widget area."
 msgstr "The first footer widget area."
 
-#: functions.php:133
+#: functions.php:132
 msgid "Footer Widget 2"
 msgstr "Footer Widget 2"
 
-#: functions.php:135
+#: functions.php:134
 msgid "The second footer widget area."
 msgstr "The second footer widget area."
 
-#: functions.php:142
+#: functions.php:141
 msgid "Footer Widget 3"
 msgstr "Footer Widget 3"
 
-#: functions.php:144
+#: functions.php:143
 msgid "The third footer widget area."
 msgstr "The third footer widget area."
 
-#: functions.php:151
+#: functions.php:150
 msgid "Footer Widget 4"
 msgstr "Footer Widget 4"
 
-#: functions.php:153
+#: functions.php:152
 msgid "The fourth footer widget area."
 msgstr "The fourth footer widget area."
 
-#: functions.php:160
+#: functions.php:159
 msgid "Blog Sidebar"
 msgstr "Blog Sidebar"
 
-#: functions.php:162
+#: functions.php:161
 msgid "Used for sidebar for blog post listings."
 msgstr "Used for sidebar for blog post listings."
 
-#: functions.php:169
+#: functions.php:168
 msgid "Page Sidebar Right"
 msgstr "Page Sidebar Right"
 
-#: functions.php:171
+#: functions.php:170
 msgid "Used for pages using the Page - Sidebar RIGHT template."
 msgstr "Used for pages using the Page - Sidebar RIGHT template."
 
-#: functions.php:178
+#: functions.php:177
 msgid "Page Sidebar Left"
 msgstr "Page Sidebar Left"
 
-#: functions.php:180
+#: functions.php:179
 msgid "Used for pages using the Page - Sidebar LEFT template."
 msgstr "Used for pages using the Page - Sidebar LEFT template."
 
-#: functions.php:446 functions.php:448
+#: functions.php:505 functions.php:507
 msgid "Older Comments"
 msgstr "Older Comments"
 
-#: functions.php:452 functions.php:454
+#: functions.php:511 functions.php:513
 msgid "Newer Comments"
 msgstr "Newer Comments"
 
-#: functions.php:532
+#: functions.php:591
 #, php-format
 msgid "%1$s %2$s"
 msgstr ""
 
-#: functions.php:532
+#: functions.php:591
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: functions.php:538
+#: functions.php:597
 msgid "Your comment is awaiting moderation."
 msgstr "Your comment is awaiting moderation."
 
-#: functions.php:540
+#: functions.php:599
 msgid "edit"
 msgstr "edit"
 
-#: functions.php:587
+#: functions.php:646
 msgid "&laquo; Previous"
 msgstr "&laquo; Previous"
 
-#: functions.php:588
+#: functions.php:647
 msgid "Next &raquo;"
 msgstr "Next &raquo;"
 
-#: functions.php:673
+#: functions.php:732
 msgid "&hellip;"
 msgstr ""
 
-#: functions.php:908
+#: functions.php:944
 msgid "Post"
 msgstr "Post"
 
-#: functions.php:913
+#: functions.php:949
 msgid "Media"
 msgstr "Media"
 
-#: functions.php:1014
+#: functions.php:1053
 msgid "Built on"
 msgstr "Built on"
 
-#: functions.php:1026
+#: functions.php:1065
 msgid "Made with"
 msgstr "Made with"
 
-#: functions.php:1026
+#: functions.php:1065
 msgid "love"
 msgstr "love"
 
-#: functions.php:1026
+#: functions.php:1065
 msgid "and"
 msgstr "and"
 
 #: header.php:27
 msgid "Skip to content"
 msgstr "Skip to content"
-
-#: inc/customizer-backup.php:29
-msgid "Base Color Scheme"
-msgstr "Base Color Scheme"
-
-#: inc/customizer-backup.php:44
-msgid "Header and Sidebar Text Color"
-msgstr "Header and Sidebar Text Color"
-
-#: inc/customizer-backup.php:45 inc/customizer-backup.php:61
-#: inc/customizer-backup.php:66
-msgid "Applied to the header on small screens and the sidebar on wide screens."
-msgstr ""
-"Applied to the header on small screens and the sidebar on wide screens."
-
-#: inc/customizer-backup.php:60
-msgid "Header and Sidebar Background Color"
-msgstr "Header and Sidebar Background Color"
-
-#: inc/customizer-backup.php:111
-msgid "Default"
-msgstr "Default"
-
-#: inc/customizer-backup.php:122
-msgid "Dark"
-msgstr "Dark"
-
-#: inc/customizer-backup.php:133
-msgid "Yellow"
-msgstr "Yellow"
-
-#: inc/customizer-backup.php:144
-msgid "Pink"
-msgstr "Pink"
-
-#: inc/customizer-backup.php:155
-msgid "Purple"
-msgstr "Purple"
-
-#: inc/customizer-backup.php:166
-msgid "Blue"
-msgstr "Blue"
 
 #: inc/widgets.php:105
 #, php-format
@@ -304,10 +258,53 @@ msgstr "&mdash; Select &mdash;"
 msgid "Site Search"
 msgstr "Site Search"
 
-#: search.php:13
+#: search.php:12
 msgid "Search Results"
 msgstr "Search Results"
+
+#: search.php:49
+msgid ""
+"Sorry, but we looked high and low and couldn't find anything releated to "
+"that search.  Please try again."
+msgstr ""
+"Sorry, but we looked high and low and couldn't find anything releated to "
+"that search.  Please try again."
 
 #: searchform.php:3
 msgid "Search..."
 msgstr "Search..."
+
+#~ msgid "Blog Categories Menu"
+#~ msgstr "Blog Categories Menu"
+
+#~ msgid "Base Color Scheme"
+#~ msgstr "Base Color Scheme"
+
+#~ msgid "Header and Sidebar Text Color"
+#~ msgstr "Header and Sidebar Text Color"
+
+#~ msgid ""
+#~ "Applied to the header on small screens and the sidebar on wide screens."
+#~ msgstr ""
+#~ "Applied to the header on small screens and the sidebar on wide screens."
+
+#~ msgid "Header and Sidebar Background Color"
+#~ msgstr "Header and Sidebar Background Color"
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Dark"
+#~ msgstr "Dark"
+
+#~ msgid "Yellow"
+#~ msgstr "Yellow"
+
+#~ msgid "Pink"
+#~ msgstr "Pink"
+
+#~ msgid "Purple"
+#~ msgstr "Purple"
+
+#~ msgid "Blue"
+#~ msgstr "Blue"

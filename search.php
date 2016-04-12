@@ -5,7 +5,6 @@
 global $wp_query;
 get_header(); ?>
 
-<?php if ( have_posts() ) : ?>
 <header class="<?php echo header_classes(); ?>">
 	<div class="container">
 		<div class="row">
@@ -23,6 +22,8 @@ get_header(); ?>
 </header>
 <section class="bg-default">
 	<div class="container">
+		<?php if (function_exists('relevanssi_didyoumean')) { relevanssi_didyoumean(get_search_query(), '<p class="text-info didyoumean">Did you mean: ', '</p>', 5);}?>
+		<?php if ( have_posts() ) : ?>
 		<div class="row">
 			<div class="col-md-10 col-lg-8">
 				<?php 
@@ -43,6 +44,11 @@ get_header(); ?>
 				<?php endif; ?>
 			</div>
 		</div>
+		<?php else : ?>
+		<div class="alert alert-warning margin-bottom" role="alert">
+			<p><?php  _e('Sorry, but we looked high and low and couldn\'t find anything releated to that search.  Please try again.', 'bootplate'); ?></p>
+		</div>
+		<?php endif; //no posts found ?>
 		<?php if($wp_query->found_posts > get_option('posts_per_page')): ?>
 		<div class="row margin-top">
 			<div class="col-md-8 col-lg-6 wp-pagination">
@@ -67,12 +73,5 @@ get_header(); ?>
 		<?php endif; ?>
 	</div>
 </section>
-
-<?php else : ?>
-	<?php
-		// None Found
-		get_template_part( 'content', 'none' );
-	?>
-<?php endif; ?>
 
 <?php get_footer(); ?>
