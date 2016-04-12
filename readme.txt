@@ -70,7 +70,11 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 == Upgrade Notice ==
 
 = 1.3 =
-A few small fixes and updates included in v1.3.
+* Bug fix for post page
+* A few small fixes and updates included in v1.3.
+* Change Yoast search json url if active and enabled
+* Fix twitter and linkedin URL encoding issue
+* Add Back-To-Top theme option and function
 
 == Changelog ==
 
