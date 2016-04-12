@@ -131,7 +131,7 @@ $( document ).ready(function() {
 	$("img.lazy").lazyload({effect : "fadeIn"});
 	
 	// SVGeezy Init
-	svgeezy.init('nocheck', 'png');
+	//svgeezy.init('nocheck', 'png');
 	
 	// For social small window
 	$('.mini').click(function(event) {
