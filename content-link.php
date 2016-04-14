@@ -1,5 +1,6 @@
 <?php if(is_single()) : ?>
 <article class="post-content col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 <?php echo get_post_format(); ?>">
+	<?php bootplate_breadcrumbs(); ?>
 	<?php the_content(); ?>
 	<div class="row margint-top">
 		<div class="col-lg-12">
