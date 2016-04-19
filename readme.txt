@@ -1,7 +1,7 @@
 === Bootplate ===
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
-Tested up to: WordPress 4.4.2
+Tested up to: WordPress 4.5.1
 Version: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,6 +69,9 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 == Upgrade Notice ==
 
+= 1.4 =
+* 
+
 = 1.3 =
 * Bug fix for post page
 * A few small fixes and updates included in v1.3.
@@ -77,6 +80,9 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 * Add Back-To-Top theme option and function
 
 == Changelog ==
+
+= 1.4 =
+* WP 4.5.x Compatibility Tests
 
 = 1.3 =
 * Small style edits
