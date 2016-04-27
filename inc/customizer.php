@@ -1,6 +1,6 @@
 <?php
 /**
- * Bootplate Customizer functionality
+ * Bootplate v1.4 Customizer functionality
  *
  * @package WordPress
  * @subpackage Bootplate
@@ -120,7 +120,7 @@ function bootplate_customize_register( $wp_customize ) {
 		new WP_Customize_Image_Control( $wp_customize, 'bootplate_logo', 
 			array(
 				'label'    => 'Upload Logo',
-				'description' => 'Upload a full logo (218x48) or Logo Bug (48x48), depending on the Nav Style chosen above.',
+				'description' => 'Upload a full logo (ideally, 218px x 48px) or Logo Bug (48px x 48px), if you selected a Nav Style above that includes a logo.  Otherwise, this is ignored.',
 				'section'  => 'general_settings_section',
 				'settings' => 'bootplate_logo',
 			) 
