@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.3 Main Functions
+ * Bootplate v1.4 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,9 +22,9 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.3);
+define('VERSION', 1.4);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
-define("BRANCH", '');
+define("BRANCH", 'https://github.com/jdmdigital/bootplate/tree/development');
  
 // get_wpversion()
 if(!function_exists('get_wpversion')){
@@ -250,14 +250,14 @@ function bootplate_scripts() {
 
 	if( get_theme_mod( 'cdn_jquery', 'jquery_cdn' ) == 'jquery_cdn') {
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '', null, true );
+		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js', '', null, true );
 		wp_enqueue_script( 'jquery' );
 		
-		if(function_exists('wpcf7_plugin_path')) {
-			wp_deregister_script( 'jquery-form' );
-			wp_register_script( 'jquery-form', '//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js', array('jquery'), null, true );
-			wp_enqueue_script( 'jquery-form' );
-		}
+		wp_deregister_script( 'jquery-form' );
+		wp_register_script( 'jquery-form', '//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js', array('jquery'), null, true );
+
+	} else {
+		wp_enqueue_script( 'jquery' ); // latest version from core
 	}
 	
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), null, true );

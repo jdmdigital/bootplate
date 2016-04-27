@@ -1,6 +1,6 @@
 /*
  Main JS functions and function settings
- v 1.3
+ v 1.4
 */
 
 // for .full-height when VH CSS until not understood.
@@ -119,13 +119,6 @@ $( document ).ready(function() {
 		)
 	  )
 	  document.querySelector('head').appendChild(msViewportStyle)
-	}
-	
-	// JDM Frontend Admin Buttons
-	if($('#fab-admin-btns').length) {
-		$('#hide-admin-buttons').click(function() {
-			$('#fab-admin-btns').fadeOut();
-		});
 	}
 	
 	$("img.lazy").lazyload({effect : "fadeIn"});
