@@ -121,13 +121,6 @@ $( document ).ready(function() {
 	  document.querySelector('head').appendChild(msViewportStyle)
 	}
 	
-	// JDM Frontend Admin Buttons
-	if($('#fab-admin-btns').length) {
-		$('#hide-admin-buttons').click(function() {
-			$('#fab-admin-btns').fadeOut();
-		});
-	}
-	
 	$("img.lazy").lazyload({effect : "fadeIn"});
 	
 	// SVGeezy Init
