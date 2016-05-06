@@ -385,17 +385,19 @@ a.back-to-top span {color: #666;    font-size: 1.4em;    padding:4px 8px;    pos
 a.back-to-top span:hover, a.back-to-top span:focus{text-decoration:none;}
 a.back-to-top span:before{display:inline-block; line-height:1; top:1px; margin-left:0; margin-right:0;}
 
-/* JDM FAB Styles */
-.no-js #hide-admin-buttons{display:none;}
+/* JDM FAB Styles v1.2 */
+/* general styles */
 .jdm-fab{width:170px; position:fixed; top:60px; right:0; opacity:0.7;-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
 .home .jdm-fab{ top:105px;}
 .jdm-fab{-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
 .admin-btns-wrapper .btn{font-family:"Open Sans",sans-serif; margin-bottom:2px; margin-right:0; text-align:left; line-height:2; border-top-right-radius:0; border-bottom-right-radius:0;}
 .admin-btns-wrapper .btn span{margin-right:15px; margin-left:5px;}
+.jdm-fab .genericon{height:1em; width:1em;}
 .jdm-fab, .jdm-fab:hover, .jdm-fab:focus, .jdm-fab:active{-moz-transform: translateX(115px);-webkit-transform: translateX(115px);-o-transform: translateX(115px);-ms-transform: translateX(115px);transform: translateX(115px);}
 .jdm-fab.fontawesome {-moz-transform: translateX(125px);-webkit-transform: translateX(125px);-o-transform: translateX(115px);-ms-transform: translateX(125px);transform: translateX(125px);}
-.jdm-fab.genericons {-moz-transform: translateX(105px);-webkit-transform: translateX(105px);-o-transform: translateX(105px);-ms-transform: translateX(105px);transform: translateX(105px);}
-.jdm-fab.genericons.has-hover, .jdm-fab.fontawesome.has-hover, .jdm-fab.has-hover, .no-js .jdm-fab:hover{opacity:1;-moz-transform: translateX(0);-webkit-transform: translateX(0);-o-transform: translateX(0);-ms-transform: translateX(0);transform: translateX(0);}
+.jdm-fab.genericons {-moz-transform: translateX(115px);-webkit-transform: translateX(115px);-o-transform: translateX(115px);-ms-transform: translateX(115px);transform: translateX(115px);}
+.jdm-fab.fab-icons {-moz-transform: translateX(120px);-webkit-transform: translateX(120px);-o-transform: translateX(120px);-ms-transform: translateX(120px);transform: translateX(120px);}
+.jdm-fab.genericons.has-hover, .jdm-fab.fontawesome.has-hover, .jdm-fab.fab-icons.has-hover, .jdm-fab.has-hover, .no-js .jdm-fab:hover{opacity:1;-moz-transform: translateX(0);-webkit-transform: translateX(0);-o-transform: translateX(0);-ms-transform: translateX(0);transform: translateX(0);}
 #fab-admin-btns.not-ready{opacity:0;}
 
 /* DEMO-ONLY STUFF */
