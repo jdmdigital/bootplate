@@ -2,20 +2,9 @@
 Bootplate BODY.css
 CSS For Elements to be loaded asynchronously using loadCSS.js.
 Elements here should ONLY be used/viewable below the fold.
-*/
 
-/* == ICONS == */
-@font-face {
-  font-family: 'bootplate';
-  src: url('../fonts/bootplate.eot?24889128');
-  src: url('../fonts/bootplate.eot?24889128#iefix') format('embedded-opentype'),
-       url('../fonts/bootplate.woff2?24889128') format('woff2'),
-       url('../fonts/bootplate.woff?24889128') format('woff'),
-       url('../fonts/bootplate.ttf?24889128') format('truetype'),
-       url('../fonts/bootplate.svg?24889128#bootplate') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+v1.5
+*/
 
 [class^="bp-"]:before, [class*=" bp-"]:before, .glyphicon:before, .links-social a:before {
   font-family: "bootplate";

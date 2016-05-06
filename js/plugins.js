@@ -3,7 +3,7 @@
  v1.4
 */
 
-// JDM Frontend Admin Buttons v1.0 (min)
+// JDM Frontend Admin Buttons v1.2 (min)
 if($('#fab-admin-btns').length) {
 	jQuery(document).ready(function(){"use strict";jQuery("html").on("touchstart",function(){jQuery(".jdm-fab").hasClass("has-hover")&&jQuery(".jdm-fab").removeClass("has-hover")}),jQuery("#fab-admin-btns").click(function(a){a.stopPropagation()}),jQuery(".admin-btns-wrapper a").on("touchstart",function(a){return jQuery(".jdm-fab").hasClass("has-hover")?!0:(jQuery(".jdm-fab").addClass("has-hover"),a.preventDefault(),!1)}),jQuery(".has-hover a").click(function(a){return jQuery(".jdm-fab").hasClass("has-hover")?!0:(jQuery(".jdm-fab").addClass("has-hover"),a.preventDefault(),!1)}),jQuery(".admin-btns-wrapper").hover(function(){jQuery(".jdm-fab").addClass("has-hover")},function(){jQuery(".jdm-fab").removeClass("has-hover")}),jQuery("#hide-admin-buttons").click(function(){jQuery(".jdm-fab").hasClass("has-hover")?jQuery(".jdm-fab").removeClass("has-hover"):jQuery("#fab-admin-btns").fadeOut()})}),jQuery(window).load(function(){jQuery("#fab-admin-btns").removeClass("not-ready")});
 }

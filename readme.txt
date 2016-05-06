@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.5.2
-Version: 1.4
+Version: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
@@ -69,17 +69,13 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 == Upgrade Notice ==
 
-= 1.4 =
-* 
-
-= 1.3 =
-* Bug fix for post page
-* A few small fixes and updates included in v1.3.
-* Change Yoast search json url if active and enabled
-* Fix twitter and linkedin URL encoding issue
-* Add Back-To-Top theme option and function
+= 1.5 =
+* Rewritten bootplate_async_css
 
 == Changelog ==
+
+= 1.5 =
+* Rewritten bootplate_async_css
 
 = 1.4 =
 * WP 4.5.x Compatibility Tests
