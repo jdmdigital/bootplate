@@ -1,6 +1,6 @@
 <?php
 /**
- * Bootplate v1.4 Customizer functionality
+ * Bootplate v1.6 Customizer functionality
  *
  * @package WordPress
  * @subpackage Bootplate
@@ -135,14 +135,6 @@ function bootplate_customize_register( $wp_customize ) {
 			'sanitize_callback' => 'bootplate_sanitize_text',
 		)
 	);
-	// Add Formal Company Name Setting
-	$wp_customize->add_setting(
-		'formal_name_textbox',
-		array(
-			'default' => 'Awesome, LLC',
-			'sanitize_callback' => 'bootplate_sanitize_text',
-		)
-	);
 	
 	// Add Formal Company Name Setting Control
 	$wp_customize->add_control(
@@ -169,6 +161,25 @@ function bootplate_customize_register( $wp_customize ) {
 		array(
 			'label' => 'Enable Social Share:',
 			'description' => 'Enable Social Sharing on Single Posts? Check to enable.',
+			'section' => 'general_settings_section',
+			'type' => 'checkbox',
+		)
+	);
+	
+	// Bootplate URL in Comments Enable
+	$wp_customize->add_setting(
+		'bootplate_enable_comments_url',
+		array(
+			'sanitize_callback' => 'bootplate_sanitize_checkbox',
+		)
+	);
+	
+	// Bootplate Social Sharing Enable Control
+	$wp_customize->add_control(
+		'bootplate_enable_comments_url',
+		array(
+			'label' => 'Enable URL in Comments:',
+			'description' => 'Enable the Website URL in Comments template? Check to enable.',
 			'section' => 'general_settings_section',
 			'type' => 'checkbox',
 		)

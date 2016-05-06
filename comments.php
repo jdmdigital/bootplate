@@ -49,7 +49,7 @@ if ( post_password_required() ) {
 			<?php endif; // have_comments() ?>
 		
 			<?php
-				// If comments are closed and there are comments, let's leave a little note, shall we?
+				// If comments are closed and there are comments...
 				//if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 				
 				if ( !comments_open() && get_comments_number() ) :
@@ -62,16 +62,28 @@ if ( post_password_required() ) {
 				$req = get_option( 'require_name_email' );
 				$aria_req = ( $req ? " aria-required='true'" : '' );
 				
-				$fields =  array(
-			
-					'author' 	=> '<div class="row"><fieldset class="form-group col-sm-4 commentname"><label for="author">Name:</label> ' .( $req ? '<span class="required">*</span>' : '' ) .'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .'" class="form-control form-control-lg" ' . $aria_req . ' /></fieldset>',
-					'email' 	=> '<fieldset class="form-group col-sm-4 commentemail"><label for="email">Email:</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .    '<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .    '" class="form-control form-control-lg" ' . $aria_req . ' /></fieldset>',
-					'url' 		=> '<fieldset class="form-group col-sm-4 commenturl"><label for="url">Website:</label>' .'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) .'" class="form-control form-control-lg" /></fieldset></div><!--/row 67-->',
-				);
+				if(get_theme_mod( 'bootplate_enable_comments_url', '') != 1) {
+					// Disable Website URL in Comments Template - DEFAULT
+					$fields =  array(
+						'author' 	=> '<div class="row"><fieldset class="form-group col-sm-6 commentname"><label for="author">Name:</label> ' .( $req ? '<span class="required">*</span>' : '' ) .'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .'" class="form-control form-control-lg" ' . $aria_req . ' /></fieldset>',
+						'email' 	=> '<fieldset class="form-group col-sm-6 commentemail"><label for="email">Email:</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .    '<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .    '" class="form-control form-control-lg" ' . $aria_req . ' /></fieldset>',
+						'url' 		=> '<fieldset class="form-group col-sm-4 commenturl hidden"><label for="url">Website:</label>' .'<input id="url" name="url" type="hidden" value="' . esc_attr( $commenter['comment_author_url'] ) .'" class="form-control form-control-lg" /></fieldset></div><!--/row 67-->',
+					);
+
+				} else {
+					// Enable Website URL in Comments Template
+					$fields =  array(
+						'author' 	=> '<div class="row"><fieldset class="form-group col-sm-4 commentname"><label for="author">Name:</label> ' .( $req ? '<span class="required">*</span>' : '' ) .'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .'" class="form-control form-control-lg" ' . $aria_req . ' /></fieldset>',
+						'email' 	=> '<fieldset class="form-group col-sm-4 commentemail"><label for="email">Email:</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .    '<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .    '" class="form-control form-control-lg" ' . $aria_req . ' /></fieldset>',
+						'url' 		=> '<fieldset class="form-group col-sm-4 commenturl"><label for="url">Website:</label>' .'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) .'" class="form-control form-control-lg" /></fieldset></div><!--/row 67-->',
+					);
+				}
+				
+				
 			 
 				$comments_args = array(
 					// change the title of send button 
-					'label_submit'=>'Send',
+					'label_submit'=>'Comment',
 					// change the title of the reply section
 					'title_reply'=>'Reply',
 					// remove "Text or HTML to be displayed after the set of comment fields"

@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.5 Main Functions
+ * Bootplate v1.6 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.5);
+define('VERSION', 1.6);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -610,6 +610,12 @@ if(!function_exists('bootplate_comments')) {
 	function bootplate_comments($comment, $args, $depth) {
 		//$tag       = 'div';
         $add_below = 'artcomm';
+		if(get_comment_author_url() != '' && get_theme_mod( 'bootplate_enable_comments_url', '') == 1) {
+			$commentlink 	= true;
+			$commentlinkurl	= get_comment_author_url();
+		} else {
+			$commentlink 	= false;
+		}
 		 
     ?>
 
@@ -623,7 +629,13 @@ if(!function_exists('bootplate_comments')) {
 			<div class="panel panel-default arrow left">
 				<div class="panel-body">
 					<header class="text-left">
-						<div class="comment-user"><b><?php comment_author(); ?></b></div>
+						<div class="comment-user">
+							<?php if($commentlink) : ?>
+							<a href="<?php echo $commentlinkurl; ?>" target="_blank" rel="nofollow"><b><?php comment_author(); ?></b></a>
+							<?php else : ?>
+							<b><?php comment_author(); ?></b>
+							<?php endif; ?>
+						</div>
 						<time class="comment-date" datetime="<?php printf( __('%1$s %2$s', 'bootplate'), get_comment_date(),  get_comment_time() ); ?>"><?php printf( __('%1$s at %2$s', 'bootplate'), get_comment_date(),  get_comment_time() ); ?></time>
 					</header>
 					<div class="comment-post<?php if ( $comment->comment_approved == '0' ) {echo ' in-moderation'; } ?>">
@@ -1238,5 +1250,3 @@ if(!function_exists('get_bootplate_share')) {
 }
 
 remove_action('wp_head', 'wp_generator');
-
-

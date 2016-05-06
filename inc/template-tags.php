@@ -257,7 +257,7 @@ function bootplate_excerpt_more( $more ) {
 		/* translators: %s: Name of current post */
 		sprintf( 'more %s', '<span class="sr-only screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
 		);
-	return ' &hellip; ' . $link;
+	return '&hellip; ' . $link;
 }
 add_filter( 'excerpt_more', 'bootplate_excerpt_more' );
 endif;

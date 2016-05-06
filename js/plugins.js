@@ -1,6 +1,6 @@
 /*
  Required JS Plugins Minified and Combined
- v1.5
+ v1.6
 */
 
 // JDM Frontend Admin Buttons v1.2 (min)
