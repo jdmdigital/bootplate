@@ -1,4 +1,4 @@
-/* == loadCSS.js 
+/* == loadCSS.js v1.2.0
 https://github.com/filamentgroup/loadCSS 
 */
 
