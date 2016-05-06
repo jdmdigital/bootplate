@@ -1,7 +1,7 @@
 /*
 Bootplate Parent CSS is just the basics
 This (simplified) stylesheet is only loaded when a child theme is in use.
-v1.4
+v1.5
 */
 
 @-webkit-viewport   { width: device-width; }
@@ -9,6 +9,19 @@ v1.4
 @-ms-viewport       { width: device-width; }
 @-o-viewport        { width: device-width; }
 @viewport           { width: device-width; }
+
+/* == ICONS == */
+@font-face {
+  font-family: 'bootplate';
+  src: url('../fonts/bootplate.eot?24889128');
+  src: url('../fonts/bootplate.eot?24889128#iefix') format('embedded-opentype'),
+       url('../fonts/bootplate.woff2?24889128') format('woff2'),
+       url('../fonts/bootplate.woff?24889128') format('woff'),
+       url('../fonts/bootplate.ttf?24889128') format('truetype'),
+       url('../fonts/bootplate.svg?24889128#bootplate') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* == UTILITIES == */
 .jdm-fab{opacity:0; position:fixed; right:-115px;}
@@ -190,6 +203,21 @@ a.back-to-top span {color: #666;    font-size: 1.4em;    padding:4px 8px;    pos
 a.back-to-top span:hover, a.back-to-top span:focus{text-decoration:none;}
 a.back-to-top span:before{display:inline-block; line-height:1; top:1px; margin-left:0; margin-right:0;}
 
+/* JDM FAB Styles v1.2 */
+/* general styles */
+.jdm-fab{width:170px; position:fixed; top:60px; right:0; opacity:0.7;-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
+.home .jdm-fab{ top:105px;}
+.jdm-fab{-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
+.admin-btns-wrapper .btn{font-family:"Open Sans",sans-serif; margin-bottom:2px; margin-right:0; text-align:left; line-height:2; border-top-right-radius:0; border-bottom-right-radius:0;}
+.admin-btns-wrapper .btn span{margin-right:15px; margin-left:5px;}
+.jdm-fab .genericon{height:1em; width:1em;}
+.jdm-fab, .jdm-fab:hover, .jdm-fab:focus, .jdm-fab:active{-moz-transform: translateX(115px);-webkit-transform: translateX(115px);-o-transform: translateX(115px);-ms-transform: translateX(115px);transform: translateX(115px);}
+.jdm-fab.fontawesome {-moz-transform: translateX(125px);-webkit-transform: translateX(125px);-o-transform: translateX(115px);-ms-transform: translateX(125px);transform: translateX(125px);}
+.jdm-fab.genericons {-moz-transform: translateX(115px);-webkit-transform: translateX(115px);-o-transform: translateX(115px);-ms-transform: translateX(115px);transform: translateX(115px);}
+.jdm-fab.fab-icons {-moz-transform: translateX(120px);-webkit-transform: translateX(120px);-o-transform: translateX(120px);-ms-transform: translateX(120px);transform: translateX(120px);}
+.jdm-fab.genericons.has-hover, .jdm-fab.fontawesome.has-hover, .jdm-fab.fab-icons.has-hover, .jdm-fab.has-hover, .no-js .jdm-fab:hover{opacity:1;-moz-transform: translateX(0);-webkit-transform: translateX(0);-o-transform: translateX(0);-ms-transform: translateX(0);transform: translateX(0);}
+#fab-admin-btns.not-ready{opacity:0;}
+
 /* == Custom, Mobile-First Media Queries == */
 /* Remember: 
 	Min-Width: Refers to everything greater than or equal to the amount given.
@@ -201,6 +229,7 @@ a.back-to-top span:before{display:inline-block; line-height:1; top:1px; margin-l
 /* == xSmall-only == */
 @media only screen and (max-width : 329px) {
 	.hidden-xs{display:none;}
+	.has-featured-image{background-image:none!important;}
 }
 
 /* == Small-only == */
@@ -304,7 +333,6 @@ a.back-to-top span:before{display:inline-block; line-height:1; top:1px; margin-l
 	.gallery-columns-3 .gallery-item{width:33.33%; float:left;}
 	.gallery-columns-4 .gallery-item{width:25%; float:left;}
 }
-
 
 /* == Extra Large Devices, Wide Screens == */
 @media only screen and (min-width : 1200px) {

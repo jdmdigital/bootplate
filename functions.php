@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.4 Main Functions
+ * Bootplate v1.5 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.4);
+define('VERSION', 1.5);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", 'https://github.com/jdmdigital/bootplate/tree/development');
  
@@ -316,18 +316,54 @@ remove_action( 'wp_head', array( $oe_gist, 'wp_head' ), 100 );
 
 require get_template_directory() . '/inc/template-tags.php';
 
-// LoadCSS - Async Load of body.css (below the fold styles)
+/* Function to detect if child theme has the appropriate file
+ * Arg $url = fully-qualified URL
+ * Returns TRUE if the file doesn't have 404/500 headers (non-existant) else FALSE
+ * @since Bootplate v 1.5
+*/
+if(!function_exists('bootplate_file_exists')) {
+	function bootplate_file_exists($url = '') {
+		if($url != '') {
+			$file_headers = get_headers($url);
+			$header_code = substr($file_headers[0], 9, 3);
+			//if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+			if($header_code == '404' || $header_code == '500') {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+}
+
+// LoadCSS - Async Load of child theme's body.css (below the fold styles)
+// Rewritten in v1.5
 if(!function_exists('bootplate_async_css')) {
 	function bootplate_async_css() {
-		$tempdir = get_template_directory_uri();
-		
 		if(get_theme_mod( 'minify_bootplate_css', 'unmin-bootplate-css' ) == 'min-bootplate-css') {$bodycss = 'body.min.css';} else {$bodycss = 'body.css';}
-		if(get_theme_mod( 'minify_bootplate_js', 'unmin-bootplate-js' ) == 'min-bootplate-js') {$loadcss = 'loadcss.min.js';} else {$loadcss = 'loadcss.js';}
+		if(get_theme_mod( 'minify_bootplate_js', 'unmin-bootplate-js' ) == 'min-bootplate-js') {$loadjs = 'loadcss.min.js';} else {$loadjs = 'loadcss.js';}
+		
+		$childdir  = get_stylesheet_directory_uri();
+		$parentdir = get_template_directory_uri();
+		
+		// Default to child theme dir
+		$bodycss_dir	= $childdir.'/css/'.$bodycss;
+		$loadjs_dir 	= $childdir.'/js/'.$loadjs;
+		
+		// Check for body css
+		if(!bootplate_file_exists($bodycss_dir)) {$bodycss_dir = $parentdir.'/css/'.$bodycss;}
+		
+		// Check for loadcss js
+		if(!bootplate_file_exists($loadjs_dir)) {$loadjs_dir = $parentdir.'/js/'.$loadjs;}
 		
 		echo '
-		<link rel="preload" href="'.$tempdir.'/css/'.$bodycss.'" as="style" onload="this.rel=\'stylesheet\'" type="text/css" />
-		<noscript><link rel="stylesheet" href="'.$tempdir.'/css/'.$bodycss.'" type="text/css" /></noscript>
-		<script src="'.$tempdir.'/js/'.$loadcss.'" type="text/javascript"></script>
+		<!-- bootplate_async_css v1.5 -->
+		<link rel="preload" href="'.$bodycss_dir.'" as="style" onload="this.rel=\'stylesheet\'" type="text/css" />
+		<noscript><link rel="stylesheet" href="'.$bodycss_dir.'" type="text/css" /></noscript>
+		<script src="'.$loadjs_dir.'" type="text/javascript"></script>
+		
 		';
 	}
 }
