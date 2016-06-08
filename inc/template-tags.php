@@ -243,13 +243,10 @@ function bootplate_get_link_url() {
 }
 endif;
 
-if ( ! function_exists( 'bootplate_excerpt_more' ) && ! is_admin() ) :
+if ( ! function_exists( 'bootplate_excerpt_more' ) && ! is_admin() ) {
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with ... and a 'Continue reading' link.
- *
- * @since Twenty Fifteen 1.0
- *
- * @return string 'Continue reading' link prepended with an ellipsis.
+ * Replace "[...]" (appended to automatically generated excerpts) with ... and a 'Continue reading' link.
+ * @return string 'more' link prepended with an ellipsis.
  */
 function bootplate_excerpt_more( $more ) {
 	$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
@@ -260,4 +257,16 @@ function bootplate_excerpt_more( $more ) {
 	return '&hellip; ' . $link;
 }
 add_filter( 'excerpt_more', 'bootplate_excerpt_more' );
-endif;
+
+}
+
+/* Restrict Excerpt Length (set to 55)
+ * @since v1.6
+ * See: https://github.com/jdmdigital/bootplate/issues/89
+ */
+if(!function_exists('bootplate_excerpt_length')) {
+	function bootplate_excerpt_length( $length ) {
+		return 55;
+	}
+	add_filter( 'excerpt_length', 'bootplate_excerpt_length', 999 );
+}

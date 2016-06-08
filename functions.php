@@ -304,7 +304,7 @@ if(!function_exists('bootplate_resource_version')) {
 			return null;
 		} else {
 			//return bootplate_info('stringver');
-			return '1.3';
+			return VERSION;
 		}
 	}
 }

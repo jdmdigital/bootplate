@@ -357,6 +357,24 @@ a.back-to-top span:before{display:inline-block; line-height:1; top:1px; margin-l
 	article.post{min-height: 480px;}
 }
 
+/* == (xl) Extra Large Devices, Wide Screens == */
+@media only screen and (min-width : 1900px) {
+	.container{max-width:1780px;}
+	.col-xl-1,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-10,.col-xl-11,.col-xl-12{	position: relative;	min-height: 1px;padding-left: 15px;	padding-right: 15px;float: left;}
+	.col-xl-12 {width: 100%;}
+	.col-xl-11 {width: 91.66666667%;}
+	.col-xl-10 {width: 83.33333333%;}
+	.col-xl-9 {width: 75%;}
+	.col-xl-8 {width: 66.66666667%;}
+	.col-xl-7 {width: 58.33333333%;}
+	.col-xl-6 {width: 50%;}
+	.col-xl-5 {width: 41.66666667%;}
+	.col-xl-4 {width: 33.33333333%;}
+	.col-xl-3 {width: 25%;}
+	.col-xl-2 {width: 16.66666667%;}
+	.col-xl-1 {width: 8.33333333%;}
+}
+
 /* == Narrow Height Viewport Styles == */
 @media (max-height: 720px) and (min-width: 970px) {
 	.jumboscroll {display:none;}

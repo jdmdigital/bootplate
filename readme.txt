@@ -79,6 +79,7 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 = 1.6 =
 * New customization option to disable comment author website url
+* Various bug fixes
 
 = 1.5 =
 * Rewritten bootplate_async_css
