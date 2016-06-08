@@ -1,6 +1,6 @@
 /* Bootplate Editor Styles (and icons) */
 
-html{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);font-size:16px;}
+html{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);font-size:18px;}
 body{color: #333; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-weight: 400; line-height: 1.42857; background-color: #fff; font-size: 1rem; margin: 15px 15px; vertical-align: baseline; max-width: 752px;}
 a{color: #6f5499;}
 a:hover, a:focus{color: #23527c;}

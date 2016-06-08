@@ -2,7 +2,7 @@
 Contributors: jdm-labs
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.5.2
-Version: 1.5
+Version: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, blue, gray, purple, white, dark, light, left-sidebar, right-sidebar, full-width, responsive-layout, Twitter Bootstrap, HTML5, editor-style, featured-images, post-formats
@@ -69,10 +69,17 @@ Source: http://modernizr.com/download/?-borderradius-boxshadow-cssremunit-cssvhu
 
 == Upgrade Notice ==
 
+= 1.6 =
+* New customization options
+
 = 1.5 =
 * Rewritten bootplate_async_css
 
 == Changelog ==
+
+= 1.6 =
+* New customization option to disable comment author website url
+* Various bug fixes
 
 = 1.5 =
 * Rewritten bootplate_async_css

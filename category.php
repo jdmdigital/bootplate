@@ -9,7 +9,7 @@ get_header(); ?>
 <header class="jumbotron jumbotron-fluid bg-custom">
 	<div class="container">
 		<h1><?php single_cat_title(); ?></h1>
-		<?php if(category_description() != '') : ?><p><?php echo category_description(); ?></p><?php endif; ?>
+		<?php if(category_description() != '') : ?><?php echo category_description(); ?><?php endif; ?>
 	</div><!--/.container-->
 </header>
 
