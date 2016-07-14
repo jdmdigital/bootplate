@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.6 Main Functions
+ * Bootplate v1.7 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.6);
+define('VERSION', 1.7);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -191,6 +191,7 @@ add_action( 'widgets_init', 'bootplate_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
+ * Updated in v1.7
  */
 function bootplate_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), null, 'all' );
@@ -228,8 +229,6 @@ function bootplate_scripts() {
 
 	}
 	
-	
-	
 	// Load the IE-specific stylesheet.
 	wp_enqueue_style( 'bootplate-ie', get_template_directory_uri() . '/css/ie.css', array( 'bootplate' ), null );
 	wp_style_add_data( 'bootplate-ie', 'conditional', 'lt IE 9' );
@@ -265,10 +264,25 @@ function bootplate_scripts() {
 	
 	if($minjs) {
 		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.min.js', array('jquery', 'modernizr'), bootplate_resource_version(), true );
-		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
 	} else {
 		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), bootplate_resource_version(), true );
-		wp_enqueue_script( 'bootplate-main', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
+	}
+	
+	if(is_child_theme()) {
+		$child_js = $child_style.'-main';
+		if($minjs) {
+			wp_enqueue_script( $child_js, get_stylesheet_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
+		} else {
+			wp_enqueue_script( $child_js, get_stylesheet_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
+		}
+	} else {
+		// Using Parent Theme. Load full style.css (or the minified version).
+		if($minjs) {
+			wp_enqueue_script( 'bootplate', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
+		} else {
+			wp_enqueue_script( 'bootplate', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
+		}
+
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
