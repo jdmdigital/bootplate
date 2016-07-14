@@ -1,6 +1,6 @@
 /*
  Main JS functions and function settings
- v 1.6
+ v 1.7
 */
 
 // for .full-height when VH CSS until not understood.
@@ -320,6 +320,48 @@ $( document ).ready(function() {
 			slidesToScroll: 1
 		  }
 		}]
+	});
+	
+	// Slick for Logos
+	$('.bp-logo-slider').slick({
+	  arrows: false,
+	  dots: true,
+	  infinite: true,
+	  speed: 600,
+	  autoplay: true,
+  	  autoplaySpeed: 3000,
+	  slidesToShow: 4,
+	  slidesToScroll: 1,
+	  	  responsive: [
+		{
+		  breakpoint: 1024,
+		  settings: {
+			slidesToShow: 4,
+			slidesToScroll: 1,
+		  }
+		},
+		{
+		  breakpoint: 900,
+		  settings: {
+			slidesToShow: 3,
+			slidesToScroll: 1,
+		  }
+		},
+		{
+		  breakpoint: 768,
+		  settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1,
+		  }
+		},
+		{
+		  breakpoint: 480,
+		  settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1,
+		  }
+		}]
+
 	});
 	
 	// One-Column Slick

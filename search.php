@@ -22,7 +22,7 @@ get_header(); ?>
 </header>
 <section class="bg-default">
 	<div class="container">
-		<?php if (function_exists('relevanssi_didyoumean')) { relevanssi_didyoumean(get_search_query(), '<p class="text-info didyoumean">Did you mean: ', '</p>', 5);}?>
+		<?php if (function_exists('relevanssi_didyoumean')) { relevanssi_didyoumean(get_search_query(), '<p class="text-info didyoumean">Did you mean: ', '?</p>', 5); } ?>
 		<?php if ( have_posts() ) : ?>
 		<div class="row">
 			<div class="col-md-10 col-lg-8">
