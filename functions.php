@@ -205,6 +205,7 @@ function bootplate_scripts() {
 	}
 	
 	if( get_theme_mod( 'minify_bootplate_css', 'unmin-bootplate-css' ) == 'min-bootplate-css') {$mincss = true;} else { $mincss = false; }
+	if( get_theme_mod( 'minify_bootplate_js', 'unmin-bootplate-js' ) == 'min-bootplate-js') {$minjs = true;} else { $minjs = false; }
 	
 	if(is_child_theme() && $has_child_style) {
 		// Load Parent.css instead of the full style.css file (or the minified version).
@@ -267,8 +268,7 @@ function bootplate_scripts() {
 		wp_enqueue_script( 'bootplate-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'modernizr'), bootplate_resource_version(), true );
 	}
 	
-	if(is_child_theme() && $has_child_style) {
-		// Load Parent.css instead of the full style.css file (or the minified version).
+	if(is_child_theme()) {
 		$child_js = $child_style.'-main';
 		if($minjs) {
 			wp_enqueue_script( $child_js, get_stylesheet_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
@@ -277,10 +277,10 @@ function bootplate_scripts() {
 		}
 	} else {
 		// Using Parent Theme. Load full style.css (or the minified version).
-		if($mincss) {
-			wp_enqueue_style( 'bootplate', get_template_directory_uri() . '/style.min.css', array('bootstrap'), bootplate_resource_version() );
+		if($minjs) {
+			wp_enqueue_script( 'bootplate', get_template_directory_uri() . '/js/main.min.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
 		} else {
-			wp_enqueue_style( 'bootplate', get_stylesheet_uri(), array('bootstrap'), bootplate_resource_version() );
+			wp_enqueue_script( 'bootplate', get_template_directory_uri() . '/js/main.js', array('jquery', 'modernizr', 'bootplate-plugins'), bootplate_resource_version(), true );
 		}
 
 	}
