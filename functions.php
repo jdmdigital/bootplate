@@ -926,6 +926,12 @@ if(!function_exists('header_classes')) {
 		if(is_page_template('page-fullheight.php') || is_page_template('page-homepage.php') || is_page_template('page-search.php')) {
 			$headerclasses .= ' full-height text-center';
 		}
+		if(is_page_template('page-thirdheight.php')) {
+			$headerclasses .= ' full-height vh33';
+		}
+		if(is_page_template('page-twothirdheight.php')) {
+			$headerclasses .= ' full-height vh66';
+		}
 		if ( has_post_thumbnail($id) ) {
 			$headerclasses .= ' has-featured-image';
 		}
