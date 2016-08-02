@@ -1,6 +1,6 @@
 /*
  Main JS functions and function settings
- v 1.7
+ v 1.8
 */
 
 // for .full-height when VH CSS until not understood.

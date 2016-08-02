@@ -147,6 +147,25 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
+	// Add Google Analytics UID Setting
+	$wp_customize->add_setting(
+		'ga_uid_textbox',
+		array(
+			'default' => '',
+			'sanitize_callback' => 'bootplate_sanitize_text',
+		)
+	);
+	// Add Google Analytics UID Setting Control
+	$wp_customize->add_control(
+		'ga_uid_textbox',
+		array(
+			'label' => 'Google Analytics UID',
+			'description' => 'To add Google Analytics, simply paste the UID here.  It\'ll look something like <b>UA-87878787-1</b>.',
+			'section' => 'general_settings_section',
+			'type' => 'text',
+		)
+	);
+	
 	// Bootplate Social Sharing Enable
 	$wp_customize->add_setting(
 		'bootplate_enable_social_share',
@@ -266,12 +285,12 @@ function bootplate_customize_register( $wp_customize ) {
 		'minify_bootplate_css',
 		array(
 			'label' => 'Minify Bootplate CSS',
-			'description' => 'Use the minified style.min.css file (9KB smaller)?',
+			'description' => 'Use the minified style.min.css file (10KB smaller)?',
 			'section' => 'performance_settings_section',
 			'type' => 'select',
 			'choices' => array(
-				'unmin-bootplate-css' => 'Unminify Style.css (59KB)',
-				'min-bootplate-css' => 'Minify Style.min.css (50KB)',
+				'unmin-bootplate-css' => 'Unminify Style.css (61KB)',
+				'min-bootplate-css' => 'Minify Style.min.css (51KB)',
 			),
 		)
 	);
@@ -290,12 +309,12 @@ function bootplate_customize_register( $wp_customize ) {
 		'minify_bootplate_js',
 		array(
 			'label' => 'Minify Bootplate JS',
-			'description' => 'Use the minified Javascript files (26KB smaller)?',
+			'description' => 'Use the minified Javascript files (30KB smaller)?',
 			'section' => 'performance_settings_section',
 			'type' => 'select',
 			'choices' => array(
-				'unmin-bootplate-js' => 'Unminify JS Files (82KB total)',
-				'min-bootplate-js' => 'Minify JS Files (56KB total)',
+				'unmin-bootplate-js' => 'Unminify JS Files (85KB total)',
+				'min-bootplate-js' => 'Minify JS Files (55KB total)',
 			),
 		)
 	);
