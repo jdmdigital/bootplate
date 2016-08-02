@@ -147,6 +147,25 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
+	// Add Google Analytics UID Setting
+	$wp_customize->add_setting(
+		'ga_uid_textbox',
+		array(
+			'default' => '',
+			'sanitize_callback' => 'bootplate_sanitize_text',
+		)
+	);
+	// Add Google Analytics UID Setting Control
+	$wp_customize->add_control(
+		'ga_uid_textbox',
+		array(
+			'label' => 'Google Analytics UID',
+			'description' => 'To add Google Analytics, simply paste the UID here.  It\'ll look something like <b>UA-87878787-1</b>.',
+			'section' => 'general_settings_section',
+			'type' => 'text',
+		)
+	);
+	
 	// Bootplate Social Sharing Enable
 	$wp_customize->add_setting(
 		'bootplate_enable_social_share',

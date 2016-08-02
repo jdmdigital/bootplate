@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.7 Main Functions
+ * Bootplate v1.8 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.7);
+define('VERSION', 1.8);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -1261,6 +1261,33 @@ if(!function_exists('get_bootplate_share')) {
 		} // Returns nothing if not enabled in customizer (they might be using something else)
 			return '';
 	}
+}
+
+/* Add Google Analytics to Footer
+ * See: https://github.com/jdmdigital/bootplate/issues/100 
+ * @since 1.8
+ */
+if(!function_exists('bootplate_add_ga')) {
+	function bootplate_add_ga() { 
+		$ga = get_theme_mod( 'ga_uid_textbox', '' );
+		$script = '';
+		
+		if($ga != '') {
+			$script .= "
+			<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+				ga('create', '".$ga."', 'auto');
+				ga('send', 'pageview');
+			</script>";
+		} 
+		
+		echo $script;
+	} 
+	
+	add_action('wp_footer', 'bootplate_add_ga', 900);
 }
 
 remove_action('wp_head', 'wp_generator');
