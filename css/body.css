@@ -3,7 +3,7 @@ Bootplate BODY.css
 CSS For Elements to be loaded asynchronously using loadCSS.js.
 Elements here should ONLY be used/viewable below the fold.
 
-v1.6
+v1.8
 */
 
 [class^="bp-"]:before, [class*=" bp-"]:before, .glyphicon:before, .links-social a:before {
