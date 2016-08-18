@@ -8,7 +8,17 @@ if($('.no-cssvhunit body.logged-in header.dynamic-height, .no-cssvhunit header.f
 	$(window).load(function(){
 		"use strict";
 		var maxheight = $( window ).height();
-		$('.no-cssvhunit body.logged-in header.dynamic-height, .no-cssvhunit header.full-height').height(maxheight);
+		var height33 = ($( window ).height()) * 0.3;
+		var height66 = ($( window ).height()) * 0.6;
+		
+		if($('header.vh33').length) {
+			$('.no-cssvhunit header.full-height').height(height33);
+		} else if ($('header.vh66').length) {
+			$('.no-cssvhunit header.full-height').height(height66);
+		} else {
+			$('.no-cssvhunit body.logged-in header.dynamic-height, .no-cssvhunit header.full-height').height(maxheight);
+		}
+		
 	});
 }
 
