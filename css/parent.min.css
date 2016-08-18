@@ -2,7 +2,7 @@
 Bootplate Parent CSS is just the basics
 This (simplified) stylesheet is only loaded when a child theme is in use.
 */
-/* Minified v1.8 */
+/* Minified v1.9 */
 @font-face {
   font-family: 'bootplate';
   src: url('../fonts/bootplate.eot?24889128');
