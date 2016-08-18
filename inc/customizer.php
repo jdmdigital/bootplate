@@ -1,6 +1,6 @@
 <?php
 /**
- * Bootplate v1.6 Customizer functionality
+ * Bootplate v1.9 Customizer functionality
  *
  * @package WordPress
  * @subpackage Bootplate
@@ -309,12 +309,12 @@ function bootplate_customize_register( $wp_customize ) {
 		'minify_bootplate_js',
 		array(
 			'label' => 'Minify Bootplate JS',
-			'description' => 'Use the minified Javascript files (30KB smaller)?',
+			'description' => 'Use the minified Javascript files (57KB smaller)?',
 			'section' => 'performance_settings_section',
 			'type' => 'select',
 			'choices' => array(
-				'unmin-bootplate-js' => 'Unminify JS Files (85KB total)',
-				'min-bootplate-js' => 'Minify JS Files (55KB total)',
+				'unmin-bootplate-js' => 'Unminify JS Files (140KB total)',
+				'min-bootplate-js' => 'Minify JS Files (83KB total)',
 			),
 		)
 	);
