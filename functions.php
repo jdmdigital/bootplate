@@ -3,7 +3,7 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.8 Main Functions
+ * Bootplate v1.9 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.8);
+define('VERSION', 1.9);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -114,6 +114,17 @@ if ( !function_exists('bootplate_setup') ) {
 	}// END setup function
 } // END function_exists( 'bootplate_setup' )
 add_action( 'after_setup_theme', 'bootplate_setup' );
+
+/* Adds the Excerpts Field to Pages (for SERPS)
+ * See Issue: https://github.com/jdmdigital/bootplate/issues/106
+ * @since v1.9
+ */
+if(!function_exists('bootplate_add_excerpts_to_pages')) {
+	function bootplate_add_excerpts_to_pages() {
+		 add_post_type_support( 'page', 'excerpt' );
+	}
+	add_action( 'init', 'bootplate_add_excerpts_to_pages' );
+}
 
 /**
  * Register widget areas.
@@ -329,6 +340,46 @@ remove_action( 'wp_head', array( $oe_gist, 'wp_head' ), 100 );
 
 
 require get_template_directory() . '/inc/template-tags.php';
+
+
+/* 
+ * bootplate_get_post_link() 
+ * This function essentially checks the post type and then returns the right link
+ * if it's standard (not Link post type) it's equivalent to esc_url( get_permalink() )
+ * otherwise, it'll use the built-in function get_url_in_content()
+ *
+ * @since v1.9
+ */
+if(!function_exists('bootplate_get_post_link')) {
+	function bootplate_get_post_link() {
+		if ( get_post_format( get_the_ID() ) == 'link' ) {
+			$content = get_the_content();
+			$has_url = get_url_in_content( $content );	
+			
+			if($has_url) {
+				return $has_url;
+			} else {
+				// Ok, maybe the user didn't link it.  It's just a string in the form of a link...
+				// Try and get the URL another way.
+				//$links = wp_extract_urls($content) - doesn't work in this context
+				preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $content, $urls);
+				if(isset($urls)) {
+					//print_r($urls[0]); 
+					$url = $urls[0];
+					$url = implode('',$url);
+					return $url;
+				} else {
+					// I give up. Fallback.
+					return apply_filters( 'the_permalink', get_permalink() );
+				}
+			}
+		} else {
+			// Normal Post Format
+			return esc_url( get_permalink() );
+		}
+	}
+} // endif function_exists
+
 
 /* Function to detect if child theme has the appropriate file
  * Arg $url = fully-qualified URL

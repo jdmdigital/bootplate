@@ -16,7 +16,7 @@
 <?php while ( have_posts() ) : the_post(); ?>
 <div class="col-sm-6 col-lg-4">
 	<article class="post <?php echo get_post_format(); ?>">
-		<?php the_title( sprintf( '<h2 class="h4"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<?php the_title( sprintf( '<h2 class="h4"><a href="%s" rel="bookmark">', bootplate_get_post_link() ), '</a></h2>' ); ?>
 		<div class="the-excerpt">
 			<?php the_excerpt(); ?>
 		</div>
