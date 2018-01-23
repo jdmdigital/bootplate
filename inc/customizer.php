@@ -1,10 +1,10 @@
 <?php
 /**
- * Bootplate v1.9 Customizer functionality
+ * Bootplate v2.0 Customizer functionality
  *
  * @package WordPress
  * @subpackage Bootplate
- * @since Bootplate 1.2
+ * @since Bootplate 1.9
  */
 
 /* To retreive these settings:
@@ -271,7 +271,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Setting
+	// Add Minification Setting
 	$wp_customize->add_setting(
 		'minify_bootplate_css',
 		array(
@@ -280,7 +280,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	// Add Minification Control - Don't forget to update the sanitize_select callback
 	$wp_customize->add_control(
 		'minify_bootplate_css',
 		array(
@@ -295,7 +295,31 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Setting
+	// Add Bootstrap Verson Control Setting
+	$wp_customize->add_setting(
+		'bootstrap_version',
+		array(
+			'default' => 'bootstrap_v3',
+			'sanitize_callback' => 'bootplate_sanitize_select',
+		)
+	);
+	
+	// Add Bootstrap Verson Control  - Don't forget to update the sanitize_select callback
+	$wp_customize->add_control(
+		'bootstrap_version',
+		array(
+			'label' => 'Bootstrap Version',
+			'description' => 'Select Bootstrap Version. v4 is still BETA.',
+			'section' => 'general_settings_section',
+			'type' => 'select',
+			'choices' => array(
+				'bootstrap_v3' => 'Bootstrap v3.3.7',
+				'bootstrap_v4' => 'Bootstrap v4.0.0',
+			),
+		)
+	);
+	
+	// Add Minification Control Setting
 	$wp_customize->add_setting(
 		'minify_bootplate_js',
 		array(
@@ -304,7 +328,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	// Add Minification Control Control  - Don't forget to update the sanitize_select callback
 	$wp_customize->add_control(
 		'minify_bootplate_js',
 		array(
@@ -319,7 +343,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Setting
+	// Add jQuery CDN Control Setting
 	$wp_customize->add_setting(
 		'cdn_jquery',
 		array(
@@ -328,7 +352,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	// Add jQuery CDN Control Control  - Don't forget to update the sanitize_select callback
 	$wp_customize->add_control(
 		'cdn_jquery',
 		array(
@@ -343,7 +367,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Setting
+	// Add Browser Cache Setting
 	$wp_customize->add_setting(
 		'enable_browser_cache',
 		array(
@@ -352,7 +376,7 @@ function bootplate_customize_register( $wp_customize ) {
 		)
 	);
 	
-	// Add Navigation Type Control  - Don't forget to update the sanitize_select callback
+	// Add Browser Cache Control  - Don't forget to update the sanitize_select callback
 	$wp_customize->add_control(
 		'enable_browser_cache',
 		array(
@@ -390,6 +414,8 @@ function bootplate_sanitize_select( $input ) {
 		'nav-right' => 'Right Nav (default)',
 		'nav-left' => 'Left Nav',
 		'nav-split' => 'Split Nav (right and left navs)',
+		'bootstrap_v3' => 'Bootstrap v3.3.7',
+		'bootstrap_v4' => 'Bootstrap v4.0.0',
 		'unmin-bootplate-css' => 'Unminify Style.css (59KB)',
 		'min-bootplate-css' => 'Minify Style.min.css (50KB)',
 		'unmin-bootplate-js' => 'Unminify JS Files (77KB total)',

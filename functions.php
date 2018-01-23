@@ -3,12 +3,12 @@
  *            /// 
  *           (o 0)
  * ======o00o-(_)-o00o======
- * Bootplate v1.9 Main Functions
+ * Bootplate v2.0 Main Functions
  * @link https://github.com/jdmdigital/bootplate
  * Made with love by @jdmdigital
  * =========================
  * 
- * Bootplate WordPress Theme, Copyright 2016 JDM Digital, LLC
+ * Bootplate WordPress Theme, Copyright 2018 JDM Digital, LLC
  * Bootplate is distributed under the terms of the GNU GPL
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  */
  
-define('VERSION', 1.9);
+define('VERSION', 2.0);
 define("REPO", 'https://github.com/jdmdigital/bootplate');
 define("BRANCH", '');
  
@@ -53,6 +53,19 @@ if(!function_exists('bootplate_info')) {
 			return $version;
 		}
 		
+	}
+}
+
+if(!function_exists('get_bootstrap_version')){
+	function get_bootstrap_version(){
+		// Query DB to see which Bootstrap version is set; default to classic, v3.
+		if( get_theme_mod( 'bootstrap_version', 'bootstrap_v3' ) == 'bootstrap_v4') {
+			return 4;
+		} else {
+			// Else default to classic version, 3.x 
+			return 3;
+		}
+		// Question: Should we query the Bootplate version here, or redundant?
 	}
 }
 
