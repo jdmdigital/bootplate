@@ -1,4 +1,4 @@
-# BootPlate
+# Bootplate
 **A wicked-fast, mobile-first, Bootstrap 4 theme framework for building awesome WordPress websites.**
 
 ![alt tag](https://jdmdigital.co/wp-content/uploads/2016/03/bootplate-screenshot-v06.jpg)
@@ -13,7 +13,7 @@ You'll find we've actually combined classes and grid options from production-rea
 ## Vision
 Building even totally custom WordPress themes contains a lot of repetition.  There are certain templates you just end up re-creating again and again.  Worse, you end up using a lot of functions that make the theme play well with WordPress, popular WordPress plugin classes, as well as different versions of Bootstrap.
 
-Our vision for BootPlate is pretty simple.   Here goes.
+Our vision for Bootplate is pretty simple.   Here goes.
 
 * Use WordPress Themeing Best Practices
 * Extend via Plugins (not theme-specific)
